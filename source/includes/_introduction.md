@@ -6,4 +6,4 @@ ChainRider is a cloud service providing set of APIs for [DASH](https://www.dash.
 The cross-origin resource sharing is supported, allowing you to interact securely with the REST API from your client web application.
 
 ## Registration and onboarding
-Registration on the platform is straightforward and requires minimum effort from your side. You can register [here](https://chainrider.io) and obtain a free token for testing the API. Once the registration form has been submitted you will receive a verification email. Please verify your email address in order to speed up the onboarding process and start using the APIs.
+Registration on the platform is straightforward and requires minimum effort from your side. You can register [here](https://chainrider.io) and obtain a free token for testing the API. Once the registration form has been submitted you will receive a verification email. Please verify your email address in order to speed up the onboarding process and start using the APIs
