@@ -15,9 +15,12 @@ toc_footers:
 
 includes:
   - introduction
-  - authentication
-  - errors
-  - versioning
+  - blockchain
+  - blocks
+  - transactions
+  - addresses
+  - unspentOutputs
+  - paymentForward
   - schemes
   - support
 
