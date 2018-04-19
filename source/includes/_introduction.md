@@ -29,8 +29,8 @@ Currently supported blockchains are provided within the table below:
 
 Digital currency | Blockchain | Base URL
 -------------    | -------    | ---------------
-Dash             | Main       | `https://api-dot-chainrider.io/v1/dash/main/`
-Dash             | Testnet    | `https://api-dot-chainrider.io/v1/dash/testnet/`
+Dash             | Main       | `https://api-dot-chainrider.io/v1/dash/main`
+Dash             | Testnet    | `https://api-dot-chainrider.io/v1/dash/testnet`
 
 ## Errors
 
