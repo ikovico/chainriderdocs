@@ -1,6 +1,11 @@
 # Payment Forward APIs
 
-The set of APIs allows you to create payment forward rules.
+The set of APIs allows you to crate and manage payment forward rules.
+Payment forward allows you to forward DASH received on one address to one or two new addresses.
+In order to create a payment forward partially populated PaymentForward object is used.
+
+Once created, payment forward rule will continue to forward payments in a predefined way set during payment forward creation until you explicitly delete it by calling the API for payment forward delete.
+
 
 ## Create Payment Forward
 
@@ -147,12 +152,12 @@ System.out.println(result);
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|destination_address|body|String|True|Destination address hash|
-|commission_address|body|String|False|Commission address|
-|commission_fee_percent|body|String|False|Commission fee in percentage|
-|commission_fee_duffs|body|String|False|Commission fee in duffs.|
-|mining_fee_duffs|body|String|False|Mining fee for forwarding transaction. Default 10 000 duffs. Min 10 000 duffs. Max 150 000 duffs.|
-|callback_url|body|String|False|URL to which the notification will be posted upon each payment|
+|destination_address|body|String|True|Destination address represents the address to which received DASH will be forwarded.|
+|commission_address|body|String|False|Commission address is an optional address to which funds will be forwarded in a predefined way. If commission address is specified, one must specify either commission_fee_percent or commission_fee_duffs parameter (cannot use both for the same payment forward)|
+|commission_fee_percent|body|Float|False|Commission fee as normalized percentage. Minimum is 0.001. Maximum is 0.999. In case commission_address is set, commission_fee_percent specifies amount which will be forwarded to commission_address as percentage of the total received payment. The rest of the funds will be forwarded to destination_address. Mining fee is subtracted from previously calculated commission amount.|
+|commission_fee_duffs|body|Integer|False|Commission fee in duffs. In case commission_address is set, commission_fee_duffs specifies fixed amount of the total received payment which will be forwarded to commission_address. The rest of the funds will be forwarded to destination_address.|
+|mining_fee_duffs|body|String|False|Mining fee for forwarding transaction. Default fee is 10 000 duffs. Min 10 000 duffs. Max 150 000 duffs.|
+|callback_url|body|String|False|URL to which the notification will be posted upon each successful payment forward.|
 |token|body|String|True|Token obtained from the ChainRider service|
 
 
@@ -393,7 +398,7 @@ System.out.println(response.toString());
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|paymentforward_id|path|String|True|Payment Forward ID|
+|paymentforward_id|path|String|True|Unique Payment Forward ID|
 |token|query|String|True|Token obtained from the ChainRider service|
 
 
@@ -782,7 +787,7 @@ System.out.println(response.toString());
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|paymentforward_id|path|String|True|Payment forward ID|
+|paymentforward_id|path|String|True|Unique Payment forward ID|
 |token|query|String|True|Token obtained from the ChainRider service|
 
 |Response|

@@ -741,3 +741,70 @@
 |satoshis|Integer|Total unspent amount in duffs|
 |height|Integer|Height of the block in which the transaction is included|
 |confirmations|Integer|Number of confirmations for the transaction|
+
+
+<h2 id="tocPaymentForwardObject">PaymentForwardObject</h2>
+
+<a id="schemepaymentforwardobject"></a>
+
+> Example
+
+```json
+{
+    "paymentforward_id":"XozC3GyOfhEGwD6zK8rIvi0HU6ZwqAuU",
+    "payment_address":"XcyXgQzCnKsWpK2YSjoRYwM1vWB6GvWQ2u",
+    "destination_address":"XvtUXjA3UBnGvsbV7MDs4Duu411CfofDEK",
+    "commission_address":"XtFU7dFv8b7JeW7eG9yYXc28uSYUQqiNCb",
+    "commission_fee_percent":0.1,
+    "commission_fee_duffs":null,
+    "created_date":"2018-04-13T11:01:46.000Z",
+    "callback_url":"https://webhook.site/175c954d-6595-4bf8-a518-990f5e876fa7",
+    "mining_fee_duffs":10000,
+    "processed_txs":
+    [
+        {
+            "input_transaction_hash":"6e3648463d26ee5af215fa3b61e976bf06cc7b1c6d2c034253967be65fc1c889",
+            "received_amount_duffs":5000000,
+            "transaction_hash":"7c89d485e06f295de6fb1d676311340be35148dfc1a54de13b57e785227da78f",
+            "processed_date":"2018-04-13T11:04:19.000Z"
+        }
+    ]
+}
+```
+
+|Name|Type|Description|
+|---|---|---|
+|paymentforward_id|String|Payment forward unique id|
+|payment_address|String|String representing payment address. DASH received to payment address are automatically forwarded to destination address (and optionally to commission address in case one is specified in a predefined way during payment forward creation.) |
+|destination_address|String|String representing destination address. DASH received at payment address will be forwarded to the destination address.|
+|commission_address|String|String representing commission address. In case a commission address is specified part of the payment will be forwarded to this address each time a payment is received at payment address, based on predefined parameters (commission_fee_percent or commission_fee_duffs)|
+|commission_fee_percent|Float|Percentage of the payment which will be forwarded to commission address each time a payment is received at payment address. Min value 0.001. Max value 0.999. |
+|commission_fee_duffs|Integer|Fixed amount in duffs which will be forwarded to commission address each time a payment is received at payment address.|
+|created_date|String - Datetime in YYYY-MM-DDTHH:MM:SS.MMMZ format|Datetime of the creation of payment forward|
+|callback_url|String|URL to which the notification about processed transactions is sent. Each time new payment is sent to payment address, notification is posted to this |
+|mining_fee_duffs|Integer|Mining fee for the payment forward transaction. Default is 10 000. Maximum is 150 000. Minimum is 10 000. In case of set commission_fee_percent, mining fee is subtracted from commission amount.|
+|processed_txs|Array of [ProcessedTxObject](#schemeprocessedtxobject)|Array of processed transactions by the payment forward. In case of retrieving a list of payment forwards, this parameter is omitted.|
+
+
+
+<h2 id="tocProcessedTxObject">ProcessedTxObject</h2>
+
+<a id="schemeprocessedtxobject"></a>
+
+> Example
+
+```json
+{
+    "input_transaction_hash":"6e3648463d26ee5af215fa3b61e976bf06cc7b1c6d2c034253967be65fc1c889",
+    "received_amount_duffs":5000000,
+    "transaction_hash":"7c89d485e06f295de6fb1d676311340be35148dfc1a54de13b57e785227da78f",
+    "processed_date":"2018-04-13T11:04:19.000Z"
+}
+```
+
+|Name|Type|Description|
+|---|---|---|
+|input_transaction_hash|String (HEX)|Hash of the input transaction. Input transaction is the transaction which occurs when a payment is sent to payment address.|
+|received_amount_duffs|Integer|Amount received to payment forward destination address in duffs|
+|transaction_hash|String (HEX)|Hash of the output transaction. Output transaction is the transaction which occurs when a payment is forwarded from payment address to destination address (and comission address in case one is specified for particular payment forward)|
+|processed_date|String - Datetime in YYYY-MM-DDTHH:MM:SS.MMMZ format|Datetime when the payment was forwarded. |
