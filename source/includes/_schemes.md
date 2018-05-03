@@ -584,23 +584,23 @@
 |txid|String (HEX)|Hash of the transaction|
 |version|Integer|Version|
 |locktime|Integer|Timestamp since epoch - time at which a particular transaction can be added to the blockchain.|
-|vin|Array of [VIN](#schemevinobject)|Array of VIN Objects - input transactions|
-|vout|Array of [VOUT](#schemevoutobject)|Array of VOUT Objects - output transactions|
+|vin|Array of [TxIN](#schemetxinobject)|Array of TxIN Objects - input transactions|
+|vout|Array of [TxOUT](#schemetxoutobject)|Array of TxOUT Objects - output transactions|
 |blockhash|String (HEX)|Hash of the block containing tx|
 |blockheight|Integer|Height of the block containing the transaction|
 |confirmations|Integer|NUmber of confirmations|
 |time|Integer|Timestamp of the transaction since epoch|
 |blocktime|Integer|Block timestamp since epoch|
 |valueOut|Float|Output Value in DASH|
-|size|Integer|Size of the tx|
+|size|Integer|Size of the tx in bytes|
 |valueIn|Float|Input Value in DASH|
 |fees|Float|Network fee for the transaction|
 |txlock|Boolean|If the transaction is sent and verified via Instant Send the value will be True|
 
 
-<h2 id="tocVIN">VIN</h2>
+<h2 id="tocTxIN">TxIN</h2>
 
-<a id="schemevinobject"></a>
+<a id="schemetxinobject"></a>
 
 > Example
 
@@ -625,7 +625,7 @@
 |Name|Type|Description|
 |---|---|---|
 |txid|String (HEX)|Hash of the transaction|
-|vout|Integer|The index of the output being spent within the previous transaction.|
+|vout|Integer|The index of the output being spent within the transaction. Zero based.|
 |sequence|Integer|Legacy 4-byte sequence number|
 |n|TODO |TODO|
 |scriptSig|TODO|TODO|
