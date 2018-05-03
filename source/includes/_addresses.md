@@ -11,11 +11,11 @@ This set of APIs provides insight into the blockchain on a transaction level.
 > Code samples
 
 ```shell
-curl -X GET https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>?token=<TOKEN> \
+curl -X GET https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>?token=<TOKEN> \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json'
 
-// Response example
+# Response example
 {
     "addrStr":"XkLcLoji7FT8ALmpC3wCy6mTwPp3mMkonA",
     "balance":0,
@@ -38,7 +38,7 @@ curl -X GET https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/add
 
 ```php
 <?php
-$URL = "https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>?token=<TOKEN>";
+$URL = "https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>?token=<TOKEN>";
 
 $aHTTP['http']['method']  = 'GET';
 
@@ -77,7 +77,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>?token=<TOKEN>',
+  url: 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>?token=<TOKEN>',
   method: 'get',
   headers: headers,
   success: function(data) {
@@ -115,7 +115,7 @@ headers = {
   'Accept':'application/json'
 }
 
-result = RestClient.get 'https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>',
+result = RestClient.get 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>',
          params: {'token': <TOKEN>}, headers: headers
 
 p JSON.parse(result)
@@ -149,7 +149,7 @@ headers = {
   'Accept':'application/json',
 }
 
-r = requests.get('https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>',
+r = requests.get('https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>',
                   params={'token': <TOKEN>}, headers = headers)
 
 print r.json()
@@ -176,7 +176,7 @@ print r.json()
 ```
 
 ```java
-URL obj = new URL("https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>?token=<TOKEN>");
+URL obj = new URL("https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>?token=<TOKEN>");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestProperty("Accept", "application/json");
 con.setRequestProperty("Content-Type", "application/json");
@@ -243,16 +243,16 @@ System.out.println(response.toString());
 > Code samples
 
 ```shell
-curl -X GET https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>?token=<TOKEN> \
+curl -X GET https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/balance?token=<TOKEN> \
   -H 'Content-Type: application/json'
 
-// Response example
+# Response example
 0
 ```
 
 ```php
 <?php
-$URL = "https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/balance?token=<TOKEN>";
+$URL = "https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/balance?token=<TOKEN>";
 
 $aHTTP['http']['method']  = 'GET';
 
@@ -273,7 +273,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/balance?token=<TOKEN>',
+  url: 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/balance?token=<TOKEN>',
   method: 'get',
   headers: headers,
   success: function(data) {
@@ -293,7 +293,7 @@ headers = {
   'Content-Type':'application/json'
 }
 
-result = RestClient.get 'https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/balance',
+result = RestClient.get 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/balance',
          params: {'token': <TOKEN>}, headers: headers
 
 p JSON.parse(result)
@@ -309,7 +309,7 @@ headers = {
   'Content-Type':'application/json'
 }
 
-r = requests.get('https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/balance',
+r = requests.get('https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/balance',
                   params={'token': <TOKEN>}, headers = headers)
 
 print r.json()
@@ -319,7 +319,7 @@ print r.json()
 ```
 
 ```java
-URL obj = new URL("https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/balance?token=<TOKEN>");
+URL obj = new URL("https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/balance?token=<TOKEN>");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestProperty("Content-Type", "application/json");
 con.setRequestMethod("GET");
@@ -358,10 +358,366 @@ System.out.println(response.toString());
 
 ## Address Total Received
 
+<h3 id="getAddressTotalReceivedByHash">GET /addr/< addr_hash >/totalReceived </h3>
 
+<a id="opIdGetAddressTotalReceivedByHash"></a>
+
+> Code samples
+
+```shell
+curl -X GET https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/totalReceived?token=<TOKEN> \
+  -H 'Content-Type: application/json'
+
+# Response example
+4339433988
+```
+
+```php
+<?php
+$URL = "https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/totalReceived?token=<TOKEN>";
+
+$aHTTP['http']['method']  = 'GET';
+
+$aHTTP['http']['header']  = "Content-Type: application/json\r\n";
+
+$context = stream_context_create($aHTTP);
+
+$response = file_get_contents($URL, false, $context);
+
+// Response example
+4339433988
+?>
+```
+
+```javascript
+var headers = {
+  'Content-Type':'application/json'
+};
+
+$.ajax({
+  url: 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/totalReceived?token=<TOKEN>',
+  method: 'get',
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+});
+
+// Response example
+4339433988
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Content-Type':'application/json'
+}
+
+result = RestClient.get 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/totalReceived',
+         params: {'token': <TOKEN>}, headers: headers
+
+p JSON.parse(result)
+
+# Response example
+4339433988
+```
+
+```python
+import requests
+
+headers = {
+  'Content-Type':'application/json'
+}
+
+r = requests.get('https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/totalReceived',
+                  params={'token': <TOKEN>}, headers = headers)
+
+print r.json()
+
+# Response example
+4339433988
+```
+
+```java
+URL obj = new URL("https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/totalReceived?token=<TOKEN>");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestProperty("Content-Type", "application/json");
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+// Response example
+4339433988
+```
+
+*Get Total Received amount in duffs for an Address*
+
+|Parameter|In|Type|Required|Description|
+|---|---|---|---|---|
+|addr_hash|path|String|True|Hash of the address|
+|token|query|String|True|Token obtained from the ChainRider service|
+
+
+|Response|
+|-----|
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|Integer representing total received amount in duffs|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
 
 ## Address Total Sent
 
+<h3 id="getAddressTotalSentByHash">GET /addr/< addr_hash >/totalSent </h3>
 
+<a id="opIdGetAddressTotalSentByHash"></a>
+
+> Code samples
+
+```shell
+curl -X GET https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/totalSent?token=<TOKEN> \
+  -H 'Content-Type: application/json'
+
+# Response example
+4339433988
+```
+
+```php
+<?php
+$URL = "https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/totalSent?token=<TOKEN>";
+
+$aHTTP['http']['method']  = 'GET';
+
+$aHTTP['http']['header']  = "Content-Type: application/json\r\n";
+
+$context = stream_context_create($aHTTP);
+
+$response = file_get_contents($URL, false, $context);
+
+// Response example
+4339433988
+?>
+```
+
+```javascript
+var headers = {
+  'Content-Type':'application/json'
+};
+
+$.ajax({
+  url: 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/totalSent?token=<TOKEN>',
+  method: 'get',
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+});
+
+// Response example
+4339433988
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Content-Type':'application/json'
+}
+
+result = RestClient.get 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/totalSent',
+         params: {'token': <TOKEN>}, headers: headers
+
+p JSON.parse(result)
+
+# Response example
+4339433988
+```
+
+```python
+import requests
+
+headers = {
+  'Content-Type':'application/json'
+}
+
+r = requests.get('https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/totalSent',
+                  params={'token': <TOKEN>}, headers = headers)
+
+print r.json()
+
+# Response example
+4339433988
+```
+
+```java
+URL obj = new URL("https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/totalSent?token=<TOKEN>");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestProperty("Content-Type", "application/json");
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+// Response example
+4339433988
+```
+
+*Get Total Sent amount in duffs for an Address*
+
+|Parameter|In|Type|Required|Description|
+|---|---|---|---|---|
+|addr_hash|path|String|True|Hash of the address|
+|token|query|String|True|Token obtained from the ChainRider service|
+
+
+|Response|
+|-----|
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|Integer representing total sent amount in duffs|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
 
 ## Address Unconfirmed Balance
+
+<h3 id="getAddressUnconfirmedBalanceByHash">GET /addr/< addr_hash >/unconfirmedBalance </h3>
+
+<a id="opIdGetAddressUnconfirmedBalanceByHash"></a>
+
+> Code samples
+
+```shell
+curl -X GET https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/unconfirmedBalance?token=<TOKEN> \
+  -H 'Content-Type: application/json'
+
+# Response example
+0
+```
+
+```php
+<?php
+$URL = "https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/unconfirmedBalance?token=<TOKEN>";
+
+$aHTTP['http']['method']  = 'GET';
+
+$aHTTP['http']['header']  = "Content-Type: application/json\r\n";
+
+$context = stream_context_create($aHTTP);
+
+$response = file_get_contents($URL, false, $context);
+
+// Response example
+0
+?>
+```
+
+```javascript
+var headers = {
+  'Content-Type':'application/json'
+};
+
+$.ajax({
+  url: 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/unconfirmedBalance?token=<TOKEN>',
+  method: 'get',
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+});
+
+// Response example
+0
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Content-Type':'application/json'
+}
+
+result = RestClient.get 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/unconfirmedBalance',
+         params: {'token': <TOKEN>}, headers: headers
+
+p JSON.parse(result)
+
+# Response example
+0
+```
+
+```python
+import requests
+
+headers = {
+  'Content-Type':'application/json'
+}
+
+r = requests.get('https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/unconfirmedBalance',
+                  params={'token': <TOKEN>}, headers = headers)
+
+print r.json()
+
+# Response example
+0
+```
+
+```java
+URL obj = new URL("https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/unconfirmedBalance?token=<TOKEN>");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestProperty("Content-Type", "application/json");
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+// Response example
+0
+```
+
+*Get Unconfirmed Balance for an Address*
+
+|Parameter|In|Type|Required|Description|
+|---|---|---|---|---|
+|addr_hash|path|String|True|Hash of the address|
+|token|query|String|True|Token obtained from the ChainRider service|
+
+
+|Response|
+|-----|
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|Integer representing unconfirmed balance in duffs|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|

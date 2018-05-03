@@ -11,11 +11,11 @@ This set of APIs provides insight in the blockchain on block level.
 > Code samples
 
 ```shell
-curl -X GET https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/block/<BLOCK_HASH>?token=<TOKEN> \
+curl -X GET https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/block/<BLOCK_HASH>?token=<TOKEN> \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json'
 
-// Response example
+# Response example
 {
     "hash":"000000000000003d34c3254c70afb7ecefe0cb5952dfcc8b43f63c65f0054176",
     "size":456,
@@ -45,7 +45,7 @@ curl -X GET https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/blo
 
 ```php
 <?php
-$URL = "https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/block/<BLOCK_HASH>?token=<TOKEN>";
+$URL = "https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/block/<BLOCK_HASH>?token=<TOKEN>";
 
 $aHTTP['http']['method']  = 'GET';
 
@@ -91,7 +91,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/block/<BLOCK_HASH>?token=<TOKEN>',
+  url: 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/block/<BLOCK_HASH>?token=<TOKEN>',
   method: 'get',
   headers: headers,
   success: function(data) {
@@ -136,7 +136,7 @@ headers = {
   'Accept':'application/json'
 }
 
-result = RestClient.get 'https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/block/<BLOCK_HASH>',
+result = RestClient.get 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/block/<BLOCK_HASH>',
          params: {'token': <TOKEN>}, headers: headers
 
 p JSON.parse(result)
@@ -177,7 +177,7 @@ headers = {
   'Accept':'application/json',
 }
 
-r = requests.get('https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/block/<BLOCK_HASH>',
+r = requests.get('https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/block/<BLOCK_HASH>',
                   params={'token': <TOKEN>}, headers = headers)
 
 print r.json()
@@ -211,7 +211,7 @@ print r.json()
 ```
 
 ```java
-URL obj = new URL("https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/block/<BLOCK_HASH>?token=<TOKEN>");
+URL obj = new URL("https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/block/<BLOCK_HASH>?token=<TOKEN>");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestProperty("Accept", "application/json");
 con.setRequestProperty("Content-Type", "application/json");
@@ -282,11 +282,11 @@ System.out.println(response.toString());
 > Code samples
 
 ```shell
-curl -X GET https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/blockindex/<BLOCK_INDEX>?token=<TOKEN> \
+curl -X GET https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/blockindex/<BLOCK_INDEX>?token=<TOKEN> \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json'
 
-// Response example
+# Response example
 {
     "blockHash":"0000000000000023d9d8fefa79adbad2df8cb0b61f7cb5c591f56d719f108159"
 }
@@ -294,7 +294,7 @@ curl -X GET https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/blo
 
 ```php
 <?php
-$URL = "https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/blockindex/<BLOCK_INDEX>?token=<TOKEN>";
+$URL = "https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/blockindex/<BLOCK_INDEX>?token=<TOKEN>";
 
 $aHTTP['http']['method']  = 'GET';
 
@@ -318,7 +318,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/blockindex/<BLOCK_INDEX>?token=<TOKEN>',
+  url: 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/blockindex/<BLOCK_INDEX>?token=<TOKEN>',
   method: 'get',
   headers: headers,
   success: function(data) {
@@ -341,7 +341,7 @@ headers = {
   'Accept':'application/json'
 }
 
-result = RestClient.get 'https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/blockindex/<BLOCK_INDEX>',
+result = RestClient.get 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/blockindex/<BLOCK_INDEX>',
          params: {'token': <TOKEN>}, headers: headers
 
 p JSON.parse(result)
@@ -360,7 +360,7 @@ headers = {
   'Accept':'application/json',
 }
 
-r = requests.get('https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/blockindex/<BLOCK_INDEX>',
+r = requests.get('https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/blockindex/<BLOCK_INDEX>',
                   params={'token': <TOKEN>}, headers = headers)
 
 print r.json()
@@ -372,7 +372,7 @@ print r.json()
 ```
 
 ```java
-URL obj = new URL("https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/blockindex/<BLOCK_INDEX>?token=<TOKEN>");
+URL obj = new URL("https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/blockindex/<BLOCK_INDEX>?token=<TOKEN>");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestProperty("Accept", "application/json");
 con.setRequestProperty("Content-Type", "application/json");
@@ -421,11 +421,11 @@ System.out.println(response.toString());
 > Code samples
 
 ```shell
-curl -X GET https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/rawblock/<BLOCK_HASH>?token=<TOKEN> \
+curl -X GET https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/rawblock/<BLOCK_HASH>?token=<TOKEN> \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json'
 
-// Response example
+# Response example
 {
     "rawblock":"00000020015a0a48d971ecac6e07389d97f4a32322d76db6ea1e7b881c00000000000000fa1e14c79fb0e4e635c76850e4f2f78d4ce9e1f8f07c160eb9d3daa591848213443ad85ac77e4819d5ee4c4b0201000000010000000000000000000000000000000000000000000000000000000000000000ffffffff1f03b30f0d04443ad85a08a4e19361340100000c2f436f696e4d696e65504c2f0000000002de59f909000000001976a914ee5c2e032d02f6f7b08fcc21e0025f0baeb056b088acd759f909000000001976a9149d0d46f36bc90aef04803b53fb5f76c5c4325ced88ac0000000001000000010786d7d9f0dd99cde3bb01064f7de00994b0a5cd0c2b9cb20a829772380b98ec010000006a47304402206322cd2d5e63641c79ca9024c6999625ffc9abe906b2ad3384951676697eced4022063084ce0f306f5e808c04077663077eebe100d1a03f997ec2b95a784811debfc012102cce17aebe0a7984c1a95823df914152daee65bd64f2625d7f82eadde54521738feffffff0240420f00000000001976a9148a3b9c1327cf24f99f57d95cb0ecf10342a6417c88acccfe4d00000000001976a914e99064a50c9756e7dcef5eff03c4e35fd927bbc088aca10f0d00"
 }
@@ -433,7 +433,7 @@ curl -X GET https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/raw
 
 ```php
 <?php
-$URL = "https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/rawblock/<BLOCK_HASH>?token=<TOKEN>";
+$URL = "https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/rawblock/<BLOCK_HASH>?token=<TOKEN>";
 
 $aHTTP['http']['method']  = 'GET';
 
@@ -457,7 +457,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/rawblock/<BLOCK_HASH>?token=<TOKEN>',
+  url: 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/rawblock/<BLOCK_HASH>?token=<TOKEN>',
   method: 'get',
   headers: headers,
   success: function(data) {
@@ -480,7 +480,7 @@ headers = {
   'Accept':'application/json'
 }
 
-result = RestClient.get 'https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/rawblock/<BLOCK_HASH>',
+result = RestClient.get 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/rawblock/<BLOCK_HASH>',
          params: {'token': <TOKEN>}, headers: headers
 
 p JSON.parse(result)
@@ -499,7 +499,7 @@ headers = {
   'Accept':'application/json',
 }
 
-r = requests.get('https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/rawblock/<BLOCK_HASH>',
+r = requests.get('https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/rawblock/<BLOCK_HASH>',
                   params={'token': <TOKEN>}, headers = headers)
 
 print r.json()
@@ -511,7 +511,7 @@ print r.json()
 ```
 
 ```java
-URL obj = new URL("https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/rawblock/<BLOCK_HASH>?token=<TOKEN>");
+URL obj = new URL("https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/rawblock/<BLOCK_HASH>?token=<TOKEN>");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestProperty("Accept", "application/json");
 con.setRequestProperty("Content-Type", "application/json");
@@ -560,11 +560,11 @@ System.out.println(response.toString());
 > Code samples
 
 ```shell
-curl -X GET https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/blocks?token=<TOKEN> \
+curl -X GET https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/blocks?token=<TOKEN> \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json'
 
-// Response example
+# Response example
 {
     "blocks":
     [
@@ -607,7 +607,7 @@ curl -X GET https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/blo
 
 ```php
 <?php
-$URL = "https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/blocks?token=<TOKEN>";
+$URL = "https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/blocks?token=<TOKEN>";
 
 $aHTTP['http']['method']  = 'GET';
 
@@ -666,7 +666,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/blocks?token=<TOKEN>',
+  url: 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/blocks?token=<TOKEN>',
   method: 'get',
   headers: headers,
   success: function(data) {
@@ -724,7 +724,7 @@ headers = {
   'Accept':'application/json'
 }
 
-result = RestClient.get 'https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/blocks',
+result = RestClient.get 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/blocks',
          params: {'token': <TOKEN>}, headers: headers
 
 p JSON.parse(result)
@@ -778,7 +778,7 @@ headers = {
   'Accept':'application/json',
 }
 
-r = requests.get('https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/blocks',
+r = requests.get('https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/blocks',
                   params={'token': <TOKEN>}, headers = headers)
 
 print r.json()
@@ -825,7 +825,7 @@ print r.json()
 ```
 
 ```java
-URL obj = new URL("https://api.chainrider.io.com/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/blocks?token=<TOKEN>");
+URL obj = new URL("https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/blocks?token=<TOKEN>");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestProperty("Accept", "application/json");
 con.setRequestProperty("Content-Type", "application/json");
