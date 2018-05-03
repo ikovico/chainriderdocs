@@ -4,14 +4,14 @@ The set of APIs provides insight into the unspent outputs for one or multiple ad
 
 ## Unspent Outputs for an Address
 
-<h3 id="getAddressUnspentOutputs">GET /addr/< addr_hash >/utxo </h3>
+<h3 id="getAddressUnspentOutputs">GET /addr/< address >/utxo </h3>
 
 <a id="opIdGetAddressUnspentOutputs"></a>
 
 > Code samples
 
 ```shell
-curl -X GET https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/utxo?token=<TOKEN> \
+curl -X GET https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>/utxo?token=<TOKEN> \
   -H 'Content-Type: application/json'\
   -H 'Accept: application/json'
 
@@ -32,7 +32,7 @@ curl -X GET https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<A
 
 ```php
 <?php
-$URL = "https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/utxo?token=<TOKEN>";
+$URL = "https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>/utxo?token=<TOKEN>";
 
 $aHTTP['http']['method']  = 'GET';
 
@@ -65,7 +65,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/utxo?token=<TOKEN>',
+  url: 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>/utxo?token=<TOKEN>',
   method: 'get',
   headers: headers,
   success: function(data) {
@@ -97,7 +97,7 @@ headers = {
   'Accept':'application/json'
 }
 
-result = RestClient.get 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/utxo',
+result = RestClient.get 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>/utxo',
          params: {'token': <TOKEN>}, headers: headers
 
 p JSON.parse(result)
@@ -125,7 +125,7 @@ headers = {
   'Accept':'application/json'
 }
 
-r = requests.get('https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/utxo',
+r = requests.get('https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>/utxo',
                   params={'token': <TOKEN>}, headers = headers)
 
 print r.json()
@@ -146,7 +146,7 @@ print r.json()
 ```
 
 ```java
-URL obj = new URL("https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/utxo?token=<TOKEN>");
+URL obj = new URL("https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>/utxo?token=<TOKEN>");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestProperty("Content-Type", "application/json");
 con.setRequestProperty("Accept", "application/json");
@@ -181,7 +181,7 @@ System.out.println(response.toString());
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|addr_hash|path|String|True|Hash of the address|
+|address|path|String|True|Address string|
 |token|query|String|True|Token obtained from the ChainRider service|
 
 
@@ -197,14 +197,14 @@ System.out.println(response.toString());
 
 ## Unspent Outputs for multiple Addresses - GET
 
-<h3 id="getAddressUnspentOutputsMultiple">GET /addrs/< addr1_hash >,< addr2_hash >,...,< addrn_hash >/utxo </h3>
+<h3 id="getAddressUnspentOutputsMultiple">GET /addrs/< address1 >,< address2 >,...,< addressn >/utxo </h3>
 
 <a id="opIdGetAddressUnspentOutputsMultiple"></a>
 
 > Code samples
 
 ```shell
-curl -X GET https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addrs/< ADDR1_HASH >,< ADDR2_HASH >,...,< ADDRn_HASH >/utxo?token=<TOKEN> \
+curl -X GET https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addrs/< ADDRESS1 >,< ADDRESS2 >,...,< ADDRESSn >/utxo?token=<TOKEN> \
   -H 'Content-Type: application/json'\
   -H 'Accept: application/json'
 
@@ -245,7 +245,7 @@ curl -X GET https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addrs/<
 
 ```php
 <?php
-$URL = "https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addrs/< ADDR1_HASH >,< ADDR2_HASH >,...,< ADDRn_HASH >/utxo?token=<TOKEN>";
+$URL = "https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addrs/< ADDRESS1 >,< ADDRESS2 >,...,< ADDRESSn >/utxo?token=<TOKEN>";
 
 $aHTTP['http']['method']  = 'GET';
 
@@ -298,7 +298,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addrs/< ADDR1_HASH >,< ADDR2_HASH >,...,< ADDRn_HASH >/utxo?token=<TOKEN>',
+  url: 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addrs/< ADDRESS1 >,< ADDRESS2 >,...,< ADDRESSn >/utxo?token=<TOKEN>',
   method: 'get',
   headers: headers,
   success: function(data) {
@@ -350,7 +350,7 @@ headers = {
   'Accept':'application/json'
 }
 
-result = RestClient.get 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addrs/< ADDR1_HASH >,< ADDR2_HASH >,...,< ADDRn_HASH >/utxo',
+result = RestClient.get 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addrs/< ADDRESS1 >,< ADDRESS2 >,...,< ADDRESSn >/utxo',
          params: {'token': <TOKEN>}, headers: headers
 
 p JSON.parse(result)
@@ -398,7 +398,7 @@ headers = {
   'Accept':'application/json'
 }
 
-r = requests.get('https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addrs/< ADDR1_HASH >,< ADDR2_HASH >,...,< ADDRn_HASH >/utxo',
+r = requests.get('https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addrs/< ADDRESS1 >,< ADDRESS2 >,...,< ADDRESSn >/utxo',
                   params={'token': <TOKEN>}, headers = headers)
 
 print r.json()
@@ -439,7 +439,7 @@ print r.json()
 ```
 
 ```java
-URL obj = new URL("https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addrs/< ADDR1_HASH >,< ADDR2_HASH >,...,< ADDRn_HASH >/utxo?token=<TOKEN>");
+URL obj = new URL("https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addrs/< ADDRESS1 >,< ADDRESS2 >,...,< ADDRESSn >/utxo?token=<TOKEN>");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestProperty("Content-Type", "application/json");
 con.setRequestProperty("Accept", "application/json");
@@ -494,7 +494,7 @@ System.out.println(response.toString());
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|addr|path|String Aray(addr_hash)|True|Array of comma separated address hashes|
+|addr|path|String Aray(address)|True|Array of comma separated address strings|
 |token|query|String|True|Token obtained from the ChainRider service|
 
 
@@ -674,7 +674,7 @@ System.out.println(result);
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|addrs|body|String Aray(addr_hash)|True|Array of comma separated address hashes|
+|addrs|body|String Aray(address)|True|Array of comma separated address strings|
 |token|body|String|True|Token obtained from the ChainRider service|
 
 

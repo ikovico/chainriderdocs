@@ -4,14 +4,14 @@ This set of APIs provides insight into the blockchain on a transaction level.
 
 ## Address by hash
 
-<h3 id="getAddressByHash">GET /addr/< addr_hash > </h3>
+<h3 id="getAddressByHash">GET /addr/< address > </h3>
 
 <a id="opIdGetAddressByHash"></a>
 
 > Code samples
 
 ```shell
-curl -X GET https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>?token=<TOKEN> \
+curl -X GET https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>?token=<TOKEN> \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json'
 
@@ -38,7 +38,7 @@ curl -X GET https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<A
 
 ```php
 <?php
-$URL = "https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>?token=<TOKEN>";
+$URL = "https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>?token=<TOKEN>";
 
 $aHTTP['http']['method']  = 'GET';
 
@@ -77,7 +77,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>?token=<TOKEN>',
+  url: 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>?token=<TOKEN>',
   method: 'get',
   headers: headers,
   success: function(data) {
@@ -115,7 +115,7 @@ headers = {
   'Accept':'application/json'
 }
 
-result = RestClient.get 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>',
+result = RestClient.get 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>',
          params: {'token': <TOKEN>}, headers: headers
 
 p JSON.parse(result)
@@ -149,7 +149,7 @@ headers = {
   'Accept':'application/json',
 }
 
-r = requests.get('https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>',
+r = requests.get('https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>',
                   params={'token': <TOKEN>}, headers = headers)
 
 print r.json()
@@ -176,7 +176,7 @@ print r.json()
 ```
 
 ```java
-URL obj = new URL("https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>?token=<TOKEN>");
+URL obj = new URL("https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>?token=<TOKEN>");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestProperty("Accept", "application/json");
 con.setRequestProperty("Content-Type", "application/json");
@@ -217,7 +217,7 @@ System.out.println(response.toString());
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|addr_hash|path|String|True|Hash of the address|
+|address|path|String|True|Address string|
 |noTxList|query|Integer|False|Default 0; If set to 1 transaction list will be ommitted.|
 |from|query|Integer|False|Start transaction in the address tx list; Default 0|
 |to|query|Integer|False|End transaction in the address tx list|
@@ -236,14 +236,14 @@ System.out.println(response.toString());
 
 ## Address Balance
 
-<h3 id="getAddressBalanceByHash">GET /addr/< addr_hash >/balance </h3>
+<h3 id="getAddressBalanceByHash">GET /addr/< address >/balance </h3>
 
 <a id="opIdGetAddressBalanceByHash"></a>
 
 > Code samples
 
 ```shell
-curl -X GET https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/balance?token=<TOKEN> \
+curl -X GET https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>/balance?token=<TOKEN> \
   -H 'Content-Type: application/json'
 
 # Response example
@@ -252,7 +252,7 @@ curl -X GET https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<A
 
 ```php
 <?php
-$URL = "https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/balance?token=<TOKEN>";
+$URL = "https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>/balance?token=<TOKEN>";
 
 $aHTTP['http']['method']  = 'GET';
 
@@ -273,7 +273,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/balance?token=<TOKEN>',
+  url: 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>/balance?token=<TOKEN>',
   method: 'get',
   headers: headers,
   success: function(data) {
@@ -293,7 +293,7 @@ headers = {
   'Content-Type':'application/json'
 }
 
-result = RestClient.get 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/balance',
+result = RestClient.get 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>/balance',
          params: {'token': <TOKEN>}, headers: headers
 
 p JSON.parse(result)
@@ -309,7 +309,7 @@ headers = {
   'Content-Type':'application/json'
 }
 
-r = requests.get('https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/balance',
+r = requests.get('https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>/balance',
                   params={'token': <TOKEN>}, headers = headers)
 
 print r.json()
@@ -319,7 +319,7 @@ print r.json()
 ```
 
 ```java
-URL obj = new URL("https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/balance?token=<TOKEN>");
+URL obj = new URL("https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>/balance?token=<TOKEN>");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestProperty("Content-Type", "application/json");
 con.setRequestMethod("GET");
@@ -342,7 +342,7 @@ System.out.println(response.toString());
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|addr_hash|path|String|True|Hash of the address|
+|address|path|String|True|Address string|
 |token|query|String|True|Token obtained from the ChainRider service|
 
 
@@ -358,14 +358,14 @@ System.out.println(response.toString());
 
 ## Address Total Received
 
-<h3 id="getAddressTotalReceivedByHash">GET /addr/< addr_hash >/totalReceived </h3>
+<h3 id="getAddressTotalReceivedByHash">GET /addr/< address >/totalReceived </h3>
 
 <a id="opIdGetAddressTotalReceivedByHash"></a>
 
 > Code samples
 
 ```shell
-curl -X GET https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/totalReceived?token=<TOKEN> \
+curl -X GET https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>/totalReceived?token=<TOKEN> \
   -H 'Content-Type: application/json'
 
 # Response example
@@ -374,7 +374,7 @@ curl -X GET https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<A
 
 ```php
 <?php
-$URL = "https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/totalReceived?token=<TOKEN>";
+$URL = "https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>/totalReceived?token=<TOKEN>";
 
 $aHTTP['http']['method']  = 'GET';
 
@@ -395,7 +395,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/totalReceived?token=<TOKEN>',
+  url: 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>/totalReceived?token=<TOKEN>',
   method: 'get',
   headers: headers,
   success: function(data) {
@@ -415,7 +415,7 @@ headers = {
   'Content-Type':'application/json'
 }
 
-result = RestClient.get 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/totalReceived',
+result = RestClient.get 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>/totalReceived',
          params: {'token': <TOKEN>}, headers: headers
 
 p JSON.parse(result)
@@ -431,7 +431,7 @@ headers = {
   'Content-Type':'application/json'
 }
 
-r = requests.get('https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/totalReceived',
+r = requests.get('https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>/totalReceived',
                   params={'token': <TOKEN>}, headers = headers)
 
 print r.json()
@@ -441,7 +441,7 @@ print r.json()
 ```
 
 ```java
-URL obj = new URL("https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/totalReceived?token=<TOKEN>");
+URL obj = new URL("https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>/totalReceived?token=<TOKEN>");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestProperty("Content-Type", "application/json");
 con.setRequestMethod("GET");
@@ -464,7 +464,7 @@ System.out.println(response.toString());
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|addr_hash|path|String|True|Hash of the address|
+|address|path|String|True|Address string|
 |token|query|String|True|Token obtained from the ChainRider service|
 
 
@@ -480,14 +480,14 @@ System.out.println(response.toString());
 
 ## Address Total Sent
 
-<h3 id="getAddressTotalSentByHash">GET /addr/< addr_hash >/totalSent </h3>
+<h3 id="getAddressTotalSentByHash">GET /addr/< address >/totalSent </h3>
 
 <a id="opIdGetAddressTotalSentByHash"></a>
 
 > Code samples
 
 ```shell
-curl -X GET https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/totalSent?token=<TOKEN> \
+curl -X GET https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>/totalSent?token=<TOKEN> \
   -H 'Content-Type: application/json'
 
 # Response example
@@ -496,7 +496,7 @@ curl -X GET https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<A
 
 ```php
 <?php
-$URL = "https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/totalSent?token=<TOKEN>";
+$URL = "https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>/totalSent?token=<TOKEN>";
 
 $aHTTP['http']['method']  = 'GET';
 
@@ -517,7 +517,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/totalSent?token=<TOKEN>',
+  url: 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>/totalSent?token=<TOKEN>',
   method: 'get',
   headers: headers,
   success: function(data) {
@@ -537,7 +537,7 @@ headers = {
   'Content-Type':'application/json'
 }
 
-result = RestClient.get 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/totalSent',
+result = RestClient.get 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>/totalSent',
          params: {'token': <TOKEN>}, headers: headers
 
 p JSON.parse(result)
@@ -553,7 +553,7 @@ headers = {
   'Content-Type':'application/json'
 }
 
-r = requests.get('https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/totalSent',
+r = requests.get('https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>/totalSent',
                   params={'token': <TOKEN>}, headers = headers)
 
 print r.json()
@@ -563,7 +563,7 @@ print r.json()
 ```
 
 ```java
-URL obj = new URL("https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/totalSent?token=<TOKEN>");
+URL obj = new URL("https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>/totalSent?token=<TOKEN>");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestProperty("Content-Type", "application/json");
 con.setRequestMethod("GET");
@@ -586,7 +586,7 @@ System.out.println(response.toString());
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|addr_hash|path|String|True|Hash of the address|
+|address|path|String|True|Address string|
 |token|query|String|True|Token obtained from the ChainRider service|
 
 
@@ -602,14 +602,14 @@ System.out.println(response.toString());
 
 ## Address Unconfirmed Balance
 
-<h3 id="getAddressUnconfirmedBalanceByHash">GET /addr/< addr_hash >/unconfirmedBalance </h3>
+<h3 id="getAddressUnconfirmedBalanceByHash">GET /addr/< address >/unconfirmedBalance </h3>
 
 <a id="opIdGetAddressUnconfirmedBalanceByHash"></a>
 
 > Code samples
 
 ```shell
-curl -X GET https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/unconfirmedBalance?token=<TOKEN> \
+curl -X GET https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>/unconfirmedBalance?token=<TOKEN> \
   -H 'Content-Type: application/json'
 
 # Response example
@@ -618,7 +618,7 @@ curl -X GET https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<A
 
 ```php
 <?php
-$URL = "https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/unconfirmedBalance?token=<TOKEN>";
+$URL = "https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>/unconfirmedBalance?token=<TOKEN>";
 
 $aHTTP['http']['method']  = 'GET';
 
@@ -639,7 +639,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/unconfirmedBalance?token=<TOKEN>',
+  url: 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>/unconfirmedBalance?token=<TOKEN>',
   method: 'get',
   headers: headers,
   success: function(data) {
@@ -659,7 +659,7 @@ headers = {
   'Content-Type':'application/json'
 }
 
-result = RestClient.get 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/unconfirmedBalance',
+result = RestClient.get 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>/unconfirmedBalance',
          params: {'token': <TOKEN>}, headers: headers
 
 p JSON.parse(result)
@@ -675,7 +675,7 @@ headers = {
   'Content-Type':'application/json'
 }
 
-r = requests.get('https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/unconfirmedBalance',
+r = requests.get('https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>/unconfirmedBalance',
                   params={'token': <TOKEN>}, headers = headers)
 
 print r.json()
@@ -685,7 +685,7 @@ print r.json()
 ```
 
 ```java
-URL obj = new URL("https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDR_HASH>/unconfirmedBalance?token=<TOKEN>");
+URL obj = new URL("https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addr/<ADDRESS>/unconfirmedBalance?token=<TOKEN>");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestProperty("Content-Type", "application/json");
 con.setRequestMethod("GET");
@@ -708,7 +708,7 @@ System.out.println(response.toString());
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|addr_hash|path|String|True|Hash of the address|
+|address|path|String|True|Address string|
 |token|query|String|True|Token obtained from the ChainRider service|
 
 
