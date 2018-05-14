@@ -17,7 +17,7 @@ under the License.
 */
 ;(function () {
   'use strict';
-
+  console.log('Lang js');
   var languages = [];
 
   window.setupLanguages = setupLanguages;
@@ -25,6 +25,7 @@ under the License.
   window.getLanguageFromQueryString = getLanguageFromQueryString;
 
   function activateLanguage(language) {
+    console.log('Activate language');
     if (!language) return;
     if (language === "") return;
 
@@ -49,6 +50,7 @@ under the License.
   // MIT licensed
   // https://github.com/sindresorhus/query-string/blob/7bee64c16f2da1a326579e96977b9227bf6da9e6/license
   function parseURL(str) {
+    console.log('Parse URL');
     if (typeof str !== 'string') {
       return {};
     }
@@ -82,6 +84,7 @@ under the License.
   };
 
   function stringifyURL(obj) {
+    console.log('Stringify URL');
     return obj ? Object.keys(obj).sort().map(function (key) {
       var val = obj[key];
 
@@ -97,6 +100,7 @@ under the License.
 
   // gets the language set in the query string
   function getLanguageFromQueryString() {
+    console.log('getLanguageFromQueryString')
     if (location.search.length >= 1) {
       var language = parseURL(location.search).language;
       if (language) {
@@ -111,6 +115,7 @@ under the License.
 
   // returns a new query string with the new language in it
   function generateNewQueryString(language) {
+    console.log('generateNewQueryString');
     var url = parseURL(location.search);
     if (url.language) {
       url.language = language;
@@ -121,6 +126,7 @@ under the License.
 
   // if a button is clicked, add the state to the history
   function pushURL(language) {
+    console.log('pushURL');
     if (!history) { return; }
     var hash = window.location.hash;
     if (hash) {
@@ -133,6 +139,7 @@ under the License.
   }
 
   function setupLanguages(l) {
+    console.log('Setup langiages');
     var defaultLanguage = localStorage.getItem("language");
 
     languages = l;

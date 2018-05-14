@@ -33,6 +33,8 @@ Once created, payment forward rule will continue to forward payments in a predef
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
 
+<a id="divider"></a>
+
 > Code samples
 
 ```shell
@@ -188,6 +190,8 @@ System.out.println(result);
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
+
+<a id="divider"></a>
 
 > Code samples
 
@@ -428,6 +432,8 @@ System.out.println(response.toString());
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
+
+<a id="divider"></a>
 
 > Code samples
 
@@ -672,7 +678,7 @@ System.out.println(response.toString());
 
 ## Delete Payment Forward
 
-<h3 id="deletePaymentForward">DELETE /paymentforward/< paymentforward_id > </h3>
+<h3 id="deletePaymentForward3">DELETE /paymentforward/< paymentforward_id > </h3>
 
 <a id="opIdDeletePaymentForward"></a>
 
@@ -691,6 +697,8 @@ System.out.println(response.toString());
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
+
+<a id="divider"></a>
 
 > Code samples
 

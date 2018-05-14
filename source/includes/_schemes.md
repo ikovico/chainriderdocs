@@ -1,4 +1,7 @@
-# Data Objects
+
+<h1 id="data-objects">Data Objects</h1>
+
+<a id="nesto"></a>
 
 <h2 id="tocTokenUsage">TokenUsage</h2>
 
@@ -101,7 +104,27 @@
 |errors|String|Error description|
 |network|String|Blockchain type ENUM {"livenet", "testnet"}|
 
+<a id="divider"></a>
+
 > Example
+
+```shell
+```
+
+```php
+```
+
+```javascript
+```
+
+```ruby
+```
+
+```python
+```
+
+```java
+```
 
 ```json
 {
@@ -157,6 +180,8 @@
 
 > Example
 
+
+
 ```json
 {
     "difficulty": 41610185.00844856
@@ -194,6 +219,8 @@
 |Name|Type|Description|
 |---|---|---|
 |bestblockhash|String (HEX)|Hash of the best block|
+
+<a id="divider"></a>
 
 > Example
 
@@ -235,6 +262,8 @@
 |---|---|---|
 |syncTipHash|String (HEX)|Hash of the block up to which the sync has been done|
 |lastblockhash|String (HEX)|Hash of the last block|
+
+<a id="divider"></a>
 
 > Example
 
@@ -281,6 +310,8 @@
 |height|Integer|Blockchain height (last block index)|
 |error|String|Error description|
 |type|String|Sync type|
+
+<a id="divider"></a>
 
 > Example
 
@@ -331,6 +362,8 @@
 |YesCount|Integer|Number of Yes Votes|
 |NoCount|Integer|Number of No Votes|
 |AbstainCount|Integer|Number of Abstain Votes|
+
+<a id="divider"></a>
 
 > Example
 
@@ -392,6 +425,8 @@
 |type|Integer|Type of teh proposal|
 |url|String|URL of the proposal|
 
+<a id="divider"></a>
+
 > Example
 
 ```json
@@ -446,6 +481,8 @@
 |ValidResult|JSON|[VoteCountObject](#schemevotecountobject)|
 |DeleteResult|JSON|[VoteCountObject](#schemevotecountobject)|
 |EndorsedResult|JSON|[VoteCountObject](#schemevotecountobject)|
+
+<a id="divider"></a>
 
 > Example
 
@@ -533,6 +570,8 @@
 |NoCount|Integer|Number of No Votes|
 |AbstainCount|Integer|Number of Abstain Votes|
 
+<a id="divider"></a>
+
 > Example
 
 ```json
@@ -591,6 +630,8 @@
 |reward|String|Reward received|
 |isMainChain|Boolean|Is the block part of the main chain|
 |poolInfo|[PoolObject](#schemepoolobject)|Information about the pool on which the block was mined|
+
+<a id="divider"></a>
 
 > Example
 
@@ -655,6 +696,8 @@
 |poolName|String|Name if the pool|
 |url|String|Pool URL|
 
+<a id="divider"></a>
+
 > Example
 
 ```json
@@ -696,6 +739,8 @@
 |---|---|---|
 |blockHash|String (HEX)|256-bit hash of the block|
 
+<a id="divider"></a>
+
 > Example
 
 ```json
@@ -735,6 +780,8 @@
 |Name|Type|Description|
 |---|---|---|
 |rawblock|String (HEX)|Raw block data|
+
+<a id="divider"></a>
 
 > Example
 
@@ -777,6 +824,8 @@
 |block|Array of [BlockPagObject](#schemeblockpagobject)|Array of BlockPagObjects|
 |length|Integer|Number of blocks|
 |pagination|[PaginationObject](#schemepagintionobject)|Pagination metadata|
+
+<a id="divider"></a>
 
 > Example
 
@@ -858,6 +907,8 @@
 |txlength|Integer|Number of transactions in the block|
 |poolInfo|[PoolObject](#schemepoolobject)|Information about the pool on which the block was mined|
 
+<a id="divider"></a>
+
 > Example
 
 ```json
@@ -912,6 +963,8 @@
 |isToday|Boolean|Is current day from the request today|
 |more|Boolean|Is there more than specified number of resources|
 |moreTs|Integer|Timestamp since epoch|
+
+<a id="divider"></a>
 
 > Example
 
@@ -972,6 +1025,8 @@
 |valueIn|Float|Input Value in DASH|
 |fees|Float|Network fee for the transaction|
 |txlock|Boolean|If the transaction is sent and verified via Instant Send the value will be True|
+
+<a id="divider"></a>
 
 > Example
 
@@ -1086,6 +1141,8 @@
 |value|Float|Value in DASH|
 |doubleSpentTxID|String (HEX)|ID of the double spend tx; Double spends are not currently tracked|
 
+<a id="divider"></a>
+
 > Example
 
 ```json
@@ -1143,6 +1200,8 @@
 |spentIndex|Integer|Index of the |
 |spentHeight|Integer|Height of the block which includes the transaction|
 
+<a id="divider"></a>
+
 > Example
 
 ```json
@@ -1197,6 +1256,8 @@
 |---|---|---|
 |rawtx|String (HEX)|Raw transaction|
 
+<a id="divider"></a>
+
 > Example
 
 ```json
@@ -1236,6 +1297,8 @@
 |Name|Type|Description|
 |---|---|---|
 |txid|String (HEX)|HASH of transmitted/sent transaction on the blockchain|
+
+<a id="divider"></a>
 
 > Example
 
@@ -1287,6 +1350,8 @@
 |unconfirmedTxApperances|Integer|Number of unconfirmed transactions in which address participated|
 |txApperances|Integer|Number of transactions in which address participated|
 |transactions|Array of Strings|Array of transaction transactions in which address participated|
+
+<a id="divider"></a>
 
 > Example
 
@@ -1350,6 +1415,8 @@
 |height|Integer|Height of the block in which the transaction is included|
 |confirmations|Integer|Number of confirmations for the transaction|
 
+<a id="divider"></a>
+
 > Example
 
 ```json
@@ -1405,6 +1472,8 @@
 |callback_url|String|URL to which the notification about processed transactions is sent. Each time new payment is sent to payment address, notification is posted to this |
 |mining_fee_duffs|Integer|Mining fee for the payment forward transaction. Default is 10 000. Maximum is 150 000. Minimum is 10 000. In case of set commission_fee_percent, mining fee is subtracted from commission amount.|
 |processed_txs|Array of [ProcessedTxObject](#schemeprocessedtxobject)|Array of processed transactions by the payment forward. In case of retrieving a list of payment forwards, this parameter is omitted.|
+
+<a id="divider"></a>
 
 > Example
 
@@ -1465,6 +1534,8 @@
 |received_amount_duffs|Integer|Amount received to payment forward destination address in duffs|
 |transaction_hash|String (HEX)|Hash of the output transaction. Output transaction is the transaction which occurs when a payment is forwarded from payment address to destination address (and comission address in case one is specified for particular payment forward)|
 |processed_date|String - Datetime in YYYY-MM-DDTHH:MM:SS.MMMZ format|Datetime when the payment was forwarded. |
+
+<a id="divider"></a>
 
 > Example
 
