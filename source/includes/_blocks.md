@@ -15,8 +15,7 @@ This set of APIs provides insight in the blockchain on block level.
 |block_hash|path|String|True|Hash of the block|
 |token|query|String|True|Token obtained from the ChainRider service|
 
-|Response|
-|-----|
+<h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -285,8 +284,7 @@ System.out.println(response.toString());
 |block_index|path|String|True|Index of the block|
 |token|query|String|True|Token obtained from the ChainRider service|
 
-|Response|
-|-----|
+<h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -423,8 +421,7 @@ System.out.println(response.toString());
 |block_hash|path|String|True|Hash of the block|
 |token|query|String|True|Token obtained from the ChainRider service|
 
-|Response|
-|-----|
+<h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -562,8 +559,7 @@ System.out.println(response.toString());
 |blockDate|query|Date YYYY-MM-DD |False|If omitted current day is returned|
 |token|query|String|True|Token obtained from the ChainRider service|
 
-|Response|
-|-----|
+<h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|

@@ -24,8 +24,7 @@ Once created, payment forward rule will continue to forward payments in a predef
 |callback_url|body|String|False|URL to which the notification will be posted upon each successful payment forward.|
 |token|body|String|True|Token obtained from the ChainRider service|
 
-|Response|
-|-----|
+<h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -181,8 +180,7 @@ System.out.println(result);
 |paymentforward_id|path|String|True|Unique Payment Forward ID|
 |token|query|String|True|Token obtained from the ChainRider service|
 
-|Response|
-|-----|
+<h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -422,8 +420,7 @@ System.out.println(response.toString());
 |to|query|Integer|False|End index (zero index based, default 100)|
 |token|query|String|True|Token obtained from the ChainRider service|
 
-|Response|
-|-----|
+<h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -686,8 +683,7 @@ System.out.println(response.toString());
 |paymentforward_id|path|String|True|Unique Payment forward ID|
 |token|query|String|True|Token obtained from the ChainRider service|
 
-|Response|
-|-----|
+<h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|

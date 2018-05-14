@@ -18,8 +18,7 @@ This set of APIs provides insight into the blockchain on a transaction level.
 |to|query|Integer|False|End transaction in the address tx list|
 |token|query|String|True|Token obtained from the ChainRider service|
 
-|Response|
-|-----|
+<h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -246,8 +245,7 @@ System.out.println(response.toString());
 |address|path|String|True|Address string|
 |token|query|String|True|Token obtained from the ChainRider service|
 
-|Response|
-|-----|
+<h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -367,8 +365,7 @@ System.out.println(response.toString());
 |address|path|String|True|Address string|
 |token|query|String|True|Token obtained from the ChainRider service|
 
-|Response|
-|-----|
+<h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -488,8 +485,7 @@ System.out.println(response.toString());
 |address|path|String|True|Address string|
 |token|query|String|True|Token obtained from the ChainRider service|
 
-|Response|
-|-----|
+<h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -609,8 +605,7 @@ System.out.println(response.toString());
 |address|path|String|True|Address string|
 |token|query|String|True|Token obtained from the ChainRider service|
 
-|Response|
-|-----|
+<h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
