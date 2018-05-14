@@ -1,5 +1,60 @@
 # Data Objects
 
+<h2 id="tocTokenUsage">TokenUsage</h2>
+
+<a id="schemetokenusageobject"></a>
+
+|Name|Type|Description|
+|---|---|---|
+|message|JSON|Message object containing all relevant token usage data.|
+|hour|[Usage object](#schemeusageobject)|Provides info regarding API usage for current hour|
+|day|[Usage object](#schemeusageobject)|Provides info regarding API usage for current day|
+|forward[Usage object](#schemeusageobject)|Provides info regarding payment forward API usage for current month|
+
+> Example
+
+```json
+{
+  "message":{
+      "hour":{
+          "usage":2,
+          "limit":300,
+          "time_left":1857
+      },
+      "day":{
+          "usage":2,
+          "limit":3000,
+          "time_left":34257
+      },
+      "forward":{
+          "usage":0,
+          "limit":3,
+          "time_left":1675857
+      }
+  }
+}
+```
+
+<h2 id="tocUsageObject">UsageObject</h2>
+
+<a id="schemeusageobject"></a>
+
+|Name|Type|Description|
+|---|---|---|
+|usage|Integer|Number of used API calls within corresponding period|
+|limit|Integer|Total number of available API calls within corresponding period|
+|time_left|Integer|Time left in seconds before the counting is restarted|
+
+> Example
+
+```json
+{
+  "usage":2,
+  "limit":300,
+  "time_left":1857
+}
+```
+
 <h2 id="tocBlockchainInfoObject">BlockchainInfoObject</h2>
 
 <a id="schemeblockchaininfoobject"></a>
