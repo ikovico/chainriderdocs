@@ -82,24 +82,6 @@ Tekst
 
 > Example
 
-```shell
-```
-
-```php
-```
-
-```javascript
-```
-
-```ruby
-```
-
-```python
-```
-
-```java
-```
-
 ```json
 {
     "info":
