@@ -185,6 +185,7 @@ html, body {
       padding-bottom: 5px;
       // border-bottom:1px solid #000;
     }
+
     span:after {
       position: absolute;
       left: 0;
@@ -372,7 +373,8 @@ html, body {
   .dark-box {
     // width: $examples-width;
     width: 42%;
-    background-color: $examples-bg;
+    // background-color: $examples-bg;
+    background-color: transparent;
     position: absolute;
     right: 1rem;
     // right: 3%;
@@ -383,6 +385,7 @@ html, body {
   .lang-selector {
     position: fixed;
     z-index: 50;
+    top: 0;
     //CHANGED
     // border-bottom: 5px solid $lang-select-active-bg;
   }
@@ -393,8 +396,8 @@ html, body {
   max-width: 100%;
   width: calc((100% - (230px + 4rem)) * 0.42);
   height: 50px;
-  position: relative;
-  top: 0;
+  // position: fixed;
+  // top: 0;
   // padding:10px;
   font-weight: bold;
   a {
@@ -503,7 +506,8 @@ html, body {
   h1:first-child, div:first-child + h1 {
     border-top-width: 0;
     margin-top: 0;
-    // background-image: linear-gradient(to bottom, rgba(#cceeff, 0.5), rgba(#cceeff, 0));
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
 
   h2 {
@@ -522,6 +526,7 @@ html, body {
   h1 + h2, h1 + div + h2 {
     margin-top: $h1-margin-bottom * -1;
     border-top: none;
+    padding-top: 0!important;
   }
 
   h3, h4, h5, h6 {
@@ -671,7 +676,7 @@ html, body {
     width: 100%!important;
     display: flex!important;
     justify-content: flex-start;
-    align-items: start;
+    align-items: stretch;
     margin-bottom: 2rem;
     box-sizing: border-box;
 
@@ -679,15 +684,25 @@ html, body {
       box-sizing: border-box;
       width: 52%;
       margin: 0 2.5%;
-      padding: 2rem;
+      padding: 0 2rem 2rem;
       background: #fff;
       box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
-      height: 100%;
+      // height: 100%;
 
       h1, h2, h3 {
         margin-top: 0;
         padding-top: 0;
         border: none;
+      }
+
+      h1 {
+        padding: 2rem 0;
+        margin: 0;
+      }
+
+      h2 {
+        padding: 2rem 0;
+        margin: 0;
       }
 
       h3 {
@@ -719,8 +734,13 @@ html, body {
     .code {
       width: 43%;
       z-index: 10;
-      height: 100%;
+      display: flex;
+      flex-direction: column;
       box-sizing: border-box;
+
+      pre {
+        flex-grow: 1;
+      }
     }
   }
 
@@ -847,7 +867,7 @@ html, body {
         }
       }
     }
-  
+
   }
 
 
@@ -874,7 +894,7 @@ html, body {
   }
 
   .toc-wrapper .lang-selector {
-    display: none;
+    display: block;
   }
 
   .page-wrapper .lang-selector {

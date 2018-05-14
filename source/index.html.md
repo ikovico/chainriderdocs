@@ -14,13 +14,13 @@ toc_footers:
   - <a class="link" href='https://github.com/lord/slate'>This documentation is powered by <em>Slate</em></a>
 
 includes:
-  # - introduction
+  - introduction
   - blockchain
-  # - blocks
-  # - transactions
-  # - addresses
-  # - unspentOutputs
-  # - paymentForward
+  - blocks
+  - transactions
+  - addresses
+  - unspentOutputs
+  - paymentForward
   - schemes
   # - errors
   # - support

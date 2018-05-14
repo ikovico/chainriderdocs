@@ -15,8 +15,7 @@ The set of APIs provides insight into the unspent outputs for one or multiple ad
 |address|path|String|True|Address string|
 |token|query|String|True|Token obtained from the ChainRider service|
 
-|Response|
-|-----|
+<h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -24,6 +23,8 @@ The set of APIs provides insight into the unspent outputs for one or multiple ad
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
+
+<a id="divider"></a>
 
 > Code samples
 
@@ -207,8 +208,7 @@ System.out.println(response.toString());
 |addr|path|String Aray(address)|True|Array of comma separated address strings|
 |token|query|String|True|Token obtained from the ChainRider service|
 
-|Response|
-|-----|
+<h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -216,6 +216,8 @@ System.out.println(response.toString());
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
+
+<a id="divider"></a>
 
 > Code samples
 
@@ -519,8 +521,7 @@ System.out.println(response.toString());
 |addrs|body|String Aray(address)|True|Array of comma separated address strings|
 |token|body|String|True|Token obtained from the ChainRider service|
 
-|Response|
-|-----|
+<h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -528,6 +529,8 @@ System.out.println(response.toString());
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
+
+<a id="divider"></a>
 
 > Code samples
 

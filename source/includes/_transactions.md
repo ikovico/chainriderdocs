@@ -15,8 +15,7 @@ This set of APIs provides insight into the blockchain on a transaction level.
 |tx_hash|path|String|True|Hash of the transaction|
 |token|query|String|True|Token obtained from the ChainRider service|
 
-|Response|
-|-----|
+<h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -24,6 +23,8 @@ This set of APIs provides insight into the blockchain on a transaction level.
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
+
+<a id="divider"></a>
 
 > Code samples
 
@@ -543,8 +544,7 @@ System.out.println(response.toString());
 |tx_hash|path|String|True|Hash of the transaction|
 |token|query|String|True|Token obtained from the ChainRider service|
 
-|Response|
-|-----|
+<h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -552,6 +552,8 @@ System.out.println(response.toString());
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
+
+<a id="divider"></a>
 
 > Code samples
 
@@ -681,8 +683,7 @@ System.out.println(response.toString());
 |block|query|String|True|Block hash|
 |token|query|String|True|Token obtained from the ChainRider service|
 
-|Response|
-|-----|
+<h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -690,6 +691,8 @@ System.out.println(response.toString());
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
+
+<a id="divider"></a>
 
 > Code samples
 
@@ -1611,8 +1614,7 @@ System.out.println(response.toString());
 |address|query|String|True|Address string|
 |token|query|String|True|Token obtained from the ChainRider service|
 
-|Response|
-|-----|
+<h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1620,6 +1622,8 @@ System.out.println(response.toString());
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
+
+<a id="divider"></a>
 
 > Code samples
 
@@ -2612,8 +2616,7 @@ System.out.println(response.toString());
 |noSpent|query|Integer|False|Default is 0. If set to 1 Spent info will be ommitted for tx.|
 |token|query|String|True|Token obtained from the ChainRider service|
 
-|Response|
-|-----|
+<h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2621,6 +2624,8 @@ System.out.println(response.toString());
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
+
+<a id="divider"></a>
 
 > Code samples
 
@@ -3625,8 +3630,7 @@ System.out.println(response.toString());
 |noSpent|body|Integer|False|Default is 0. If set to 1 Spent info will be ommitted for tx.|
 |token|body|String|True|Token obtained from the ChainRider service|
 
-|Response|
-|-----|
+<h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -3634,6 +3638,8 @@ System.out.println(response.toString());
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
+
+<a id="divider"></a>
 
 > Code samples
 
@@ -3919,8 +3925,7 @@ System.out.println(result);
 |rawtx|body|String|True|Raw signed transaction as hex string|
 |token|body|String|True|Token obtained from the ChainRider service|
 
-|Response|
-|-----|
+<h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -3928,6 +3933,8 @@ System.out.println(result);
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
+
+<a id="divider"></a>
 
 > Code samples
 

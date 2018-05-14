@@ -2,7 +2,7 @@
 //= require ../lib/_imagesloaded.min
 ;(function () {
   'use strict';
-
+  console.log('toc.js initial');
   var loaded = false;
 
   var debounce = function(func, waitTime) {
@@ -24,6 +24,7 @@
   };
 
   function loadToc($toc, tocLinkSelector, tocListSelector, scrollOffset) {
+    console.log('loadToc fn');
     var headerHeights = {};
     var pageHeight = 0;
     var windowHeight = 0;
@@ -37,6 +38,7 @@
       $toc.find(tocLinkSelector).each(function() {
         var targetId = $(this).attr('href');
         if (targetId[0] === "#") {
+          console.log($(targetId));
           headerHeights[targetId] = $(targetId).offset().top;
         }
       });

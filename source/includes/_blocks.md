@@ -15,8 +15,7 @@ This set of APIs provides insight in the blockchain on block level.
 |block_hash|path|String|True|Hash of the block|
 |token|query|String|True|Token obtained from the ChainRider service|
 
-|Response|
-|-----|
+<h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -24,6 +23,8 @@ This set of APIs provides insight in the blockchain on block level.
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
+
+<a id="divider"></a>
 
 > Code samples
 
@@ -285,8 +286,7 @@ System.out.println(response.toString());
 |block_index|path|String|True|Index of the block|
 |token|query|String|True|Token obtained from the ChainRider service|
 
-|Response|
-|-----|
+<h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -294,6 +294,8 @@ System.out.println(response.toString());
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
+
+<a id="divider"></a>
 
 > Code samples
 
@@ -423,8 +425,7 @@ System.out.println(response.toString());
 |block_hash|path|String|True|Hash of the block|
 |token|query|String|True|Token obtained from the ChainRider service|
 
-|Response|
-|-----|
+<h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -432,6 +433,8 @@ System.out.println(response.toString());
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
+
+<a id="divider"></a>
 
 > Code samples
 
@@ -562,8 +565,7 @@ System.out.println(response.toString());
 |blockDate|query|Date YYYY-MM-DD |False|If omitted current day is returned|
 |token|query|String|True|Token obtained from the ChainRider service|
 
-|Response|
-|-----|
+<h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -571,6 +573,8 @@ System.out.println(response.toString());
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
+
+<a id="divider"></a>
 
 > Code samples
 
