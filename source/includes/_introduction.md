@@ -37,7 +37,7 @@ Dash             | Testnet    | `https://api-dot-chainrider.io/v1/dash/testnet`
 
 The following API allows you to check current status of your web token including information about token usage on hourly and daily base.
 
-<h3 id="postCheckToken">POST /v1/statistic/token </h3>
+<h3 id="postCheckToken">POST /v1/ratelimit/ </h3>
 
 <a id="opIdpostCheckToken"></a>
 
@@ -59,7 +59,7 @@ The following API allows you to check current status of your web token including
 > Code samples
 
 ```shell
-curl -X POST https://api.chainrider.io/v1/statistic/token \
+curl -X POST https://api.chainrider.io/v1/ratelimit/ \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -D '<body_here>'
@@ -76,7 +76,7 @@ curl -X POST https://api.chainrider.io/v1/statistic/token \
       )
     );
     $context  = stream_context_create($opts);
-    $URL = "https://api.chainrider.io/v1/statistic/token";
+    $URL = "https://api.chainrider.io/v1/ratelimit/";
     $result = file_get_contents($url, false, $context, -1, 40000);
 );
 
@@ -96,7 +96,7 @@ var headers = {
 var requestBody=<body_here>
 
 $.ajax({
-  url: 'https://api.chainrider.io/v1/statistic/token',
+  url: 'https://api.chainrider.io/v1/ratelimit/',
   method: 'POST',
   headers: headers,
   data: requestBody,
@@ -115,7 +115,7 @@ headers = {
   'Accept' => 'application/json'
 }
 
-result = RestClient.post 'https://api.chainrider.io/v1/statistic/token',
+result = RestClient.post 'https://api.chainrider.io/v1/ratelimit/',
          payload:<body_here>, headers: headers
 
 p JSON.parse(result)
@@ -129,14 +129,14 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.post('https://api.chainrider.io/v1/statistic/token',
+r = requests.post('https://api.chainrider.io/v1/ratelimit/',
                   data=<body_here>, params={}, headers = headers)
 
 print r.json()
 ```
 
 ```java
-URL obj = new URL("https://api.chainrider.io/v1/statistic/token");
+URL obj = new URL("https://api.chainrider.io/v1/ratelimit/");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestProperty("Accept", "application/json");
 con.setRequestProperty("Content-Type", "application/json");
