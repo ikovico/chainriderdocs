@@ -16,28 +16,26 @@
 
 > Example
 
-```shell
-
-```
-
-```php
-
-```
-
-```javascript
-
-```
-
-```ruby
-
-```
-
-```python
-
-```
-
-```java
-
+```json
+{
+  "message":{
+      "hour":{
+          "usage":2,
+          "limit":300,
+          "time_left":1857
+      },
+      "day":{
+          "usage":2,
+          "limit":3000,
+          "time_left":34257
+      },
+      "forward":{
+          "usage":0,
+          "limit":3,
+          "time_left":1675857
+      }
+  }
+}
 ```
 
 <h2 id="tocUsageObject">UsageObject</h2>
@@ -58,30 +56,6 @@
   "limit":300,
   "time_left":1857
 }
-```
-
-```shell
-
-```
-
-```php
-
-```
-
-```javascript
-
-```
-
-```ruby
-
-```
-
-```python
-
-```
-
-```java
-
 ```
 
 <h2 id="tocBlockchainInfoObject">BlockchainInfoObject</h2>
@@ -108,24 +82,6 @@
 
 > Example
 
-```shell
-```
-
-```php
-```
-
-```javascript
-```
-
-```ruby
-```
-
-```python
-```
-
-```java
-```
-
 ```json
 {
     "info":
@@ -146,30 +102,6 @@
 }
 ```
 
-```shell
-
-```
-
-```php
-
-```
-
-```javascript
-
-```
-
-```ruby
-
-```
-
-```python
-
-```
-
-```java
-
-```
-
 <h2 id="tocBlockchainDifficultyObject">BlockchainDifficultyObject</h2>
 
 <a id="schemeblockchaindifficultyobject"></a>
@@ -186,30 +118,6 @@
 {
     "difficulty": 41610185.00844856
 }
-```
-
-```shell
-
-```
-
-```php
-
-```
-
-```javascript
-
-```
-
-```ruby
-
-```
-
-```python
-
-```
-
-```java
-
 ```
 
 <h2 id="tocBlockchainBestBlockObject">BlockchainBestBlockObject</h2>
@@ -230,30 +138,6 @@
 }
 ```
 
-```shell
-
-```
-
-```php
-
-```
-
-```javascript
-
-```
-
-```ruby
-
-```
-
-```python
-
-```
-
-```java
-
-```
-
 <h2 id="tocBlockchainLastBlockObject">BlockchainLastBlockObject</h2>
 
 <a id="schemeblockchainlastblockobject"></a>
@@ -272,30 +156,6 @@
     "syncTipHash":"000000000000005d1718d7539c0a5313b7660b8e7c66d1dccc263a225f9848f5",
     "lastblockhash":"000000000000005d1718d7539c0a5313b7660b8e7c66d1dccc263a225f9848f5"
 }
-```
-
-```shell
-
-```
-
-```php
-
-```
-
-```javascript
-
-```
-
-```ruby
-
-```
-
-```python
-
-```
-
-```java
-
 ```
 
 <h2 id="tocBlockchainDataSyncObject">BlockchainDataSyncObject</h2>
@@ -324,30 +184,6 @@
     "error":null,
     "type":"bitcore node"
 }
-```
-
-```shell
-
-```
-
-```php
-
-```
-
-```javascript
-
-```
-
-```ruby
-
-```
-
-```python
-
-```
-
-```java
-
 ```
 
 <h2 id="tocBlockchainProposalsObject">BlockchainProposalsObject</h2>
@@ -387,30 +223,6 @@
 }
 ```
 
-```shell
-
-```
-
-```php
-
-```
-
-```javascript
-
-```
-
-```ruby
-
-```
-
-```python
-
-```
-
-```java
-
-```
-
 <h2 id="tocProposalDataObject">ProposalDataObject</h2>
 
 <a id="schemeproposaldataobject"></a>
@@ -440,30 +252,6 @@
     "type":1,
     "url":"https://www.dashcentral.org/p/DASH-Venezuela-13-cities-1600-people"
 }
-```
-
-```shell
-
-```
-
-```php
-
-```
-
-```javascript
-
-```
-
-```ruby
-
-```
-
-```python
-
-```
-
-```java
-
 ```
 
 <h2 id="tocBlockchainProposalObject">BlockchainProposalObject</h2>
@@ -535,30 +323,6 @@
 ]
 ```
 
-```shell
-
-```
-
-```php
-
-```
-
-```javascript
-
-```
-
-```ruby
-
-```
-
-```python
-
-```
-
-```java
-
-```
-
 <h2 id="tocVoteCountObject">VoteCountObject</h2>
 
 <a id="schemevotecountobject"></a>
@@ -581,30 +345,6 @@
     "NoCount":29,
     "AbstainCount":0
 }
-```
-
-```shell
-
-```
-
-```php
-
-```
-
-```javascript
-
-```
-
-```ruby
-
-```
-
-```python
-
-```
-
-```java
-
 ```
 
 <h2 id="tocBlockObject">BlockObject</h2>
@@ -663,30 +403,6 @@
 }
 ```
 
-```shell
-
-```
-
-```php
-
-```
-
-```javascript
-
-```
-
-```ruby
-
-```
-
-```python
-
-```
-
-```java
-
-```
-
 <h2 id="tocPoolObject">PoolObject</h2>
 
 <a id="schemepoolobject"></a>
@@ -707,30 +423,6 @@
 }
 ```
 
-```shell
-
-```
-
-```php
-
-```
-
-```javascript
-
-```
-
-```ruby
-
-```
-
-```python
-
-```
-
-```java
-
-```
-
 <h2 id="tocBlockHashObject">BlockHashObject</h2>
 
 <a id="schemeblockhashobject"></a>
@@ -749,30 +441,6 @@
 }
 ```
 
-```shell
-
-```
-
-```php
-
-```
-
-```javascript
-
-```
-
-```ruby
-
-```
-
-```python
-
-```
-
-```java
-
-```
-
 <h2 id="tocRawBlockObject">RawBlockObject</h2>
 
 <a id="schemerawblockobject"></a>
@@ -789,30 +457,6 @@
 {
     "rawblock":"00000020015a0a48d971ecac6e07389d97f4a32322d76db6ea1e7b881c00000000000000fa1e14c79fb0e4e635c76850e4f2f78d4ce9e1f8f07c160eb9d3daa591848213443ad85ac77e4819d5ee4c4b0201000000010000000000000000000000000000000000000000000000000000000000000000ffffffff1f03b30f0d04443ad85a08a4e19361340100000c2f436f696e4d696e65504c2f0000000002de59f909000000001976a914ee5c2e032d02f6f7b08fcc21e0025f0baeb056b088acd759f909000000001976a9149d0d46f36bc90aef04803b53fb5f76c5c4325ced88ac0000000001000000010786d7d9f0dd99cde3bb01064f7de00994b0a5cd0c2b9cb20a829772380b98ec010000006a47304402206322cd2d5e63641c79ca9024c6999625ffc9abe906b2ad3384951676697eced4022063084ce0f306f5e808c04077663077eebe100d1a03f997ec2b95a784811debfc012102cce17aebe0a7984c1a95823df914152daee65bd64f2625d7f82eadde54521738feffffff0240420f00000000001976a9148a3b9c1327cf24f99f57d95cb0ecf10342a6417c88acccfe4d00000000001976a914e99064a50c9756e7dcef5eff03c4e35fd927bbc088aca10f0d00"
 }
-```
-
-```shell
-
-```
-
-```php
-
-```
-
-```javascript
-
-```
-
-```ruby
-
-```
-
-```python
-
-```
-
-```java
-
 ```
 
 <h2 id="tocBlocksPaginatedObject">BlocksPaginatedObject</h2>
@@ -870,30 +514,6 @@
 }
 ```
 
-```shell
-
-```
-
-```php
-
-```
-
-```javascript
-
-```
-
-```ruby
-
-```
-
-```python
-
-```
-
-```java
-
-```
-
 <h2 id="tocBlocksPagObject">BlocksPagObject</h2>
 
 <a id="schemeblockpagobject"></a>
@@ -926,30 +546,6 @@
 }
 ```
 
-```shell
-
-```
-
-```php
-
-```
-
-```javascript
-
-```
-
-```ruby
-
-```
-
-```python
-
-```
-
-```java
-
-```
-
 <h2 id="tocPaginationObject">PaginationObject</h2>
 
 <a id="schemepagintionobject"></a>
@@ -978,30 +574,6 @@
       "more":true,
       "moreTs":1522800000
 }
-```
-
-```shell
-
-```
-
-```php
-
-```
-
-```javascript
-
-```
-
-```ruby
-
-```
-
-```python
-
-```
-
-```java
-
 ```
 
 <h2 id="tocTransactionObject">TransactionObject</h2>
@@ -1101,30 +673,6 @@
 }
 ```
 
-```shell
-
-```
-
-```php
-
-```
-
-```javascript
-
-```
-
-```ruby
-
-```
-
-```python
-
-```
-
-```java
-
-```
-
 <h2 id="tocTxIN">TxIN</h2>
 
 <a id="schemetxinobject"></a>
@@ -1161,30 +709,6 @@
     "value":0.48225393,
     "doubleSpentTxID":null
 }
-```
-
-```shell
-
-```
-
-```php
-
-```
-
-```javascript
-
-```
-
-```ruby
-
-```
-
-```python
-
-```
-
-```java
-
 ```
 
 <h2 id="tocTxOUT">TxOUT</h2>
@@ -1224,30 +748,6 @@
 }
 ```
 
-```shell
-
-```
-
-```php
-
-```
-
-```javascript
-
-```
-
-```ruby
-
-```
-
-```python
-
-```
-
-```java
-
-```
-
 <h2 id="tocRawTxObject">RawTxObject</h2>
 
 <a id="schemerawtxobject"></a>
@@ -1266,30 +766,6 @@
 }
 ```
 
-```shell
-
-```
-
-```php
-
-```
-
-```javascript
-
-```
-
-```ruby
-
-```
-
-```python
-
-```
-
-```java
-
-```
-
 <h2 id="tocTxSendObject">TxSendObject</h2>
 
 <a id="schemetxsendobject"></a>
@@ -1306,30 +782,6 @@
 {
   "txid": "c7736a0a0046d5a8cc61c8c3c2821d4d7517f5de2bc66a966011aaa79965ffba"
 }
-```
-
-```shell
-
-```
-
-```php
-
-```
-
-```javascript
-
-```
-
-```ruby
-
-```
-
-```python
-
-```
-
-```java
-
 ```
 
 <h2 id="tocAddressObject">AddressObject</h2>
@@ -1376,30 +828,6 @@
 }
 ```
 
-```shell
-
-```
-
-```php
-
-```
-
-```javascript
-
-```
-
-```ruby
-
-```
-
-```python
-
-```
-
-```java
-
-```
-
 <h2 id="tocUnspentOutputObject">UnspentOutputObject</h2>
 
 <a id="schemeunspentoutputobject"></a>
@@ -1430,30 +858,6 @@
     "height":846205,
     "confirmations":10369
 }
-```
-
-```shell
-
-```
-
-```php
-
-```
-
-```javascript
-
-```
-
-```ruby
-
-```
-
-```python
-
-```
-
-```java
-
 ```
 
 <h2 id="tocPaymentForwardObject">PaymentForwardObject</h2>
@@ -1500,30 +904,6 @@
 }
 ```
 
-```shell
-
-```
-
-```php
-
-```
-
-```javascript
-
-```
-
-```ruby
-
-```
-
-```python
-
-```
-
-```java
-
-```
-
 <h2 id="tocProcessedTxObject">ProcessedTxObject</h2>
 
 <a id="schemeprocessedtxobject"></a>
@@ -1546,28 +926,4 @@
     "transaction_hash":"7c89d485e06f295de6fb1d676311340be35148dfc1a54de13b57e785227da78f",
     "processed_date":"2018-04-13T11:04:19.000Z"
 }
-```
-
-```shell
-
-```
-
-```php
-
-```
-
-```javascript
-
-```
-
-```ruby
-
-```
-
-```python
-
-```
-
-```java
-
 ```
