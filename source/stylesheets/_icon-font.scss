@@ -36,3 +36,8 @@
   @extend %icon;
   content: "\e607";
 }
+
+%icon-down {
+  @extend %icon;
+  content: "\e608";
+}

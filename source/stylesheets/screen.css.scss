@@ -20,6 +20,9 @@ License for the specific language governing permissions and limitations
 under the License.
 */
 
+* {
+  box-sizing: border-box;
+}
 ////////////////////////////////////////////////////////////////////////////////
 // GENERAL STUFF
 ////////////////////////////////////////////////////////////////////////////////
@@ -58,9 +61,11 @@ html, body {
   left: 0;
   bottom: 0;
   width: $nav-width;
-  background-color: $nav-bg;
+  // background-color: $nav-bg;
   font-size: 13px;
   font-weight: bold;
+  // padding: 0 10px;
+  margin: 0 1rem;
 
   // language selector for mobile devices
   .lang-selector {
@@ -81,7 +86,7 @@ html, body {
     position: relative;
 
     input {
-      background: $nav-bg;
+      background: $main-bg;
       border-width: 0 0 1px 0;
       border-color: $search-box-border-color;
       padding: 6px 0 6px 0;
@@ -91,9 +96,10 @@ html, body {
       outline: none;
       color: $nav-text;
       border-radius: 0; /* ios has a default border radius */
-      font-size: 14px;
+      font-size: 12px;
       line-height: 12px;
       color: rgb(152,152,152);
+      font-weight: 500;
 // font-family: "Roboto-Regular";
 // text-align: center;
     }
@@ -110,9 +116,12 @@ html, body {
 
   .logo {
     margin-bottom: $logo-margin;
-    margin-left: 16px;
-    margin-top: 18px;
+    // margin-left: 16px;
+    // margin-top: 18px;
+    width: 230px;
+    height: auto;
   }
+
 
   .search-results {
     margin-top: 0;
@@ -123,7 +132,7 @@ html, body {
     transition-property: height, margin;
     transition-duration: 180ms;
     transition-timing-function: ease-in-out;
-    background: $nav-subitem-bg;
+    background: #f3f3f3;
     &.visible {
       height: 30%;
       margin-bottom: 1em;
@@ -164,16 +173,17 @@ html, body {
 
   // This is the currently selected ToC entry
   .toc-link.active {
-    //CHANGED
-    background-color: #cceeff;
-    // background-color: $nav-active-bg;
 
-    // color: $nav-active-text;
+    position: relative;
+
+    color: #0E67AE;
+    font-weight: bold;
+
 
     span {
       position: relative;
       padding-bottom: 5px;
-      border-bottom:1px solid #000;
+      // border-bottom:1px solid #000;
     }
     span:after {
       position: absolute;
@@ -181,10 +191,30 @@ html, body {
       bottom: 0;
       width: 100%;
       height: 1px;
-      border-bottom: 1px solid #000;
-      content: ""
+      // border-bottom: 1px solid #000;
     }
+
+    // &:after {
+    //   position: absolute;
+    //   top: 17px;
+    //   right: $nav-padding;
+    //   color: $nav-text;
+    //   @extend %icon-down;
+    //   color: rgb(152,152,152);
+    // }
   }
+
+  .action-btn {
+    display: block;
+    padding: 10px 20px;
+    background: #0E67AE;
+    color: #fff!important;
+    text-align: center;
+    margin-bottom: 1em;
+    border-radius: 5px;
+  }
+
+
 
   // this is parent links of the currently selected ToC entry
   .toc-link.active-parent {
@@ -192,10 +222,20 @@ html, body {
     color: $nav-active-parent-text;
   }
 
+  .toc-list-h1 {
+    margin-right: 15px;
+  }
+
   .toc-list-h2 {
     display: none;
-    background-color: $nav-subitem-bg;
+    // background-color: $nav-subitem-bg;
     font-weight: 500;
+
+    &.active {
+      // margin-right: 15px;
+      border-right: 2px solid #0E67AE;
+    }
+
   }
 
   .toc-h2 {
@@ -203,6 +243,7 @@ html, body {
     font-size: 12px;
     // color: rgb(114,114,114);
     color: 	rgb(0, 17, 26);
+
   }
 
   .toc-list-h3 {
@@ -230,10 +271,15 @@ html, body {
   .toc-footer {
     padding: 1em 0;
     margin-top: 1em;
-    border-top: 1px dashed $nav-footer-border-color;
+    width: 200px;
+    margin-left: 1rem;
+    // position: absolute;
+    bottom: 2em;
+    border-top: 1px solid $nav-footer-border-color;
 
     li,a {
-      color: $nav-text;
+      // color: $nav-text;
+      color: #888;
       text-decoration: none;
     }
 
@@ -245,6 +291,13 @@ html, body {
       font-size: 0.8em;
       line-height: 1.7;
       text-decoration: none;
+      width: 100%;
+      padding: 0;
+
+      a.link {
+        color: #888;
+        font-size: 12px;
+      }
     }
   }
 }
@@ -301,11 +354,13 @@ html, body {
 ////////////////////////////////////////////////////////////////////////////////
 
 .page-wrapper {
-  margin-left: $nav-width;
+  margin-left: calc(230px + 2rem);
+  margin-right: 2rem;
   position: relative;
   z-index: 10;
   background-color: $main-bg;
   min-height: 100%;
+  margin-top: 50px;
 
   padding-bottom: 1px; // prevent margin overflow
 
@@ -315,10 +370,12 @@ html, body {
   // I know, it's hackish, but it's the simplist way to make the left
   // half of the content always this background color.
   .dark-box {
-    width: $examples-width;
+    // width: $examples-width;
+    width: 42%;
     background-color: $examples-bg;
     position: absolute;
-    right: 0;
+    right: 1rem;
+    // right: 3%;
     top: 0;
     bottom: 0;
   }
@@ -332,37 +389,54 @@ html, body {
 }
 
 .lang-selector {
-  background-color: $lang-select-bg;
+  background-color: #fff;
   max-width: 100%;
-  padding:10px;
+  width: calc((100% - (230px + 4rem)) * 0.42);
+  height: 50px;
+  position: relative;
+  top: 0;
+  // padding:10px;
   font-weight: bold;
   a {
     display: block;
     float:left;
-    color: $lang-select-text;
+    color: #212121;
     text-decoration: none;
+    font-size: 0.8rem;
     //CHANGED
     // padding: 0 10px;
-    padding: 5px 10px;
+    padding: 0;
     line-height: 30px;
     outline: 0;
     //CHANGED
     text-transform: capitalize;
     //CHANGED - ADDED
     border: 1px solid #595959;
-    margin: 5px 5px;
+    margin: 0;
+    flex-grow: 1;
+    width: calc(100% / 6);
+    border: none;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 0.5rem 0;
+    height:50px;
+
+
 
     &:active, &:focus {
-      background-color: $lang-select-pressed-bg;
-      color: $lang-select-pressed-text;
+      background-color: #fff;
+      color: #0E67AE;
+      border-bottom: #0E67AE;
+
     }
 
     &.active {
       //CHANGED
       // background-color: $lang-select-active-bg;
       border:none;
-      background-color: #cceeff;
-      color: $lang-select-active-text;
+      background-color: #fff;
+      color: #0E67AE;
+      border-bottom: 2px solid #0E67AE!important;
     }
   }
 
@@ -384,18 +458,20 @@ html, body {
   // to place content above the dark box
   position: relative;
   z-index: 30;
+  // margin-left: 3%;
 
-  &:after {
-    content: '';
-    display: block;
-    clear: both;
-  }
+  // &:after {
+  //   content: '';
+  //   display: block;
+  //   clear: both;
+  // }
 
   &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
-    margin-right: $examples-width;
+    margin-right: 0;
     padding: 0 $main-padding;
     box-sizing: border-box;
     display: block;
+    width: 100%;
 
     @extend %left-col;
   }
@@ -420,14 +496,14 @@ html, body {
     border-bottom: 1px solid #ccc;
     //CHANGED
     // background-color: #fdfdfd;
-    background-image: linear-gradient(to bottom, rgba(#cceeff, 0.5), rgba(#cceeff, 0));
+    // background-image: linear-gradient(to bottom, rgba(#cceeff, 0.5), rgba(#cceeff, 0));
 
   }
 
   h1:first-child, div:first-child + h1 {
     border-top-width: 0;
     margin-top: 0;
-    background-image: linear-gradient(to bottom, rgba(#cceeff, 0.5), rgba(#cceeff, 0));
+    // background-image: linear-gradient(to bottom, rgba(#cceeff, 0.5), rgba(#cceeff, 0));
   }
 
   h2 {
@@ -438,7 +514,7 @@ html, body {
     border-top: 1px solid #ccc;
     padding-top: 1.2em;
     padding-bottom: 1.2em;
-    background-image: linear-gradient(to bottom, rgba(#cceeff, 0.5), rgba(#cceeff, 0));
+    // background-image: linear-gradient(to bottom, rgba(#cceeff, 0.5), rgba(#cceeff, 0));
   }
 
   // h2s right after h1s should bump right up
@@ -468,6 +544,8 @@ html, body {
   table {
     margin-bottom: 1em;
     overflow: auto;
+    display: inline-block;
+    max-width: 100%;
     th,td {
       text-align: left;
       vertical-align: top;
@@ -496,7 +574,7 @@ html, body {
       //CHANGED
       // background-color: lighten($main-bg,4.2%);
     //  background-color: #F5F5F5;
-    background-image: linear-gradient(to bottom, rgba(#cceeff, 0.5), rgba(#cceeff, 0));
+    // background-image: linear-gradient(to bottom, rgba(#cceeff, 0.5), rgba(#cceeff, 0));
 
     }
 
@@ -587,12 +665,73 @@ html, body {
 // This is all the stuff that appears in the right half of the page
 
 .content {
+  margin: 0 1rem;
+
+  .section {
+    width: 100%!important;
+    display: flex!important;
+    justify-content: flex-start;
+    align-items: start;
+    margin-bottom: 2rem;
+    box-sizing: border-box;
+
+    .description {
+      box-sizing: border-box;
+      width: 52%;
+      margin: 0 2.5%;
+      padding: 2rem;
+      background: #fff;
+      box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+      height: 100%;
+
+      h1, h2, h3 {
+        margin-top: 0;
+        padding-top: 0;
+        border: none;
+      }
+
+      h3 {
+        display: inline-block;
+        padding: 0.4rem 1rem;
+        background-color: #0f0;
+        border-radius: 20px;
+        color: #fff;
+        font-weight: 500;
+      }
+
+      table {
+        width: 100%;
+
+        tr {
+          border-bottom: 1px solid #ccc;
+        }
+
+        tr:last-child {
+          border-bottom: none;
+        }
+
+        td {
+          background-color: #fff;
+        }
+      }
+    }
+
+    .code {
+      width: 43%;
+      z-index: 10;
+      height: 100%;
+      box-sizing: border-box;
+    }
+  }
+
   pre, blockquote {
     background-color: $code-bg;
     color: #fff;
 
     margin: 0;
-    width: $examples-width;
+    width: 100%;
+    // width: 36%;
+    // margin-right: 3%;
 
     float:right;
     clear:right;
@@ -634,16 +773,86 @@ html, body {
 
 @media (max-width: $tablet-width) {
   .toc-wrapper {
-    left: -$nav-width;
+    left: -246px;
 
     &.open {
       left: 0;
+      margin-left: 0!important;
+      background: rgba(243, 243, 243, 1)!important;
+      border: none;
     }
+
   }
 
   .page-wrapper {
-    margin-left: 0;
+    margin: 0!important;
+    margin-top: 50px!important;
+
+    .dark-box {
+      width: 43%;
+
+      .lang-selector {
+        width: calc((100% - (2rem)) * 0.45);
+
+        a {
+          line-height: 50px;
+          padding: 0;
+        }
+      }
+    }
+
+    .content {
+      margin: 0 1rem 1rem 2rem!important;
+
+      .section {
+
+        .description {
+          width: 52%!important;
+          margin: 0 auto 0 0!important;
+          padding: 1.5rem!important;
+
+          p {
+            font-size: 14px;
+          }
+
+          h1 {
+            font-size: 20px;
+          }
+
+          h2 {
+            font-size: 16px;
+          }
+
+          h3 {
+            font-size: 14px;
+            padding: 0.3rem 0.6rem;
+          }
+
+          table {
+            display: inline-block;
+            max-width:100%;
+
+            th, td {
+              font-size: 14px;
+            }
+          }
+        }
+
+        .code {
+          width: 45%;
+
+          p {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  
   }
+
+
+
+
 
   #nav-button {
     display: block;
@@ -665,7 +874,7 @@ html, body {
   }
 
   .toc-wrapper .lang-selector {
-    display: block;
+    display: none;
   }
 
   .page-wrapper .lang-selector {
@@ -680,6 +889,50 @@ html, body {
   %right-col + %left-col {
     margin-top: $main-padding;
   }
+
+  .page-wrapper {
+    margin: 0!important;
+    margin-top: 1rem!important;
+
+    // .dark-box {
+    //   width: 43%;
+
+    //   // .lang-selector {
+    //   //   width: calc((100% - (2rem)) * 0.45);
+
+    //   //   a {
+    //   //     line-height: 50px;
+    //   //     padding: 0;
+    //   //   }
+    //   // }
+    // }
+
+    .content {
+      margin: 0 1rem 1rem 2rem!important;
+
+      .section {
+        flex-direction: column!important;
+        margin-bottom: 1rem;
+
+        .description {
+          width: 100%!important;
+          margin: 0 auto!important;
+          padding: 1.5rem!important;
+
+          table {
+            display: inline-block;
+            max-width:100%;
+          }
+        }
+
+        .code {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+
 }
 
 .highlight .c, .highlight .cm, .highlight .c1, .highlight .cs {
@@ -688,9 +941,4 @@ html, body {
 
 .highlight, .highlight .w {
   background-color: $code-bg;
-}
-
-
-#proba {
-  color:red;
 }

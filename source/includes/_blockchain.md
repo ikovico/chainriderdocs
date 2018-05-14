@@ -1,3 +1,5 @@
+
+
 # Blockchain APIs
 
 The set of APIs below provides insight into the network status and general information about the corresponding blockchain selected by specifying endpoint for digital currency and blockchain type.
@@ -7,6 +9,24 @@ The set of APIs below provides insight into the network status and general infor
 <h3 id="getBlockchainInfo">GET /status</h3>
 
 <a id="opIdGetBlockchainInfo"></a>
+
+*Get general information about the blockchain.*
+
+|Parameter|In|Type|Required|Description|
+|---|---|---|---|---|
+|q|query|String|True|Please use `geInfo` as value|
+|token|query|String|True|Token obtained from the ChainRider service|
+
+
+<h3 id="response">Response</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[BlockchainInfoObject](#schemeblockchaininfoobject)|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
+
 
 > Code samples
 
@@ -207,29 +227,28 @@ System.out.println(response.toString());
 }
 ```
 
-*Get general information about the blockchain.*
-
-|Parameter|In|Type|Required|Description|
-|---|---|---|---|---|
-|q|query|String|True|Please use `geInfo` as value|
-|token|query|String|True|Token obtained from the ChainRider service|
-
-
-|Response|
-|-----|
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[BlockchainInfoObject](#schemeblockchaininfoobject)|
-|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
-|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
 
 ## Current difficulty
 
 <h3 id="getBlockchainDifficulty">GET /status</h3>
 
 <a id="opIdGetBlockchainDifficulty"></a>
+
+*Get current difficulty for the blockchain.*
+
+|Parameter|In|Type|Required|Description|
+|---|---|---|---|---|
+|q|query|String|True|Please use `getDifficulty` as value|
+|token|query|String|True|Token obtained from the ChainRider service|
+
+<h3 id="response">Response</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[BlockchainDifficultyObject](#schemeblockchaindifficultyobject)|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
 
 > Code samples
 
@@ -346,28 +365,27 @@ System.out.println(response.toString());
 }
 ```
 
-*Get current difficulty for the blockchain.*
-
-|Parameter|In|Type|Required|Description|
-|---|---|---|---|---|
-|q|query|String|True|Please use `getDifficulty` as value|
-|token|query|String|True|Token obtained from the ChainRider service|
-
-|Response|
-|-----|
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[BlockchainDifficultyObject](#schemeblockchaindifficultyobject)|
-|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
-|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
-
 ## Best Block hash
 
 <h3 id="getBlockchainBestBlock">GET /status</h3>
 
 <a id="opIdGetBlockchainBestBlock"></a>
+
+*Get best block hash for the blockchain.*
+
+|Parameter|In|Type|Required|Description|
+|---|---|---|---|---|
+|q|query|String|True|Please use `getBestBlockHash` as value|
+|token|query|String|True|Token obtained from the ChainRider service|
+
+<h3 id="response">Response</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[BlockchainBestBlockObject](#schemeblockchainbestblockobject)|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
 
 > Code samples
 
@@ -484,28 +502,27 @@ System.out.println(response.toString());
 }
 ```
 
-*Get best block hash for the blockchain.*
-
-|Parameter|In|Type|Required|Description|
-|---|---|---|---|---|
-|q|query|String|True|Please use `getBestBlockHash` as value|
-|token|query|String|True|Token obtained from the ChainRider service|
-
-|Response|
-|-----|
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[BlockchainBestBlockObject](#schemeblockchainbestblockobject)|
-|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
-|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
-
 ## Last Block hash
 
 <h3 id="getBlockchainLastBlock">GET /status</h3>
 
 <a id="opIdGetBlockchainLastBlock"></a>
+
+*Get last block hash for the blockchain.*
+
+|Parameter|In|Type|Required|Description|
+|---|---|---|---|---|
+|q|query|String|True|Please use `getLastBlockHash` as value|
+|token|query|String|True|Token obtained from the ChainRider service|
+
+<h3 id="response">Response</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[BlockchainLastBlockObject](#schemeblockchainlastblockobject)|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
 
 > Code samples
 
@@ -628,28 +645,26 @@ System.out.println(response.toString());
 }
 ```
 
-*Get last block hash for the blockchain.*
-
-|Parameter|In|Type|Required|Description|
-|---|---|---|---|---|
-|q|query|String|True|Please use `getLastBlockHash` as value|
-|token|query|String|True|Token obtained from the ChainRider service|
-
-|Response|
-|-----|
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[BlockchainLastBlockObject](#schemeblockchainlastblockobject)|
-|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
-|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
-
 ## Blockchain Data Sync status
 
 <h3 id="getBlockchainDataSync">GET /sync</h3>
 
 <a id="opIdGetBlockchainDataSync"></a>
+
+*Get blockchain data sync status*
+
+|Parameter|In|Type|Required|Description|
+|---|---|---|---|---|
+|token|query|String|True|Token obtained from the ChainRider service|
+
+<h3 id="response">Response</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[BlockchainDataSyncObject](#schemeblockchaindatasyncobject)|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
 
 > Code samples
 
@@ -796,27 +811,26 @@ System.out.println(response.toString());
 }
 ```
 
-*Get blockchain data sync status*
-
-|Parameter|In|Type|Required|Description|
-|---|---|---|---|---|
-|token|query|String|True|Token obtained from the ChainRider service|
-
-|Response|
-|-----|
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[BlockchainDataSyncObject](#schemeblockchaindatasyncobject)|
-|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
-|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
-
 ## Budget Proposals
 
 <h3 id="getBudgetProposals">GET /listproposal</h3>
 
 <a id="opIdGetBudgetProposals"></a>
+
+*List budget proposals for a blockchain*
+
+|Parameter|In|Type|Required|Description|
+|---|---|---|---|---|
+|token|query|String|True|Token obtained from the ChainRider service|
+
+<h3 id="response">Response</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|Array [BlockchainProposalsObject](#schemeblockchainproposalsobject)|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
 
 > Code samples
 
@@ -1131,27 +1145,28 @@ System.out.println(response.toString());
 ]
 ```
 
-*List budget proposals for a blockchain*
-
-|Parameter|In|Type|Required|Description|
-|---|---|---|---|---|
-|token|query|String|True|Token obtained from the ChainRider service|
-
-|Response|
-|-----|
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|Array [BlockchainProposalsObject](#schemeblockchainproposalsobject)|
-|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
-|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
-
 ## Budget Proposal by hash
 
 <h3 id="getBudgetProposal">GET /getproposal/< proposal_hash > </h3>
 
 <a id="opIdGetBudgetProposal"></a>
+
+*Get budget proposal by proposal hash for a blockchain*
+
+|Parameter|In|Type|Required|Description|
+|---|---|---|---|---|
+|proposal_hash|path|String|True|Hash of the proposal|
+|token|query|String|True|Token obtained from the ChainRider service|
+
+<h3 id="response">Response</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[BlockchainProposalObject](#schemeblockchainproposalobject)|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
+
 
 > Code samples
 
@@ -1525,21 +1540,3 @@ System.out.println(response.toString());
     }
 ]
 ```
-
-*Get budget proposal by proposal hash for a blockchain*
-
-|Parameter|In|Type|Required|Description|
-|---|---|---|---|---|
-|proposal_hash|path|String|True|Hash of the proposal|
-|token|query|String|True|Token obtained from the ChainRider service|
-
-
-|Response|
-|-----|
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[BlockchainProposalObject](#schemeblockchainproposalobject)|
-|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
-|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
