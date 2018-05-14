@@ -4,6 +4,22 @@
 
 <a id="schemeblockchaininfoobject"></a>
 
+|Name|Type|Description|
+|---|---|---|
+|info|JSON|Info object|
+|version|Integer|Bitcore version|
+|insightversion|String|Insight API version|
+|protocolversion|Integer|Blockchain protocol version|
+|blocks|Integer|Number of blocks|
+|timeoffset|Integer|Time offset|
+|connections|Integer|Number of connections to other nodes|
+|proxy|String|Proxy used for connecting|
+|difficulty|Float|Current mining difficulty|
+|testnet|Boolean|Is it the testnet version of the blockchain|
+|relayfee|Float|Minimum relay fee in DASH|
+|errors|String|Error description|
+|network|String|Blockchain type ENUM {"livenet", "testnet"}|
+
 > Example
 
 ```json
@@ -26,26 +42,13 @@
 }
 ```
 
-|Name|Type|Description|
-|---|---|---|
-|info|JSON|Info object|
-|version|Integer|Bitcore version|
-|insightversion|String|Insight API version|
-|protocolversion|Integer|Blockchain protocol version|
-|blocks|Integer|Number of blocks|
-|timeoffset|Integer|Time offset|
-|connections|Integer|Number of connections to other nodes|
-|proxy|String|Proxy used for connecting|
-|difficulty|Float|Current mining difficulty|
-|testnet|Boolean|Is it the testnet version of the blockchain|
-|relayfee|Float|Minimum relay fee in DASH|
-|errors|String|Error description|
-|network|String|Blockchain type ENUM {"livenet", "testnet"}|
-
-
 <h2 id="tocBlockchainDifficultyObject">BlockchainDifficultyObject</h2>
 
 <a id="schemeblockchaindifficultyobject"></a>
+
+|Name|Type|Description|
+|---|---|---|
+|difficulty|Float|Current mining difficulty|
 
 > Example
 
@@ -55,14 +58,13 @@
 }
 ```
 
-|Name|Type|Description|
-|---|---|---|
-|difficulty|Float|Current mining difficulty|
-
-
 <h2 id="tocBlockchainBestBlockObject">BlockchainBestBlockObject</h2>
 
 <a id="schemeblockchainbestblockobject"></a>
+
+|Name|Type|Description|
+|---|---|---|
+|bestblockhash|String (HEX)|Hash of the best block|
 
 > Example
 
@@ -72,14 +74,14 @@
 }
 ```
 
-|Name|Type|Description|
-|---|---|---|
-|bestblockhash|String (HEX)|Hash of the best block|
-
-
 <h2 id="tocBlockchainLastBlockObject">BlockchainLastBlockObject</h2>
 
 <a id="schemeblockchainlastblockobject"></a>
+
+|Name|Type|Description|
+|---|---|---|
+|syncTipHash|String (HEX)|Hash of the block up to which the sync has been done|
+|lastblockhash|String (HEX)|Hash of the last block|
 
 > Example
 
@@ -90,15 +92,18 @@
 }
 ```
 
-|Name|Type|Description|
-|---|---|---|
-|syncTipHash|String (HEX)|Hash of the block up to which the sync has been done|
-|lastblockhash|String (HEX)|Hash of the last block|
-
-
 <h2 id="tocBlockchainDataSyncObject">BlockchainDataSyncObject</h2>
 
 <a id="schemeblockchaindatasyncobject"></a>
+
+|Name|Type|Description|
+|---|---|---|
+|status|String|Sync status|
+|blockChainHeight|Integer|Current blockchain height|
+|syncPercentage|Integer|Sync status as persentage |
+|height|Integer|Blockchain height (last block index)|
+|error|String|Error description|
+|type|String|Sync type|
 
 > Example
 
@@ -113,19 +118,18 @@
 }
 ```
 
-|Name|Type|Description|
-|---|---|---|
-|status|String|Sync status|
-|blockChainHeight|Integer|Current blockchain height|
-|syncPercentage|Integer|Sync status as persentage |
-|height|Integer|Blockchain height (last block index)|
-|error|String|Error description|
-|type|String|Sync type|
-
-
 <h2 id="tocBlockchainProposalsObject">BlockchainProposalsObject</h2>
 
 <a id="schemeblockchainproposalsobject"></a>
+
+|Name|Type|Description|
+|---|---|---|
+|Hash|String (HEX)|Proposal hash|
+|DataObject|JSON|[Proposal data object](#schemeproposaldataobject)|
+|AbsoluteYesCount|Integer|Number of Absolute Yes Votes|
+|YesCount|Integer|Number of Yes Votes|
+|NoCount|Integer|Number of No Votes|
+|AbstainCount|Integer|Number of Abstain Votes|
 
 > Example
 
@@ -149,19 +153,19 @@
 }
 ```
 
-|Name|Type|Description|
-|---|---|---|
-|Hash|String (HEX)|Proposal hash|
-|DataObject|JSON|[Proposal data object](#schemeproposaldataobject)|
-|AbsoluteYesCount|Integer|Number of Absolute Yes Votes|
-|YesCount|Integer|Number of Yes Votes|
-|NoCount|Integer|Number of No Votes|
-|AbstainCount|Integer|Number of Abstain Votes|
-
-
 <h2 id="tocProposalDataObject">ProposalDataObject</h2>
 
 <a id="schemeproposaldataobject"></a>
+
+|Name|Type|Description|
+|---|---|---|
+|end_epoch|Integer|End time (epoch)|
+|name|String|Name of the proposal|
+|payment_address|String|Payment address of the proposal|
+|payment_amount|Integer|Proposal Amount in DASH|
+|start_epoch|Integer|Start time (epoch)|
+|type|Integer|Type of teh proposal|
+|url|String|URL of the proposal|
 
 > Example
 
@@ -178,20 +182,21 @@
 }
 ```
 
-|Name|Type|Description|
-|---|---|---|
-|end_epoch|Integer|End time (epoch)|
-|name|String|Name of the proposal|
-|payment_address|String|Payment address of the proposal|
-|payment_amount|Integer|Proposal Amount in DASH|
-|start_epoch|Integer|Start time (epoch)|
-|type|Integer|Type of teh proposal|
-|url|String|URL of the proposal|
-
-
 <h2 id="tocBlockchainProposalObject">BlockchainProposalObject</h2>
 
 <a id="schemeblockchainproposalobject"></a>
+
+|Name|Type|Description|
+|---|---|---|
+|Hash|String (HEX)|Proposal hash|
+|CollateralHash|String (HEX)|Colateral Proposal hash|
+|DataHex|String (HEX)|Hashed Proposal Data|
+|DataObject|JSON|[Proposal data object](#schemeproposaldataobject)|
+|CreationTime|Integer|Proposal creation time (epoch)|
+|FundingResult|JSON|[VoteCountObject](#schemevotecountobject)|
+|ValidResult|JSON|[VoteCountObject](#schemevotecountobject)|
+|DeleteResult|JSON|[VoteCountObject](#schemevotecountobject)|
+|EndorsedResult|JSON|[VoteCountObject](#schemevotecountobject)|
 
 > Example
 
@@ -244,22 +249,16 @@
 ]
 ```
 
-|Name|Type|Description|
-|---|---|---|
-|Hash|String (HEX)|Proposal hash|
-|CollateralHash|String (HEX)|Colateral Proposal hash|
-|DataHex|String (HEX)|Hashed Proposal Data|
-|DataObject|JSON|[Proposal data object](#schemeproposaldataobject)|
-|CreationTime|Integer|Proposal creation time (epoch)|
-|FundingResult|JSON|[VoteCountObject](#schemevotecountobject)|
-|ValidResult|JSON|[VoteCountObject](#schemevotecountobject)|
-|DeleteResult|JSON|[VoteCountObject](#schemevotecountobject)|
-|EndorsedResult|JSON|[VoteCountObject](#schemevotecountobject)|
-
-
 <h2 id="tocVoteCountObject">VoteCountObject</h2>
 
 <a id="schemevotecountobject"></a>
+
+|Name|Type|Description|
+|---|---|---|
+|AbsoluteYesCount|Integer|Number of Absolute Yes Votes|
+|YesCount|Integer|Number of Yes Votes|
+|NoCount|Integer|Number of No Votes|
+|AbstainCount|Integer|Number of Abstain Votes|
 
 > Example
 
@@ -272,16 +271,29 @@
 }
 ```
 
-|Name|Type|Description|
-|---|---|---|
-|AbsoluteYesCount|Integer|Number of Absolute Yes Votes|
-|YesCount|Integer|Number of Yes Votes|
-|NoCount|Integer|Number of No Votes|
-|AbstainCount|Integer|Number of Abstain Votes|
-
 <h2 id="tocBlockObject">BlockObject</h2>
 
 <a id="schemeblockobject"></a>
+
+|Name|Type|Description|
+|---|---|---|
+|hash|String (HEX)|Hash of the block|
+|size|Integer|Size of the block|
+|height|Integer|Block height in the chain|
+|version|Integer|Block version number|
+|merkleroot|String (HEX)|256-bit hash based on all of the transactions in the block |
+|tx|Array of Strings|Array of tx hashes in the block|
+|time|Integer|Timestamp as seconds since 1970-01-01T00:00 UTC|
+|nonce|Integer|32-bit number (starts at 0)|
+|bits|String (Hex)|Current target in compact format|
+|difficulty|Float|Difficulty at which the block was mined|
+|chainwork|String (HEX)|Total number of hashes that are expected to have been necessary to produce the current chain|
+|confirmations|Integer|Number of confirmations|
+|previousblockhash|String (HEX)|256-bit hash of the previous block header|
+|nextblockhash|String (HEX)|256-bit hash of the next block header|
+|reward|String|Reward received|
+|isMainChain|Boolean|Is the block part of the main chain|
+|poolInfo|[PoolObject](#schemepoolobject)|Information about the pool on which the block was mined|
 
 > Example
 
@@ -313,30 +325,14 @@
 }
 ```
 
-|Name|Type|Description|
-|---|---|---|
-|hash|String (HEX)|Hash of the block|
-|size|Integer|Size of the block|
-|height|Integer|Block height in the chain|
-|version|Integer|Block version number|
-|merkleroot|String (HEX)|256-bit hash based on all of the transactions in the block |
-|tx|Array of Strings|Array of tx hashes in the block|
-|time|Integer|Timestamp as seconds since 1970-01-01T00:00 UTC|
-|nonce|Integer|32-bit number (starts at 0)|
-|bits|String (Hex)|Current target in compact format|
-|difficulty|Float|Difficulty at which the block was mined|
-|chainwork|String (HEX)|Total number of hashes that are expected to have been necessary to produce the current chain|
-|confirmations|Integer|Number of confirmations|
-|previousblockhash|String (HEX)|256-bit hash of the previous block header|
-|nextblockhash|String (HEX)|256-bit hash of the next block header|
-|reward|String|Reward received|
-|isMainChain|Boolean|Is the block part of the main chain|
-|poolInfo|[PoolObject](#schemepoolobject)|Information about the pool on which the block was mined|
-
-
 <h2 id="tocPoolObject">PoolObject</h2>
 
 <a id="schemepoolobject"></a>
+
+|Name|Type|Description|
+|---|---|---|
+|poolName|String|Name if the pool|
+|url|String|Pool URL|
 
 > Example
 
@@ -347,16 +343,13 @@
 }
 ```
 
-|Name|Type|Description|
-|---|---|---|
-|poolName|String|Name if the pool|
-|url|String|Pool URL|
-
-
-
 <h2 id="tocBlockHashObject">BlockHashObject</h2>
 
 <a id="schemeblockhashobject"></a>
+
+|Name|Type|Description|
+|---|---|---|
+|blockHash|String (HEX)|256-bit hash of the block|
 
 > Example
 
@@ -366,14 +359,13 @@
 }
 ```
 
-|Name|Type|Description|
-|---|---|---|
-|blockHash|String (HEX)|256-bit hash of the block|
-
-
 <h2 id="tocRawBlockObject">RawBlockObject</h2>
 
 <a id="schemerawblockobject"></a>
+
+|Name|Type|Description|
+|---|---|---|
+|rawblock|String (HEX)|Raw block data|
 
 > Example
 
@@ -383,14 +375,15 @@
 }
 ```
 
-|Name|Type|Description|
-|---|---|---|
-|rawblock|String (HEX)|Raw block data|
-
-
 <h2 id="tocBlocksPaginatedObject">BlocksPaginatedObject</h2>
 
 <a id="schemeblockspaginatedobject"></a>
+
+|Name|Type|Description|
+|---|---|---|
+|block|Array of [BlockPagObject](#schemeblockpagobject)|Array of BlockPagObjects|
+|length|Integer|Number of blocks|
+|pagination|[PaginationObject](#schemepagintionobject)|Pagination metadata|
 
 > Example
 
@@ -435,16 +428,18 @@
 }
 ```
 
-|Name|Type|Description|
-|---|---|---|
-|block|Array of [BlockPagObject](#schemeblockpagobject)|Array of BlockPagObjects|
-|length|Integer|Number of blocks|
-|pagination|[PaginationObject](#schemepagintionobject)|Pagination metadata|
-
-
 <h2 id="tocBlocksPagObject">BlocksPagObject</h2>
 
 <a id="schemeblockpagobject"></a>
+
+|Name|Type|Description|
+|---|---|---|
+|height|Integer|Block height in the chain|
+|size|Integer|Size of the block|
+|hash|String (HEX)|Hash of the block|
+|time|Integer|Timestamp as seconds since 1970-01-01T00:00 UTC|
+|txlength|Integer|Number of transactions in the block|
+|poolInfo|[PoolObject](#schemepoolobject)|Information about the pool on which the block was mined|
 
 > Example
 
@@ -463,19 +458,19 @@
 }
 ```
 
-|Name|Type|Description|
-|---|---|---|
-|height|Integer|Block height in the chain|
-|size|Integer|Size of the block|
-|hash|String (HEX)|Hash of the block|
-|time|Integer|Timestamp as seconds since 1970-01-01T00:00 UTC|
-|txlength|Integer|Number of transactions in the block|
-|poolInfo|[PoolObject](#schemepoolobject)|Information about the pool on which the block was mined|
-
-
 <h2 id="tocPaginationObject">PaginationObject</h2>
 
 <a id="schemepagintionobject"></a>
+
+|Name|Type|Description|
+|---|---|---|
+|next|String|Next date in format YYYY-MM-DD|
+|prev|String|Previous date in format YYYY-MM-DD|
+|currentTs|Integer|Current timestamp since epoch|
+|current|String|Current date in format YYYY-MM-DD|
+|isToday|Boolean|Is current day from the request today|
+|more|Boolean|Is there more than specified number of resources|
+|moreTs|Integer|Timestamp since epoch|
 
 > Example
 
@@ -491,20 +486,27 @@
 }
 ```
 
-|Name|Type|Description|
-|---|---|---|
-|next|String|Next date in format YYYY-MM-DD|
-|prev|String|Previous date in format YYYY-MM-DD|
-|currentTs|Integer|Current timestamp since epoch|
-|current|String|Current date in format YYYY-MM-DD|
-|isToday|Boolean|Is current day from the request today|
-|more|Boolean|Is there more than specified number of resources|
-|moreTs|Integer|Timestamp since epoch|
-
-
 <h2 id="tocTransactionObject">TransactionObject</h2>
 
 <a id="schemetransactionobject"></a>
+
+|Name|Type|Description|
+|---|---|---|
+|txid|String (HEX)|Hash of the transaction|
+|version|Integer|Version|
+|locktime|Integer|Timestamp since epoch - time at which a particular transaction can be added to the blockchain.|
+|vin|Array of [TxIN](#schemetxinobject)|Array of TxIN Objects - input transactions|
+|vout|Array of [TxOUT](#schemetxoutobject)|Array of TxOUT Objects - output transactions|
+|blockhash|String (HEX)|Hash of the block containing tx|
+|blockheight|Integer|Height of the block containing the transaction|
+|confirmations|Integer|Number of confirmations|
+|time|Integer|Timestamp of the transaction since epoch|
+|blocktime|Integer|Block timestamp since epoch|
+|valueOut|Float|Output Value in DASH|
+|size|Integer|Size of the tx in bytes|
+|valueIn|Float|Input Value in DASH|
+|fees|Float|Network fee for the transaction|
+|txlock|Boolean|If the transaction is sent and verified via Instant Send the value will be True|
 
 > Example
 
@@ -579,28 +581,21 @@
 }
 ```
 
-|Name|Type|Description|
-|---|---|---|
-|txid|String (HEX)|Hash of the transaction|
-|version|Integer|Version|
-|locktime|Integer|Timestamp since epoch - time at which a particular transaction can be added to the blockchain.|
-|vin|Array of [TxIN](#schemetxinobject)|Array of TxIN Objects - input transactions|
-|vout|Array of [TxOUT](#schemetxoutobject)|Array of TxOUT Objects - output transactions|
-|blockhash|String (HEX)|Hash of the block containing tx|
-|blockheight|Integer|Height of the block containing the transaction|
-|confirmations|Integer|NUmber of confirmations|
-|time|Integer|Timestamp of the transaction since epoch|
-|blocktime|Integer|Block timestamp since epoch|
-|valueOut|Float|Output Value in DASH|
-|size|Integer|Size of the tx in bytes|
-|valueIn|Float|Input Value in DASH|
-|fees|Float|Network fee for the transaction|
-|txlock|Boolean|If the transaction is sent and verified via Instant Send the value will be True|
-
-
 <h2 id="tocTxIN">TxIN</h2>
 
 <a id="schemetxinobject"></a>
+
+|Name|Type|Description|
+|---|---|---|
+|txid|String (HEX)|Hash of the transaction|
+|vout|Integer|The index of the output being spent within the transaction. Zero based.|
+|sequence|Integer|Legacy 4-byte sequence number|
+|n|TODO |TODO|
+|scriptSig|TODO|TODO|
+|addr|String (HEX) |Address associated with the output of the previous transaction|
+|valueSat|Integer|Value in duffs|
+|value|Float|Value in DASH|
+|doubleSpentTxID|String (HEX)|ID of the double spend tx; Double spends are not currently tracked|
 
 > Example
 
@@ -622,22 +617,48 @@
 }
 ```
 
+<h2 id="tocTxOUT">TxOUT</h2>
+
+<a id="schemetxoutobject"></a>
+
 |Name|Type|Description|
 |---|---|---|
-|txid|String (HEX)|Hash of the transaction|
-|vout|Integer|The index of the output being spent within the transaction. Zero based.|
-|sequence|Integer|Legacy 4-byte sequence number|
-|n|TODO |TODO|
-|scriptSig|TODO|TODO|
-|addr|String (HEX)Aaddress associated with the output of the previous transaction|
-|valueSat|Integer|Value in duffs|
 |value|Float|Value in DASH|
-|doubleSpentTxID|String (HEX)|ID of the double spend tx; Double spends are not currently tracked|
+|n|Integer|The index of the output being spent within the transaction. Zero based.|
+|scriptPubKey|Integer|Legacy 4-byte sequence number|
+|spentTxId|String (HEX) |TODO|
+|spentIndex|Integer|Index of the |
+|spentHeight|Integer|Height of the block which includes the transaction|
 
+> Example
+
+```json
+{
+    "value":"4.58822623",
+    "n":0,
+    "scriptPubKey":
+    {
+        "hex":"76a914f9a86dca25067c5bf4a784aebd27080f3ec06f4c88ac",
+        "asm":"OP_DUP OP_HASH160 f9a86dca25067c5bf4a784aebd27080f3ec06f4c OP_EQUALVERIFY OP_CHECKSIG",
+        "addresses":
+        [
+            "XySurfMBRDFFXhwWnLRYk6LPzESyamG9c4"
+        ],
+        "type":"pubkeyhash"
+    },
+    "spentTxId":"026cd76659232a3440028f1b706756546dfce29875a443a38db91b68d698e958",
+    "spentIndex":0,
+    "spentHeight":803642
+}
+```
 
 <h2 id="tocRawTxObject">RawTxObject</h2>
 
 <a id="schemerawtxobject"></a>
+
+|Name|Type|Description|
+|---|---|---|
+|rawtx|String (HEX)|Raw transaction|
 
 > Example
 
@@ -647,14 +668,13 @@
 }
 ```
 
-|Name|Type|Description|
-|---|---|---|
-|rawtx|String (HEX)|Raw transaction|
-
-
 <h2 id="tocTxSendObject">TxSendObject</h2>
 
 <a id="schemetxsendobject"></a>
+
+|Name|Type|Description|
+|---|---|---|
+|txid|String (HEX)|HASH of transmitted/sent transaction on the blockchain|
 
 > Example
 
@@ -664,14 +684,24 @@
 }
 ```
 
-|Name|Type|Description|
-|---|---|---|
-|txid|String (HEX)|HASH of transmitted/sent transaction on the blockchain|
-
-
 <h2 id="tocAddressObject">AddressObject</h2>
 
 <a id="schemeaddressobject"></a>
+
+|Name|Type|Description|
+|---|---|---|
+|addrStr|String|A string representing the address|
+|balance|Float|Current balance of the address in DASH|
+|balanceSat|Integer|Current balance of the address in duffs|
+|totalReceived|Float|Total amount in DASH received at the address|
+|totalReceivedSat|Integer|Total amount in duffs received at the address|
+|totalSent|Float|Total amount in DASH sent from the address|
+|totalSentSat|Integer|Total amount in duffs sent from the address|
+|unconfirmedBalance|Float|Unconfirmed balance of the address in DASH|
+|unconfirmedBalanceSat|Integer|Unconfirmed balance of the address in duffs|
+|unconfirmedTxApperances|Integer|Number of unconfirmed transactions in which address participated|
+|txApperances|Integer|Number of transactions in which address participated|
+|transactions|Array of Strings|Array of transaction transactions in which address participated|
 
 > Example
 
@@ -696,25 +726,20 @@
 }
 ```
 
-|Name|Type|Description|
-|---|---|---|
-|addrStr|String|A string representing the address|
-|balance|Float|Current balance of the address in DASH|
-|balanceSat|Integer|Current balance of the address in duffs|
-|totalReceived|Float|Total amount in DASH received at the address|
-|totalReceivedSat|Integer|Total amount in duffs received at the address|
-|totalSent|Float|Total amount in DASH sent from the address|
-|totalSentSat|Integer|Total amount in duffs sent from the address|
-|unconfirmedBalance|Float|Unconfirmed balance of the address in DASH|
-|unconfirmedBalanceSat|Integer|Unconfirmed balance of the address in duffs|
-|unconfirmedTxApperances|Integer|Number of unconfirmed transactions in which address participated|
-|txApperances|Integer|Number of transactions in which address participated|
-|transactions|Array of Strings|Array of transaction transactions in which address participated|
-
-
 <h2 id="tocUnspentOutputObject">UnspentOutputObject</h2>
 
 <a id="schemeunspentoutputobject"></a>
+
+|Name|Type|Description|
+|---|---|---|
+|address|String|A string representing the address|
+|txid|String (HEX)|Hash of the transaction|
+|vout|Integer|Index of the output|
+|scriptPubKey|String (HEX)|Script public key|
+|amount|Float|Total unspent amount in DASH|
+|satoshis|Integer|Total unspent amount in duffs|
+|height|Integer|Height of the block in which the transaction is included|
+|confirmations|Integer|Number of confirmations for the transaction|
 
 > Example
 
@@ -731,21 +756,22 @@
 }
 ```
 
-|Name|Type|Description|
-|---|---|---|
-|address|String|A string representing the address|
-|txid|String (HEX)|Hash of the transaction|
-|vout|Integer|Index of the output|
-|scriptPubKey|String (HEX)|Script public key|
-|amount|Float|Total unspent amount in DASH|
-|satoshis|Integer|Total unspent amount in duffs|
-|height|Integer|Height of the block in which the transaction is included|
-|confirmations|Integer|Number of confirmations for the transaction|
-
-
 <h2 id="tocPaymentForwardObject">PaymentForwardObject</h2>
 
 <a id="schemepaymentforwardobject"></a>
+
+|Name|Type|Description|
+|---|---|---|
+|paymentforward_id|String|Payment forward unique id|
+|payment_address|String|String representing payment address. DASH received to payment address are automatically forwarded to destination address (and optionally to commission address in case one is specified in a predefined way during payment forward creation.) |
+|destination_address|String|String representing destination address. DASH received at payment address will be forwarded to the destination address.|
+|commission_address|String|String representing commission address. In case a commission address is specified part of the payment will be forwarded to this address each time a payment is received at payment address, based on predefined parameters (commission_fee_percent or commission_fee_duffs)|
+|commission_fee_percent|Float|Percentage of the payment which will be forwarded to commission address each time a payment is received at payment address. Min value 0.001. Max value 0.999. |
+|commission_fee_duffs|Integer|Fixed amount in duffs which will be forwarded to commission address each time a payment is received at payment address.|
+|created_date|String - Datetime in YYYY-MM-DDTHH:MM:SS.MMMZ format|Datetime of the creation of payment forward|
+|callback_url|String|URL to which the notification about processed transactions is sent. Each time new payment is sent to payment address, notification is posted to this |
+|mining_fee_duffs|Integer|Mining fee for the payment forward transaction. Default is 10 000. Maximum is 150 000. Minimum is 10 000. In case of set commission_fee_percent, mining fee is subtracted from commission amount.|
+|processed_txs|Array of [ProcessedTxObject](#schemeprocessedtxobject)|Array of processed transactions by the payment forward. In case of retrieving a list of payment forwards, this parameter is omitted.|
 
 > Example
 
@@ -772,24 +798,16 @@
 }
 ```
 
-|Name|Type|Description|
-|---|---|---|
-|paymentforward_id|String|Payment forward unique id|
-|payment_address|String|String representing payment address. DASH received to payment address are automatically forwarded to destination address (and optionally to commission address in case one is specified in a predefined way during payment forward creation.) |
-|destination_address|String|String representing destination address. DASH received at payment address will be forwarded to the destination address.|
-|commission_address|String|String representing commission address. In case a commission address is specified part of the payment will be forwarded to this address each time a payment is received at payment address, based on predefined parameters (commission_fee_percent or commission_fee_duffs)|
-|commission_fee_percent|Float|Percentage of the payment which will be forwarded to commission address each time a payment is received at payment address. Min value 0.001. Max value 0.999. |
-|commission_fee_duffs|Integer|Fixed amount in duffs which will be forwarded to commission address each time a payment is received at payment address.|
-|created_date|String - Datetime in YYYY-MM-DDTHH:MM:SS.MMMZ format|Datetime of the creation of payment forward|
-|callback_url|String|URL to which the notification about processed transactions is sent. Each time new payment is sent to payment address, notification is posted to this |
-|mining_fee_duffs|Integer|Mining fee for the payment forward transaction. Default is 10 000. Maximum is 150 000. Minimum is 10 000. In case of set commission_fee_percent, mining fee is subtracted from commission amount.|
-|processed_txs|Array of [ProcessedTxObject](#schemeprocessedtxobject)|Array of processed transactions by the payment forward. In case of retrieving a list of payment forwards, this parameter is omitted.|
-
-
-
 <h2 id="tocProcessedTxObject">ProcessedTxObject</h2>
 
 <a id="schemeprocessedtxobject"></a>
+
+|Name|Type|Description|
+|---|---|---|
+|input_transaction_hash|String (HEX)|Hash of the input transaction. Input transaction is the transaction which occurs when a payment is sent to payment address.|
+|received_amount_duffs|Integer|Amount received to payment forward destination address in duffs|
+|transaction_hash|String (HEX)|Hash of the output transaction. Output transaction is the transaction which occurs when a payment is forwarded from payment address to destination address (and comission address in case one is specified for particular payment forward)|
+|processed_date|String - Datetime in YYYY-MM-DDTHH:MM:SS.MMMZ format|Datetime when the payment was forwarded. |
 
 > Example
 
@@ -801,10 +819,3 @@
     "processed_date":"2018-04-13T11:04:19.000Z"
 }
 ```
-
-|Name|Type|Description|
-|---|---|---|
-|input_transaction_hash|String (HEX)|Hash of the input transaction. Input transaction is the transaction which occurs when a payment is sent to payment address.|
-|received_amount_duffs|Integer|Amount received to payment forward destination address in duffs|
-|transaction_hash|String (HEX)|Hash of the output transaction. Output transaction is the transaction which occurs when a payment is forwarded from payment address to destination address (and comission address in case one is specified for particular payment forward)|
-|processed_date|String - Datetime in YYYY-MM-DDTHH:MM:SS.MMMZ format|Datetime when the payment was forwarded. |

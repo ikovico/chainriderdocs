@@ -8,6 +8,23 @@ The set of APIs provides insight into the unspent outputs for one or multiple ad
 
 <a id="opIdGetAddressUnspentOutputs"></a>
 
+*Get Unspent Outputs for an Address*
+
+|Parameter|In|Type|Required|Description|
+|---|---|---|---|---|
+|address|path|String|True|Address string|
+|token|query|String|True|Token obtained from the ChainRider service|
+
+|Response|
+|-----|
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|Array [UnspentOutputObject](#schemeunspentoutputobject)|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
+
 > Code samples
 
 ```shell
@@ -177,13 +194,18 @@ System.out.println(response.toString());
 ]
 ```
 
-*Get Unspent Outputs for an Address*
+## Unspent Outputs for multiple Addresses - GET
+
+<h3 id="getAddressUnspentOutputsMultiple">GET /addrs/< address1 >,< address2 >,...,< addressn >/utxo </h3>
+
+<a id="opIdGetAddressUnspentOutputsMultiple"></a>
+
+*Get Unspent Outputs for multiple Addresses*
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|address|path|String|True|Address string|
+|addr|path|String Aray(address)|True|Array of comma separated address strings|
 |token|query|String|True|Token obtained from the ChainRider service|
-
 
 |Response|
 |-----|
@@ -194,12 +216,6 @@ System.out.println(response.toString());
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
-
-## Unspent Outputs for multiple Addresses - GET
-
-<h3 id="getAddressUnspentOutputsMultiple">GET /addrs/< address1 >,< address2 >,...,< addressn >/utxo </h3>
-
-<a id="opIdGetAddressUnspentOutputsMultiple"></a>
 
 > Code samples
 
@@ -490,13 +506,18 @@ System.out.println(response.toString());
 ]
 ```
 
-*Get Unspent Outputs for multiple Addresses*
+## Unspent Outputs for multiple Addresses - POST
+
+<h3 id="postUnspentOutputsAddress">POST /addrs/utxo </h3>
+
+<a id="opIdpostUnspentOutputsAddress"></a>
+
+*Get Transactions for multiple Addresses by using POST method*
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|addr|path|String Aray(address)|True|Array of comma separated address strings|
-|token|query|String|True|Token obtained from the ChainRider service|
-
+|addrs|body|String Aray(address)|True|Array of comma separated address strings|
+|token|body|String|True|Token obtained from the ChainRider service|
 
 |Response|
 |-----|
@@ -507,12 +528,6 @@ System.out.println(response.toString());
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
-
-## Unspent Outputs for multiple Addresses - POST
-
-<h3 id="postUnspentOutputsAddress">POST /addrs/utxo </h3>
-
-<a id="opIdpostUnspentOutputsAddress"></a>
 
 > Code samples
 
@@ -668,22 +683,3 @@ System.out.println(result);
     }
 ]
 ```
-
-
-*Get Transactions for multiple Addresses by using POST method*
-
-|Parameter|In|Type|Required|Description|
-|---|---|---|---|---|
-|addrs|body|String Aray(address)|True|Array of comma separated address strings|
-|token|body|String|True|Token obtained from the ChainRider service|
-
-
-|Response|
-|-----|
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|Array [UnspentOutputObject](#schemeunspentoutputobject)|
-|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
-|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|

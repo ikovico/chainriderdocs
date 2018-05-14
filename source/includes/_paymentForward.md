@@ -6,12 +6,33 @@ In order to create a payment forward partially populated PaymentForward object i
 
 Once created, payment forward rule will continue to forward payments in a predefined way set during payment forward creation until you explicitly delete it by calling the API for payment forward delete.
 
-
 ## Create Payment Forward
 
 <h3 id="postCreatePaymentForward">POST /paymentforward </h3>
 
 <a id="opIdpostCreatePaymentForward"></a>
+
+*Create Payment Forward*
+
+|Parameter|In|Type|Required|Description|
+|---|---|---|---|---|
+|destination_address|body|String|True|Destination address represents the address to which received DASH will be forwarded.|
+|commission_address|body|String|False|Commission address is an optional address to which funds will be forwarded in a predefined way. If commission address is specified, one must specify either commission_fee_percent or commission_fee_duffs parameter (cannot use both for the same payment forward)|
+|commission_fee_percent|body|Float|False|Commission fee as normalized percentage. Minimum is 0.001. Maximum is 0.999. In case commission_address is set, commission_fee_percent specifies amount which will be forwarded to commission_address as percentage of the total received payment. The rest of the funds will be forwarded to destination_address. Mining fee is subtracted from previously calculated commission amount.|
+|commission_fee_duffs|body|Integer|False|Commission fee in duffs. In case commission_address is set, commission_fee_duffs specifies fixed amount of the total received payment which will be forwarded to commission_address. The rest of the funds will be forwarded to destination_address.|
+|mining_fee_duffs|body|String|False|Mining fee for forwarding transaction. Default fee is 10 000 duffs. Min 10 000 duffs. Max 150 000 duffs.|
+|callback_url|body|String|False|URL to which the notification will be posted upon each successful payment forward.|
+|token|body|String|True|Token obtained from the ChainRider service|
+
+|Response|
+|-----|
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[PaymentForwardObject](#schemepaymentforwardobject)|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
 
 > Code samples
 
@@ -147,19 +168,18 @@ System.out.println(result);
 }
 ```
 
+## Get Payment Forward by Id
 
-*Create Payment Forward*
+<h3 id="getPaymentForwardById">GET /paymentforward/< paymentforward_id > </h3>
+
+<a id="opIdGetPaymentForwardById"></a>
+
+*Get Payment Forward by ID for corresponding token*
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|destination_address|body|String|True|Destination address represents the address to which received DASH will be forwarded.|
-|commission_address|body|String|False|Commission address is an optional address to which funds will be forwarded in a predefined way. If commission address is specified, one must specify either commission_fee_percent or commission_fee_duffs parameter (cannot use both for the same payment forward)|
-|commission_fee_percent|body|Float|False|Commission fee as normalized percentage. Minimum is 0.001. Maximum is 0.999. In case commission_address is set, commission_fee_percent specifies amount which will be forwarded to commission_address as percentage of the total received payment. The rest of the funds will be forwarded to destination_address. Mining fee is subtracted from previously calculated commission amount.|
-|commission_fee_duffs|body|Integer|False|Commission fee in duffs. In case commission_address is set, commission_fee_duffs specifies fixed amount of the total received payment which will be forwarded to commission_address. The rest of the funds will be forwarded to destination_address.|
-|mining_fee_duffs|body|String|False|Mining fee for forwarding transaction. Default fee is 10 000 duffs. Min 10 000 duffs. Max 150 000 duffs.|
-|callback_url|body|String|False|URL to which the notification will be posted upon each successful payment forward.|
-|token|body|String|True|Token obtained from the ChainRider service|
-
+|paymentforward_id|path|String|True|Unique Payment Forward ID|
+|token|query|String|True|Token obtained from the ChainRider service|
 
 |Response|
 |-----|
@@ -170,12 +190,6 @@ System.out.println(result);
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
-
-## Get Payment Forward by Id
-
-<h3 id="getPaymentForwardById">GET /paymentforward/< paymentforward_id > </h3>
-
-<a id="opIdGetPaymentForwardById"></a>
 
 > Code samples
 
@@ -394,29 +408,29 @@ System.out.println(response.toString());
 }
 ```
 
-*Get Payment Forward by ID for corresponding token*
+## Get Payment Forwards
+
+<h3 id="getPaymentForwardsPaginated">GET /paymentforward </h3>
+
+<a id="opIdGetPaymentForwardsPaginated"></a>
+
+*Get all Payment Forwards for corresponding token*
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|paymentforward_id|path|String|True|Unique Payment Forward ID|
+|from|query|Integer|False|Start index (zero index based, default 0)|
+|to|query|Integer|False|End index (zero index based, default 100)|
 |token|query|String|True|Token obtained from the ChainRider service|
-
 
 |Response|
 |-----|
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[PaymentForwardObject](#schemepaymentforwardobject)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|Array [PaymentForwardObject](#schemepaymentforwardobject)|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
-
-## Get Payment Forwards
-
-<h3 id="getPaymentForwardsPaginated">GET /paymentforward </h3>
-
-<a id="opIdGetPaymentForwardsPaginated"></a>
 
 > Code samples
 
@@ -659,31 +673,28 @@ System.out.println(response.toString());
 ]
 ```
 
-*Get all Payment Forwards for corresponding token*
+## Delete Payment Forward
+
+<h3 id="deletePaymentForward">DELETE /paymentforward/< paymentforward_id > </h3>
+
+<a id="opIdDeletePaymentForward"></a>
+
+*Delete Payment Forward by id for corresponding token*
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|from|query|Integer|False|Start index (zero index based, default 0)|
-|to|query|Integer|False|End index (zero index based, default 100)|
+|paymentforward_id|path|String|True|Unique Payment forward ID|
 |token|query|String|True|Token obtained from the ChainRider service|
-
 
 |Response|
 |-----|
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|Array [PaymentForwardObject](#schemepaymentforwardobject)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|{}|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
-
-
-## Delete Payment Forward
-
-<h3 id="deletePaymentForward">DELETE /paymentforward/< paymentforward_id > </h3>
-
-<a id="opIdDeletePaymentForward"></a>
 
 > Code samples
 
@@ -782,20 +793,3 @@ System.out.println(response.toString());
 // Response example
 {}
 ```
-
-*Delete Payment Forward by id for corresponding token*
-
-|Parameter|In|Type|Required|Description|
-|---|---|---|---|---|
-|paymentforward_id|path|String|True|Unique Payment forward ID|
-|token|query|String|True|Token obtained from the ChainRider service|
-
-|Response|
-|-----|
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|{}|
-|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
-|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|

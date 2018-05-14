@@ -8,6 +8,23 @@ This set of APIs provides insight into the blockchain on a transaction level.
 
 <a id="opIdGetTransactionByHash"></a>
 
+*Get Transaction by hash*
+
+|Parameter|In|Type|Required|Description|
+|---|---|---|---|---|
+|tx_hash|path|String|True|Hash of the transaction|
+|token|query|String|True|Token obtained from the ChainRider service|
+
+|Response|
+|-----|
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[TransactionObject](#schemetransactionobject)|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
+
 > Code samples
 
 ```shell
@@ -513,29 +530,28 @@ System.out.println(response.toString());
 }
 ```
 
-*Get Transaction by hash*
+## Raw Transaction by hash
+
+<h3 id="getRawTxByHash">GET /rawtx/< tx_hash > </h3>
+
+<a id="opIdGetRawTxByHash"></a>
+
+*Get Raw Transaction by hash*
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |tx_hash|path|String|True|Hash of the transaction|
 |token|query|String|True|Token obtained from the ChainRider service|
 
-
 |Response|
 |-----|
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[TransactionObject](#schemetransactionobject)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[RawTxObject](#schemerawtxobject)|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
-
-## Raw Transaction by hash
-
-<h3 id="getRawTxByHash">GET /rawtx/< tx_hash > </h3>
-
-<a id="opIdGetRawTxByHash"></a>
 
 > Code samples
 
@@ -652,30 +668,28 @@ System.out.println(response.toString());
 }
 ```
 
-*Get Raw Transaction by hash*
+## Transactions for Block
+
+<h3 id="getTransactionsBlock">GET /txs</h3>
+
+<a id="opIdGetTransactionsBlock"></a>
+
+*Get Transactions for a Block*
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|tx_hash|path|String|True|Hash of the transaction|
+|block|query|String|True|Block hash|
 |token|query|String|True|Token obtained from the ChainRider service|
-
 
 |Response|
 |-----|
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[RawTxObject](#schemerawtxobject)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[TxBlockObject](#schemetxblockobject)|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
-
-
-## Transactions for Block
-
-<h3 id="getTransactionsBlock">GET /txs</h3>
-
-<a id="opIdGetTransactionsBlock"></a>
 
 > Code samples
 
@@ -1584,29 +1598,28 @@ System.out.println(response.toString());
 }
 ```
 
-*Get Transactions for a Block*
+## Transactions for Address
+
+<h3 id="getTransactionsAddress">GET /txs</h3>
+
+<a id="opIdGetTransactionsAddress"></a>
+
+*Get Transactions for an Address*
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|block|query|String|True|Block hash|
+|address|query|String|True|Address string|
 |token|query|String|True|Token obtained from the ChainRider service|
-
 
 |Response|
 |-----|
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[TxBlockObject](#schemetxblockobject)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[TxAddressObject](#schemetxaddressobject)|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
-
-## Transactions for Address
-
-<h3 id="getTransactionsAddress">GET /txs</h3>
-
-<a id="opIdGetTransactionsAddress"></a>
 
 > Code samples
 
@@ -2581,30 +2594,33 @@ System.out.println(response.toString());
 }
 ```
 
-*Get Transactions for an Address*
+## Transactions for multiple Addresses - GET
+
+<h3 id="getTransactionsAddresses">GET /addrs/< address1 >,< address2 >,...,< addressn >/txs</h3>
+
+<a id="opIdGetTransactionsAddresses"></a>
+
+*Get Transactions for multiple Addresses*
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|address|query|String|True|Address string|
+|addr|path|String Aray(address)|True|Array of comma separated address strings|
+|from|query|Integer|False|Starting number of tx|
+|to|query|Integer|False|Ending number of tx|
+|noAsm|query|Integer|False|Default is 0. If set to 1 Asm info will be ommitted for tx.|
+|noScriptSig|query|Integer|False|Default is 0. If set to 1 Script Signature info will be ommitted for tx.|
+|noSpent|query|Integer|False|Default is 0. If set to 1 Spent info will be ommitted for tx.|
 |token|query|String|True|Token obtained from the ChainRider service|
-
 
 |Response|
 |-----|
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[TxAddressObject](#schemetxaddressobject)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[TxAddressesObject](#schemetxaddressesobject)|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
-
-
-## Transactions for multiple Addresses - GET
-
-<h3 id="getTransactionsAddresses">GET /addrs/< address1 >,< address2 >,...,< addressn >/txs</h3>
-
-<a id="opIdGetTransactionsAddresses"></a>
 
 > Code samples
 
@@ -3591,18 +3607,23 @@ System.out.println(response.toString());
 }
 ```
 
-*Get Transactions for multiple Addresses*
+## Transactions for multiple Addresses - POST
+
+<h3 id="postTransactionsAddresses">POST /addrs/txs </h3>
+
+<a id="opIdpostTransactionsAddresses"></a>
+
+*Get Transactions for multiple Addresses by using POST method*
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|addr|path|String Aray(address)|True|Array of comma separated address strings|
-|from|query|Integer|False|Starting number of tx|
-|to|query|Integer|False|Ending number of tx|
-|noAsm|query|Integer|False|Default is 0. If set to 1 Asm info will be ommitted for tx.|
-|noScriptSig|query|Integer|False|Default is 0. If set to 1 Script Signature info will be ommitted for tx.|
-|noSpent|query|Integer|False|Default is 0. If set to 1 Spent info will be ommitted for tx.|
-|token|query|String|True|Token obtained from the ChainRider service|
-
+|addrs|body|String Aray(address)|True|Array of comma separated address strings|
+|from|body|Integer|False|Starting number of tx|
+|to|body|Integer|False|Ending number of tx|
+|noAsm|body|Integer|False|Default is 0. If set to 1 Asm info will be ommitted for tx.|
+|noScriptSig|body|Integer|False|Default is 0. If set to 1 Script Signature info will be ommitted for tx.|
+|noSpent|body|Integer|False|Default is 0. If set to 1 Spent info will be ommitted for tx.|
+|token|body|String|True|Token obtained from the ChainRider service|
 
 |Response|
 |-----|
@@ -3613,13 +3634,6 @@ System.out.println(response.toString());
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
-
-
-## Transactions for multiple Addresses - POST
-
-<h3 id="postTransactionsAddresses">POST /addrs/txs </h3>
-
-<a id="opIdpostTransactionsAddresses"></a>
 
 > Code samples
 
@@ -3892,36 +3906,28 @@ System.out.println(result);
 }
 ```
 
+## Send Raw Transaction
 
-*Get Transactions for multiple Addresses by using POST method*
+<h3 id="sendRawTx">POST /tx/send </h3>
+
+<a id="opIdSendRawTx"></a>
+
+*Send/broadcast Raw Transaction*
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|addrs|body|String Aray(address)|True|Array of comma separated address strings|
-|from|body|Integer|False|Starting number of tx|
-|to|body|Integer|False|Ending number of tx|
-|noAsm|body|Integer|False|Default is 0. If set to 1 Asm info will be ommitted for tx.|
-|noScriptSig|body|Integer|False|Default is 0. If set to 1 Script Signature info will be ommitted for tx.|
-|noSpent|body|Integer|False|Default is 0. If set to 1 Spent info will be ommitted for tx.|
+|rawtx|body|String|True|Raw signed transaction as hex string|
 |token|body|String|True|Token obtained from the ChainRider service|
-
 
 |Response|
 |-----|
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[TxAddressesObject](#schemetxaddressesobject)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[TxSendObject](#schemetxsendobject)|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
-
-
-## Send Raw Transaction
-
-<h3 id="sendRawTx">POST /tx/send </h3>
-
-<a id="opIdSendRawTx"></a>
 
 > Code samples
 
@@ -4048,22 +4054,3 @@ System.out.println(result);
   "txid": "c7736a0a0046d5a8cc61c8c3c2821d4d7517f5de2bc66a966011aaa79965ffba"
 }
 ```
-
-
-*Send/broadcast Raw Transaction*
-
-|Parameter|In|Type|Required|Description|
-|---|---|---|---|---|
-|rawtx|body|String|True|Raw signed transaction as hex string|
-|token|body|String|True|Token obtained from the ChainRider service|
-
-
-|Response|
-|-----|
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[TxSendObject](#schemetxsendobject)|
-|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
-|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|

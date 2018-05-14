@@ -2,7 +2,6 @@
 
 The ChainRider API uses the following error codes:
 
-
 Error Code | Meaning
 ---------- | -------
 400        | Bad Request

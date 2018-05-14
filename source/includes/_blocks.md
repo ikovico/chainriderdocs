@@ -8,6 +8,23 @@ This set of APIs provides insight in the blockchain on block level.
 
 <a id="opIdGetBlockByHash"></a>
 
+*Get Block by hash*
+
+|Parameter|In|Type|Required|Description|
+|---|---|---|---|---|
+|block_hash|path|String|True|Hash of the block|
+|token|query|String|True|Token obtained from the ChainRider service|
+
+|Response|
+|-----|
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[BlockObject](#schemeblockobject)|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
+
 > Code samples
 
 ```shell
@@ -255,29 +272,28 @@ System.out.println(response.toString());
 }
 ```
 
-*Get Block by hash*
+## Block hash by index
+
+<h3 id="getBlockByIndex">GET /blockindex/< block_index > </h3>
+
+<a id="opIdGetBlockByIndex"></a>
+
+*Get Block hash by index*
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|block_hash|path|String|True|Hash of the block|
+|block_index|path|String|True|Index of the block|
 |token|query|String|True|Token obtained from the ChainRider service|
-
 
 |Response|
 |-----|
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[BlockObject](#schemeblockobject)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[BlockHashObject](#schemeblockhashobject)|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
-
-## Block hash by index
-
-<h3 id="getBlockByIndex">GET /blockindex/< block_index > </h3>
-
-<a id="opIdGetBlockByIndex"></a>
 
 > Code samples
 
@@ -394,29 +410,28 @@ System.out.println(response.toString());
 }
 ```
 
-*Get Block hash by index*
+## Raw Block by hash
+
+<h3 id="getRawBlockByHash">GET /rawblock/< block_hash > </h3>
+
+<a id="opIdGetRawBlockByHash"></a>
+
+*Get Raw Block by hash*
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|block_index|path|String|True|Index of the block|
+|block_hash|path|String|True|Hash of the block|
 |token|query|String|True|Token obtained from the ChainRider service|
-
 
 |Response|
 |-----|
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[BlockHashObject](#schemeblockhashobject)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[RawBlockObject](#schemerawblockobject)|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
-
-## Raw Block by hash
-
-<h3 id="getRawBlockByHash">GET /rawblock/< block_hash > </h3>
-
-<a id="opIdGetRawBlockByHash"></a>
 
 > Code samples
 
@@ -533,29 +548,29 @@ System.out.println(response.toString());
 }
 ```
 
-*Get Raw Block by hash*
+## Blocks by date
+
+<h3 id="getBlocks">GET /blocks</h3>
+
+<a id="opIdGetBlocks"></a>
+
+*Get Blocks by date*
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|block_hash|path|String|True|Hash of the block|
+|limit|query|Intiger|False|Number of blocks to fetch, if omitted all blocks for specified day are returned|
+|blockDate|query|Date YYYY-MM-DD |False|If omitted current day is returned|
 |token|query|String|True|Token obtained from the ChainRider service|
-
 
 |Response|
 |-----|
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[RawBlockObject](#schemerawblockobject)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[BlocksPaginatedObject](#schemeblockspaginatedobject)|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
-
-## Blocks by date
-
-<h3 id="getBlocks">GET /blocks</h3>
-
-<a id="opIdGetBlocks"></a>
 
 > Code samples
 
@@ -881,22 +896,3 @@ System.out.println(response.toString());
     }
 }
 ```
-
-*Get Blocks by date*
-
-|Parameter|In|Type|Required|Description|
-|---|---|---|---|---|
-|limit|query|Intiger|False|Number of blocks to fetch, if omitted all blocks for specified day are returned|
-|blockDate|query|Date YYYY-MM-DD |False|If omitted current day is returned|
-|token|query|String|True|Token obtained from the ChainRider service|
-
-
-|Response|
-|-----|
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[BlocksPaginatedObject](#schemeblockspaginatedobject)|
-|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
-|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|

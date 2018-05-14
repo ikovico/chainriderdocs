@@ -8,6 +8,26 @@ This set of APIs provides insight into the blockchain on a transaction level.
 
 <a id="opIdGetAddressByHash"></a>
 
+*Get Address by hash*
+
+|Parameter|In|Type|Required|Description|
+|---|---|---|---|---|
+|address|path|String|True|Address string|
+|noTxList|query|Integer|False|Default 0; If set to 1 transaction list will be ommitted.|
+|from|query|Integer|False|Start transaction in the address tx list; Default 0|
+|to|query|Integer|False|End transaction in the address tx list|
+|token|query|String|True|Token obtained from the ChainRider service|
+
+|Response|
+|-----|
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[AddressObject](#schemeaddressobject)|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
+
 > Code samples
 
 ```shell
@@ -213,32 +233,28 @@ System.out.println(response.toString());
 }
 ```
 
-*Get Address by hash*
+## Address Balance
+
+<h3 id="getAddressBalanceByHash">GET /addr/< address >/balance </h3>
+
+<a id="opIdGetAddressBalanceByHash"></a>
+
+*Get Address balance in duffs*
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |address|path|String|True|Address string|
-|noTxList|query|Integer|False|Default 0; If set to 1 transaction list will be ommitted.|
-|from|query|Integer|False|Start transaction in the address tx list; Default 0|
-|to|query|Integer|False|End transaction in the address tx list|
 |token|query|String|True|Token obtained from the ChainRider service|
-
 
 |Response|
 |-----|
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[AddressObject](#schemeaddressobject)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|Integer representing balance in duffs|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
-
-## Address Balance
-
-<h3 id="getAddressBalanceByHash">GET /addr/< address >/balance </h3>
-
-<a id="opIdGetAddressBalanceByHash"></a>
 
 > Code samples
 
@@ -338,29 +354,28 @@ System.out.println(response.toString());
 0
 ```
 
-*Get Address balance in duffs*
+## Address Total Received
+
+<h3 id="getAddressTotalReceivedByHash">GET /addr/< address >/totalReceived </h3>
+
+<a id="opIdGetAddressTotalReceivedByHash"></a>
+
+*Get Total Received amount in duffs for an Address*
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |address|path|String|True|Address string|
 |token|query|String|True|Token obtained from the ChainRider service|
 
-
 |Response|
 |-----|
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|Integer representing balance in duffs|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|Integer representing total received amount in duffs|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
-
-## Address Total Received
-
-<h3 id="getAddressTotalReceivedByHash">GET /addr/< address >/totalReceived </h3>
-
-<a id="opIdGetAddressTotalReceivedByHash"></a>
 
 > Code samples
 
@@ -460,29 +475,28 @@ System.out.println(response.toString());
 4339433988
 ```
 
-*Get Total Received amount in duffs for an Address*
+## Address Total Sent
+
+<h3 id="getAddressTotalSentByHash">GET /addr/< address >/totalSent </h3>
+
+<a id="opIdGetAddressTotalSentByHash"></a>
+
+*Get Total Sent amount in duffs for an Address*
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |address|path|String|True|Address string|
 |token|query|String|True|Token obtained from the ChainRider service|
 
-
 |Response|
 |-----|
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|Integer representing total received amount in duffs|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|Integer representing total sent amount in duffs|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
-
-## Address Total Sent
-
-<h3 id="getAddressTotalSentByHash">GET /addr/< address >/totalSent </h3>
-
-<a id="opIdGetAddressTotalSentByHash"></a>
 
 > Code samples
 
@@ -582,29 +596,28 @@ System.out.println(response.toString());
 4339433988
 ```
 
-*Get Total Sent amount in duffs for an Address*
+## Address Unconfirmed Balance
+
+<h3 id="getAddressUnconfirmedBalanceByHash">GET /addr/< address >/unconfirmedBalance </h3>
+
+<a id="opIdGetAddressUnconfirmedBalanceByHash"></a>
+
+*Get Unconfirmed Balance for an Address*
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |address|path|String|True|Address string|
 |token|query|String|True|Token obtained from the ChainRider service|
 
-
 |Response|
 |-----|
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|Integer representing total sent amount in duffs|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|Integer representing unconfirmed balance in duffs|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
-
-## Address Unconfirmed Balance
-
-<h3 id="getAddressUnconfirmedBalanceByHash">GET /addr/< address >/unconfirmedBalance </h3>
-
-<a id="opIdGetAddressUnconfirmedBalanceByHash"></a>
 
 > Code samples
 
@@ -703,21 +716,3 @@ System.out.println(response.toString());
 // Response example
 0
 ```
-
-*Get Unconfirmed Balance for an Address*
-
-|Parameter|In|Type|Required|Description|
-|---|---|---|---|---|
-|address|path|String|True|Address string|
-|token|query|String|True|Token obtained from the ChainRider service|
-
-
-|Response|
-|-----|
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|Integer representing unconfirmed balance in duffs|
-|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
-|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
