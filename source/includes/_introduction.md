@@ -35,6 +35,7 @@ Dash             | Testnet    | `https://api-dot-chainrider.io/v1/dash/testnet`
 ## Token usage
 
 The following API allows you to check current status of your web token including information about token usage on hourly and daily base.
+This API does not follow abovementioned URL pattern as the same token is used for all resources.
 
 <h3 id="postCheckToken">POST /v1/ratelimit/ </h3>
 

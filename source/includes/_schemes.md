@@ -12,7 +12,7 @@
 |message|JSON|Message object containing all relevant token usage data.|
 |hour|[Usage object](#schemeusageobject)|Provides info regarding API usage for current hour|
 |day|[Usage object](#schemeusageobject)|Provides info regarding API usage for current day|
-|forward[Usage object](#schemeusageobject)|Provides info regarding payment forward API usage for current month|
+|forward|[Usage object](#schemeusageobject)|Provides info regarding payment forward API usage for current month|
 
 > Example
 
