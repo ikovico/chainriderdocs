@@ -10,20 +10,20 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - java
 
 toc_footers:
-  - <a href='https://chainrider.io/'>Sign Up/Login</a>
-  - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
+  - <a class="action-btn" href='https://chainrider.io/'>Log in</a>
+  - <a class="link" href='https://github.com/lord/slate'>This documentation is powered by <em>Slate</em></a>
 
 includes:
-  - introduction
+  # - introduction
   - blockchain
-  - blocks
-  - transactions
-  - addresses
-  - unspentOutputs
-  - paymentForward
+  # - blocks
+  # - transactions
+  # - addresses
+  # - unspentOutputs
+  # - paymentForward
   - schemes
-  - errors
-  - support
+  # - errors
+  # - support
 
 search: true
 ---

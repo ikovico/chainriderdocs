@@ -28,3 +28,21 @@ def toc_data(page_content)
   end
   headers
 end
+
+def data_parse(page_content)
+  html_doc = Nokogiri::HTML::DocumentFragment.parse(page_content)
+  return page_content.gsub(/<blockquote>/,"</div><div class='code'><blockquote>").gsub(/<\/pre><h1/,"</pre></div></div><div class='section'><div class='description'><h1").gsub(/<\/pre><h2/,"</pre></div></div><div class='section'><div class='description'><h2").concat('</div></div>').prepend('<div class="section"><div class="description shadow">').gsub(/<\/p>\n<h2/,"</p></div></div><div class='section'><div class='description'><h2")
+end
+
+
+# h2
+# h3
+# p
+# p
+# <div class="code">
+#   block
+#   pre
+#   pre
+#   pre
+# </div>
+# h2

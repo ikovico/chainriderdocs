@@ -1,5 +1,5 @@
-
 # Introduction
+
 ## About the platform
 
 ChainRider is a cloud service providing set of APIs for [DASH](https://www.dash.org/) digital currency management and exploring. The full benefits of the platform could be harvested by integrating with ChainRider API which is [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) based API. The main purpose of the API is to allow you to easily and securely explore DASH blockchain, receive different type of notifications from the DASH blockchain based on predefined events, forward your DASH digital currency payments, set up a payment processor, etc.

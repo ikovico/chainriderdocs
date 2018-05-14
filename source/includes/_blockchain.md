@@ -1,3 +1,5 @@
+
+
 # Blockchain APIs
 
 The set of APIs below provides insight into the network status and general information about the corresponding blockchain selected by specifying endpoint for digital currency and blockchain type.
@@ -15,8 +17,8 @@ The set of APIs below provides insight into the network status and general infor
 |q|query|String|True|Please use `geInfo` as value|
 |token|query|String|True|Token obtained from the ChainRider service|
 
-|Response|
-|-----|
+
+<h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -24,6 +26,7 @@ The set of APIs below provides insight into the network status and general infor
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
+
 
 > Code samples
 
@@ -238,8 +241,7 @@ System.out.println(response.toString());
 |q|query|String|True|Please use `getDifficulty` as value|
 |token|query|String|True|Token obtained from the ChainRider service|
 
-|Response|
-|-----|
+<h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -376,8 +378,7 @@ System.out.println(response.toString());
 |q|query|String|True|Please use `getBestBlockHash` as value|
 |token|query|String|True|Token obtained from the ChainRider service|
 
-|Response|
-|-----|
+<h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -514,8 +515,7 @@ System.out.println(response.toString());
 |q|query|String|True|Please use `getLastBlockHash` as value|
 |token|query|String|True|Token obtained from the ChainRider service|
 
-|Response|
-|-----|
+<h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -657,8 +657,7 @@ System.out.println(response.toString());
 |---|---|---|---|---|
 |token|query|String|True|Token obtained from the ChainRider service|
 
-|Response|
-|-----|
+<h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -824,8 +823,7 @@ System.out.println(response.toString());
 |---|---|---|---|---|
 |token|query|String|True|Token obtained from the ChainRider service|
 
-|Response|
-|-----|
+<h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1160,8 +1158,7 @@ System.out.println(response.toString());
 |proposal_hash|path|String|True|Hash of the proposal|
 |token|query|String|True|Token obtained from the ChainRider service|
 
-|Response|
-|-----|
+<h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
