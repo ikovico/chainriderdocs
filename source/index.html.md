@@ -22,8 +22,8 @@ includes:
   - unspentOutputs
   - paymentForward
   - schemes
-  # - errors
-  # - support
+  - errors
+  - support
 
 search: true
 ---
