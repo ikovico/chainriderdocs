@@ -31,7 +31,7 @@ end
 
 def data_parse(page_content)
   html_doc = Nokogiri::HTML::DocumentFragment.parse(page_content)
-  return page_content.gsub(/<\/p>(.*)(\n)*(.*)<blockquote>/,"</p></div><div class='code'><blockquote>").gsub(/<\/table>(.*)(\n)*(.*)<blockquote>/,"</table></div><div class='code'><blockquote>").gsub(/<\/pre><\/div><div class="code"><blockquote>/,"</pre><blockquote>").gsub(/<\/pre>(.*)(\n)*(.*)<h1/,"</pre></div></div><div class='section'><div class='description'><h1").gsub(/<\/pre>(.*)(\n)*(.*)<h2/,"</pre></div></div><div class='section'><div class='description'><h2").concat('</div></div>').prepend('<div class="section"><div class="description shadow">').gsub(/<\/p>\n<h2/,"</p></div></div><div class='section'><div class='description'><h2")
+  return page_content.gsub(/<\/p>(.*)(\n)*(.*)<blockquote>/,"</p></div><div class='code'><blockquote>").gsub(/<\/table>(.*)(\n)*(.*)<blockquote>/,"</table></div><div class='code'><blockquote>").gsub(/<\/pre><\/div><div class="code"><blockquote>/,"</pre><blockquote>").gsub(/<\/table>(.*)(\n)*(.*)<h1/,"</table></div></div><div class='section'><div class='description'><h1").gsub(/<\/pre>(.*)(\n)*(.*)<h1/,"</pre></div></div><div class='section'><div class='description'><h1").gsub(/<\/pre>(.*)(\n)*(.*)<h2/,"</pre></div></div><div class='section'><div class='description'><h2").concat('</div></div>').prepend('<div class="section"><div class="description shadow">').gsub(/<\/p>(.*)(\n)*<h2/,"</p></div></div><div class='section'><div class='description'><h2")
 end
 
 
