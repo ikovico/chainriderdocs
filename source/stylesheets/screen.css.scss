@@ -396,9 +396,7 @@ html, body {
   max-width: 100%;
   width: calc((100% - (230px + 4rem)) * 0.42);
   height: 50px;
-  // position: fixed;
-  // top: 0;
-  // padding:10px;
+  border-bottom: 1px solid #ddd;
   font-weight: bold;
   a {
     display: block;
@@ -568,6 +566,8 @@ html, body {
 
     td {
       padding: 10px;
+      color: #666767;
+      font-size: 14px;
     }
 
     //CHANGED
@@ -601,6 +601,7 @@ html, body {
   p, li, dt, dd {
     line-height: 1.6;
     margin-top: 0;
+    color: #666767;
   }
 
   img {
@@ -677,15 +678,16 @@ html, body {
     display: flex!important;
     justify-content: flex-start;
     align-items: stretch;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     box-sizing: border-box;
 
     .description {
       box-sizing: border-box;
       width: 52%;
-      margin: 0 2.5%;
+      margin: 0 auto;
       padding: 0 2rem 2rem;
       background: #fff;
+      flex-grow: 1;
       box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
       // height: 100%;
 
@@ -708,10 +710,10 @@ html, body {
       h3 {
         display: inline-block;
         padding: 0.4rem 1rem;
-        background-color: #0f0;
+        background-color: #a6e22e;
         border-radius: 20px;
         color: #fff;
-        font-weight: 500;
+        font-weight: bold;
       }
 
       table {
@@ -731,13 +733,19 @@ html, body {
       }
     }
 
+    .description:only-child {
+      min-width: 52%;
+    }
+
     .code {
       width: 43%;
+      min-width: 43%;
       z-index: 10;
       display: flex;
       flex-direction: column;
       box-sizing: border-box;
-
+      margin-left: 2.5%;
+      box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
       pre {
         flex-grow: 1;
       }
@@ -894,7 +902,31 @@ html, body {
   }
 
   .toc-wrapper .lang-selector {
-    display: none;
+    display: flex;
+    width: 96%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding: 0;
+    margin: 0 auto;
+    background: none;
+
+    a {
+      flex-grow: 1;
+      min-width: 80px;
+      margin: 0 5px;
+      font-size: 12px;
+      padding: 0;
+      line-height: 40px;
+      height: 40px;
+      background-color: #fff;
+      color: #0E67AE;
+
+      &.active {
+        background-color: #0E67AE;
+        color: #fff;
+        border-bottom: none;
+      }
+    }
   }
 
   .page-wrapper .lang-selector {
@@ -947,6 +979,7 @@ html, body {
 
         .code {
           width: 100%;
+          margin: 0 auto;
         }
       }
     }
