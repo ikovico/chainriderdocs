@@ -32,6 +32,13 @@ Digital currency | Blockchain | Base URL
 Dash             | Main       | `https://api-dot-chainrider.io/v1/dash/main`
 Dash             | Testnet    | `https://api-dot-chainrider.io/v1/dash/testnet`
 
+
+## Smart Contracts
+
+[Chainrider]() enables usage thru [Oriclize](http://www.oraclize.it/) service. For POST one needs to make sure to add "\n" prior to data payload which tells Oraclize to send data in application/json (to be in line with our API specs) format instead of application/url-encoded format which is default one (well known practice).
+In order to support TLSNotaryProof (retrieving content from an HTTPS web page) one needs to use [https://api-dot-vizlorepaymentprocessor.appspot.com]() instead of [https://api.chainrider.io]() domain in requests. Bold info might be stressed within documentation of ChainRider.
+
+
 ## Token usage
 
 The following API allows you to check current status of your web token including information about token usage on hourly and daily base.
