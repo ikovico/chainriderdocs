@@ -4,7 +4,7 @@ Data and services provided by ChainRider are often invaluable for different dist
 
 ## Oraclize support
 
-Chainrider supports API requests thru [Oriclize](http://www.oraclize.it/) service. This allows you to fetch any data provided by ChainRider APIs in your smart contract or create payment forwards from within the smart contract.
+Chainrider supports API requests thru [Oraclize](http://www.oraclize.it/) service. This allows you to fetch any data provided by ChainRider APIs in your smart contract or create payment forwards from within the smart contract.
 
 **Important notice**
 
