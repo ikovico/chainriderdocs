@@ -4061,3 +4061,154 @@ System.out.println(result);
   "txid": "c7736a0a0046d5a8cc61c8c3c2821d4d7517f5de2bc66a966011aaa79965ffba"
 }
 ```
+
+
+## Instant Send Transaction
+
+<h3 id="sendRawTx">POST /tx/sendix </h3>
+
+<a id="opIdSendRawTx"></a>
+
+*Send/broadcast Raw Transaction*
+
+|Parameter|In|Type|Required|Description|
+|---|---|---|---|---|
+|rawtx|body|String|True|Raw signed transaction as hex string|
+|token|body|String|True|Token obtained from the ChainRider service|
+
+<h3 id="response">Response</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[TxSendObject](#schemetxsendobject)|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
+
+<a id="divider"></a>
+
+> Code samples
+
+```shell
+curl -X POST https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/tx/sendix \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  -D '<body_here>'
+```
+
+```php
+<?php
+    $body="<body_here>";
+    $opts = array('http' =>
+      array(
+        'method'  => 'POST',
+        'header'  => Content-Type: application/json\r\nAccept: application/json\r\n",
+        'content' => $body
+      )
+    );
+    $context  = stream_context_create($opts);
+    $URL = "https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/tx/sendix";
+    $result = file_get_contents($url, false, $context, -1, 40000);
+);
+
+
+$context = stream_context_create($aHTTP);
+    $response = file_get_contents($URL, false, $context);
+?>
+
+```
+
+```javascript
+var headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json',
+};
+
+var requestBody=<body_here>
+
+$.ajax({
+  url: 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/tx/sendix',
+  method: 'POST',
+  headers: headers,
+  data: requestBody,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json'
+}
+
+result = RestClient.post 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/tx/sendix',
+         payload:<body_here>, headers: headers
+
+p JSON.parse(result)
+```
+
+```python
+import requests
+
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+r = requests.post('https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/tx/sendix',
+                  data=<body_here>, params={}, headers = headers)
+
+print r.json()
+```
+
+```java
+URL obj = new URL("https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/tx/sendix");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestProperty("Accept", "application/json");
+con.setRequestProperty("Content-Type", "application/json");
+con.setDoOutput(true);
+con.setRequestMethod("POST");
+OutputStream os = con.getOutputStream();
+OutputStreamWriter osw = new OutputStreamWriter(os, "UTF-8");
+osw.write("<body_here>");
+osw.flush();
+osw.close();
+os.close();  //don't forget to close the OutputStream
+httpCon.connect();
+
+
+//read the inputstream and print it
+String result;
+BufferedInputStream bis = new BufferedInputStream(con.getInputStream());
+ByteArrayOutputStream buf = new ByteArrayOutputStream();
+int result2 = bis.read();
+while(result2 != -1) {
+    buf.write((byte) result2);
+    result2 = bis.read();
+}
+result = buf.toString();
+System.out.println(result);
+```
+
+> Body parameter
+
+
+```json
+{
+  "rawtx": "01000000017b1eabe0209b1fe794124575ef807057c77ada2138ae4fa8d6c4de0398a14f3f00000000494830450221008949f0cb400094ad2b5eb399d59d01c14d73d8fe6e96df1a7150deb388ab8935022079656090d7f6bac4c9a94e0aad311a4268e082a725f8aeae0573fb12ff866a5f01ffffffff01f0ca052a010000001976a914cbc20a7664f2f69e5355aa427045bc15e7c6c77288ac00000000",
+  "token": <TOKEN>
+}
+```
+
+> Example response
+
+```json
+{
+  "txid": "c7736a0a0046d5a8cc61c8c3c2821d4d7517f5de2bc66a966011aaa79965ffba"
+}
+```
