@@ -15,6 +15,7 @@ toc_footers:
 
 includes:
   - introduction
+  - smartcontracts
   - blockchain
   - blocks
   - transactions
