@@ -22,6 +22,7 @@ includes:
   - addresses
   - unspentOutputs
   - paymentForward
+  - events
   - schemes
   - errors
   - support
