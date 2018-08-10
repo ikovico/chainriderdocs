@@ -29,6 +29,7 @@ Once created, payment forward rule will continue to forward payments in a predef
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[PaymentForwardObject](#schemepaymentforwardobject)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request|{"error": "error description"}|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
@@ -187,6 +188,7 @@ System.out.println(result);
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[PaymentForwardObject](#schemepaymentforwardobject)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request|{"error": "error description"}|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
@@ -429,6 +431,7 @@ System.out.println(response.toString());
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|Array [PaymentForwardObject](#schemepaymentforwardobject)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request|{"error": "error description"}|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
@@ -678,7 +681,7 @@ System.out.println(response.toString());
 
 ## Delete Payment Forward
 
-<h3 id="deletePaymentForward3">DELETE /paymentforward/< paymentforward_id > </h3>
+<h3 id="deletePaymentForward">DELETE /paymentforward/< paymentforward_id > </h3>
 
 <a id="opIdDeletePaymentForward"></a>
 
@@ -694,6 +697,7 @@ System.out.println(response.toString());
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|{}|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request|{"error": "error description"}|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
@@ -797,4 +801,3 @@ System.out.println(response.toString());
 // Response example
 {}
 ```
-

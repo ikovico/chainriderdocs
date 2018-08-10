@@ -1272,6 +1272,56 @@
 }
 ```
 
+<h2 id="tocEventObject">EventObject</h2>
+
+<a id="schemeeventobject"></a>
+
+|Name|Type|Description|
+|---|---|---|
+|event_id|String|Event unique id|
+|event_type|String|Type of the event - ENUM {'ADDRESS', 'BLOCK', 'TRANSACTION', 'IX_TRANSACTION'}. Please refer to [Event Types](#eventtypesheader) for more details.|
+|callback_url|String|The URL to which the notification will be posted once the event is triggered. The notification payload is delivered in JSON format by using method POST. The response status code must be set to 200 in order to acknowledge the notification delivery.|
+|address|String|This parameter is present for `ADDRESS` event types. For other event types it's set to empty string. It represents an address for which you want to be notified on balance change.|
+|confirmations|Integer|This parameter is present for `ADDRESS` event types. For other types it's set to 0. In case it's larger than 0, you will receive notifications for detected transactions involving specified address each time until detected transaction receives specified number of confirmations.|
+|retry|Integer|How many retry cycles have been attempted. When it reaches 112 the event is disabled|
+|created_date|String|Datetime when event has been created. Format: YYYY-mm-DDTHH:MM:SS.MMMZ|
+|enabled|Integer|By default when an event is created it's set to 1. In case maximum number of retry cycles is reached, event is disabled and it's set to 0. If enabled is 0, event will not generate/deliver new notifications|
+
+<a id="divider"></a>
+
+> Example
+
+```json
+{
+    "event_id": "ZjWQQkQzv91XqUiskvXv5wlK8bETvpdx",
+    "event_type": "BLOCK",
+    "callback_url": "http://blockvlf.requestcatcher.com/test",
+    "address": "",
+    "confirmations": 0,
+    "retry": 0,
+    "created_date": "2018-08-10T07:28:35.000Z",
+    "enabled": 1
+}
+```
+
+<h2 id="tocEventIdObject">EventIdObject</h2>
+
+<a id="schemeeventidobject"></a>
+
+|Name|Type|Description|
+|---|---|---|
+|event_id|String|Event unique id|
+
+<a id="divider"></a>
+
+> Example
+
+```json
+{
+    "event_id": "ZjWQQkQzv91XqUiskvXv5wlK8bETvpdx"
+}
+```
+
 <h2 id="tocProcessedTxObject">ProcessedTxObject</h2>
 
 <a id="schemeprocessedtxobject"></a>

@@ -4,6 +4,8 @@ Blockchains are extremely vivid distributed ledgers with large number of events 
 
 ## Event types
 
+<a id="eventtypesheader"></a>
+
 Following event types are supported by ChainRider:
 
 |Event type|Description|
@@ -30,17 +32,18 @@ On failed notification delivery, each delivery is attempted 6 times with exponen
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|event_type|body|String|True|Type of the event. Please refer to Event Types for more details.|
+|event_type|body|String|True|Type of the event - ENUM {'ADDRESS', 'BLOCK', 'TRANSACTION', 'IX_TRANSACTION'}. Please refer to [Event Types](#eventtypesheader) for more details.|
 |callback_url|body|String|True|The URL to which the notification will be posted once the event is triggered. The notification payload is delivered in JSON format by using method POST. The response status code must be set to 200 in order to acknowledge the notification delivery.|
 |address|body|String|False|This parameter is required if you are creating `ADDRESS` event type. It represents an address for which you want to be notified on balance change.|
-|confirmations|body|Integer|False|Test|
+|confirmations|body|Integer|False|Optional parameter with default value set to 0 wile max value is 9. Confirmations parameter should only be set if you are creating `ADDRESS` event type. In case it's set, you will receive notifications for detected transactions involving specified address each time until detected transaction receives specified number of confirmations.|
 |token|body|String|True|Token obtained from the ChainRider service|
 
 <h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[PaymentForwardObject](#schemepaymentforwardobject)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[EventIdObject](#schemeeventidobject)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request|{"error": "error description"}|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
@@ -50,7 +53,7 @@ On failed notification delivery, each delivery is attempted 6 times with exponen
 > Code samples
 
 ```shell
-curl -X POST https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/paymentforward \
+curl -X POST https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/events \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -D '<body_here>'
@@ -67,7 +70,7 @@ curl -X POST https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/paymen
       )
     );
     $context  = stream_context_create($opts);
-    $URL = "https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/paymentforward";
+    $URL = "https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/events";
     $result = file_get_contents($url, false, $context, -1, 40000);
 );
 
@@ -87,7 +90,7 @@ var headers = {
 var requestBody=<body_here>
 
 $.ajax({
-  url: 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/paymentforward',
+  url: 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/events',
   method: 'POST',
   headers: headers,
   data: requestBody,
@@ -106,7 +109,7 @@ headers = {
   'Accept' => 'application/json'
 }
 
-result = RestClient.post 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/paymentforward',
+result = RestClient.post 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/events',
          payload:<body_here>, headers: headers
 
 p JSON.parse(result)
@@ -120,14 +123,14 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.post('https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/paymentforward',
+r = requests.post('https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/events',
                   data=<body_here>, params={}, headers = headers)
 
 print r.json()
 ```
 
 ```java
-URL obj = new URL("https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/paymentforward");
+URL obj = new URL("https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/events");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestProperty("Accept", "application/json");
 con.setRequestProperty("Content-Type", "application/json");
@@ -160,11 +163,11 @@ System.out.println(result);
 
 ```json
 {
-    "destination_address": "XvtUXjA3UBnGvsbV7MDs4Duu411CfofDEK",
+    "event_type": "ADDRESS",
     "callback_url": "http://blockchainvlf.requestcatcher.com/test",
     "token": <TOKEN>,
-    "commission_fee_percent": 0.1,
-    "commission_address": "XtFU7dFv8b7JeW7eG9yYXc28uSYUQqiNCb"
+    "address": "yiVCptUPyxLLxt7dndcLrUjYwt3W16hwQ9",
+    "confirmations": 3
 }
 ```
 
@@ -172,33 +175,29 @@ System.out.println(result);
 
 ```json
 {
-    "paymentforward_id":"2pRxUXWLXQlwABUUPmuo9xi1Ghaqa0Lj",
-    "payment_address":"XhhqcCVhSmkETV6Q55RFskgASyUd9Seuwv",
-    "destination_address":"XvtUXjA3UBnGvsbV7MDs4Duu411CfofDEK",
-    "commission_address":"XtFU7dFv8b7JeW7eG9yYXc28uSYUQqiNCb",
-    "commission_fee_percent":0.1,
-    "mining_fee_duffs":10000
+    "event_id":"GCeUpByO6V08eUgYB1mg9GSXPgN77LUV"
 }
 ```
 
 ## Get Event by Id
 
-<h3 id="getPaymentForwardById">GET /paymentforward/< paymentforward_id > </h3>
+<h3 id="getEventById">GET /events/< event_id > </h3>
 
-<a id="opIdGetPaymentForwardById"></a>
+<a id="opIdGetEventById"></a>
 
-*Get Payment Forward by ID for corresponding token*
+*Get Event by ID for corresponding token*
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|paymentforward_id|path|String|True|Unique Payment Forward ID|
+|event_id|path|String|True|Unique Event ID|
 |token|query|String|True|Token obtained from the ChainRider service|
 
 <h3 id="response">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[PaymentForwardObject](#schemepaymentforwardobject)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[EventObject](#schemeeventobject)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request|{"error": "error description"}|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
@@ -208,36 +207,26 @@ System.out.println(result);
 > Code samples
 
 ```shell
-curl -X GET https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/paymentforward/<PAYMENTFORWARD_ID>?token=<TOKEN> \
+curl -X GET https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/events/<EVENT_ID>?token=<TOKEN> \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json'
 
 # Response example
 {
-    "paymentforward_id":"XozC3GyOfhEGwD6zK8rIvi0HU6ZwqAuU",
-    "payment_address":"XcyXgQzCnKsWpK2YSjoRYwM1vWB6GvWQ2u",
-    "destination_address":"XvtUXjA3UBnGvsbV7MDs4Duu411CfofDEK",
-    "commission_address":"XtFU7dFv8b7JeW7eG9yYXc28uSYUQqiNCb",
-    "commission_fee_percent":0.1,
-    "commission_fee_duffs":null,
-    "created_date":"2018-04-13T11:01:46.000Z",
-    "callback_url":"https://webhook.site/175c954d-6595-4bf8-a518-990f5e876fa7",
-    "mining_fee_duffs":10000,
-    "processed_txs":
-    [
-        {
-            "input_transaction_hash":"6e3648463d26ee5af215fa3b61e976bf06cc7b1c6d2c034253967be65fc1c889",
-            "received_amount_duffs":5000000,
-            "transaction_hash":"7c89d485e06f295de6fb1d676311340be35148dfc1a54de13b57e785227da78f",
-            "processed_date":"2018-04-13T11:04:19.000Z"
-        }
-    ]
+    "event_id": "YyZMc3zVNrCsgMi9BWv4ckfXj4R4aW76",
+    "event_type": "ADDRESS",
+    "callback_url": "http://addrvlf.requestcatcher.com/test",
+    "address": "yiVCptUPyxLLxt7dndcLrUjYwt3W16hwQ9",
+    "confirmations": 4,
+    "retry": 0,
+    "created_date": "2018-08-10T07:28:00.000Z",
+    "enabled": 1
 }
 ```
 
 ```php
 <?php
-$URL = "https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/paymentforward/<PAYMENTFORWARD_ID>?token=<TOKEN>";
+$URL = "https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/events/<EVENT_ID>?token=<TOKEN>";
 
 $aHTTP['http']['method']  = 'GET';
 
@@ -249,24 +238,14 @@ $response = file_get_contents($URL, false, $context);
 
 // Response example
 {
-    "paymentforward_id":"XozC3GyOfhEGwD6zK8rIvi0HU6ZwqAuU",
-    "payment_address":"XcyXgQzCnKsWpK2YSjoRYwM1vWB6GvWQ2u",
-    "destination_address":"XvtUXjA3UBnGvsbV7MDs4Duu411CfofDEK",
-    "commission_address":"XtFU7dFv8b7JeW7eG9yYXc28uSYUQqiNCb",
-    "commission_fee_percent":0.1,
-    "commission_fee_duffs":null,
-    "created_date":"2018-04-13T11:01:46.000Z",
-    "callback_url":"https://webhook.site/175c954d-6595-4bf8-a518-990f5e876fa7",
-    "mining_fee_duffs":10000,
-    "processed_txs":
-    [
-        {
-            "input_transaction_hash":"6e3648463d26ee5af215fa3b61e976bf06cc7b1c6d2c034253967be65fc1c889",
-            "received_amount_duffs":5000000,
-            "transaction_hash":"7c89d485e06f295de6fb1d676311340be35148dfc1a54de13b57e785227da78f",
-            "processed_date":"2018-04-13T11:04:19.000Z"
-        }
-    ]
+    "event_id": "YyZMc3zVNrCsgMi9BWv4ckfXj4R4aW76",
+    "event_type": "ADDRESS",
+    "callback_url": "http://addrvlf.requestcatcher.com/test",
+    "address": "yiVCptUPyxLLxt7dndcLrUjYwt3W16hwQ9",
+    "confirmations": 4,
+    "retry": 0,
+    "created_date": "2018-08-10T07:28:00.000Z",
+    "enabled": 1
 }
 ?>
 ```
@@ -278,7 +257,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/paymentforward/<PAYMENTFORWARD_ID>?token=<TOKEN>',
+  url: 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/events/<EVENT_ID>?token=<TOKEN>',
   method: 'get',
   headers: headers,
   success: function(data) {
@@ -288,24 +267,14 @@ $.ajax({
 
 // Response example
 {
-    "paymentforward_id":"XozC3GyOfhEGwD6zK8rIvi0HU6ZwqAuU",
-    "payment_address":"XcyXgQzCnKsWpK2YSjoRYwM1vWB6GvWQ2u",
-    "destination_address":"XvtUXjA3UBnGvsbV7MDs4Duu411CfofDEK",
-    "commission_address":"XtFU7dFv8b7JeW7eG9yYXc28uSYUQqiNCb",
-    "commission_fee_percent":0.1,
-    "commission_fee_duffs":null,
-    "created_date":"2018-04-13T11:01:46.000Z",
-    "callback_url":"https://webhook.site/175c954d-6595-4bf8-a518-990f5e876fa7",
-    "mining_fee_duffs":10000,
-    "processed_txs":
-    [
-        {
-            "input_transaction_hash":"6e3648463d26ee5af215fa3b61e976bf06cc7b1c6d2c034253967be65fc1c889",
-            "received_amount_duffs":5000000,
-            "transaction_hash":"7c89d485e06f295de6fb1d676311340be35148dfc1a54de13b57e785227da78f",
-            "processed_date":"2018-04-13T11:04:19.000Z"
-        }
-    ]
+    "event_id": "YyZMc3zVNrCsgMi9BWv4ckfXj4R4aW76",
+    "event_type": "ADDRESS",
+    "callback_url": "http://addrvlf.requestcatcher.com/test",
+    "address": "yiVCptUPyxLLxt7dndcLrUjYwt3W16hwQ9",
+    "confirmations": 4,
+    "retry": 0,
+    "created_date": "2018-08-10T07:28:00.000Z",
+    "enabled": 1
 }
 ```
 
@@ -318,31 +287,21 @@ headers = {
   'Accept':'application/json'
 }
 
-result = RestClient.get 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/paymentforward/<PAYMENTFORWARD_ID>',
+result = RestClient.get 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/events/<EVENT_ID>',
          params: {'token': <TOKEN>}, headers: headers
 
 p JSON.parse(result)
 
 # Response example
 {
-    "paymentforward_id":"XozC3GyOfhEGwD6zK8rIvi0HU6ZwqAuU",
-    "payment_address":"XcyXgQzCnKsWpK2YSjoRYwM1vWB6GvWQ2u",
-    "destination_address":"XvtUXjA3UBnGvsbV7MDs4Duu411CfofDEK",
-    "commission_address":"XtFU7dFv8b7JeW7eG9yYXc28uSYUQqiNCb",
-    "commission_fee_percent":0.1,
-    "commission_fee_duffs":null,
-    "created_date":"2018-04-13T11:01:46.000Z",
-    "callback_url":"https://webhook.site/175c954d-6595-4bf8-a518-990f5e876fa7",
-    "mining_fee_duffs":10000,
-    "processed_txs":
-    [
-        {
-            "input_transaction_hash":"6e3648463d26ee5af215fa3b61e976bf06cc7b1c6d2c034253967be65fc1c889",
-            "received_amount_duffs":5000000,
-            "transaction_hash":"7c89d485e06f295de6fb1d676311340be35148dfc1a54de13b57e785227da78f",
-            "processed_date":"2018-04-13T11:04:19.000Z"
-        }
-    ]
+    "event_id": "YyZMc3zVNrCsgMi9BWv4ckfXj4R4aW76",
+    "event_type": "ADDRESS",
+    "callback_url": "http://addrvlf.requestcatcher.com/test",
+    "address": "yiVCptUPyxLLxt7dndcLrUjYwt3W16hwQ9",
+    "confirmations": 4,
+    "retry": 0,
+    "created_date": "2018-08-10T07:28:00.000Z",
+    "enabled": 1
 }
 ```
 
@@ -354,36 +313,26 @@ headers = {
   'Accept':'application/json',
 }
 
-r = requests.get('https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/paymentforward/<PAYMENTFORWARD_ID>',
+r = requests.get('https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/events/<EVENT_ID>',
                   params={'token': <TOKEN>}, headers = headers)
 
 print r.json()
 
 # Response example
 {
-    "paymentforward_id":"XozC3GyOfhEGwD6zK8rIvi0HU6ZwqAuU",
-    "payment_address":"XcyXgQzCnKsWpK2YSjoRYwM1vWB6GvWQ2u",
-    "destination_address":"XvtUXjA3UBnGvsbV7MDs4Duu411CfofDEK",
-    "commission_address":"XtFU7dFv8b7JeW7eG9yYXc28uSYUQqiNCb",
-    "commission_fee_percent":0.1,
-    "commission_fee_duffs":null,
-    "created_date":"2018-04-13T11:01:46.000Z",
-    "callback_url":"https://webhook.site/175c954d-6595-4bf8-a518-990f5e876fa7",
-    "mining_fee_duffs":10000,
-    "processed_txs":
-    [
-        {
-            "input_transaction_hash":"6e3648463d26ee5af215fa3b61e976bf06cc7b1c6d2c034253967be65fc1c889",
-            "received_amount_duffs":5000000,
-            "transaction_hash":"7c89d485e06f295de6fb1d676311340be35148dfc1a54de13b57e785227da78f",
-            "processed_date":"2018-04-13T11:04:19.000Z"
-        }
-    ]
+    "event_id": "YyZMc3zVNrCsgMi9BWv4ckfXj4R4aW76",
+    "event_type": "ADDRESS",
+    "callback_url": "http://addrvlf.requestcatcher.com/test",
+    "address": "yiVCptUPyxLLxt7dndcLrUjYwt3W16hwQ9",
+    "confirmations": 4,
+    "retry": 0,
+    "created_date": "2018-08-10T07:28:00.000Z",
+    "enabled": 1
 }
 ```
 
 ```java
-URL obj = new URL("https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/paymentforward/<PAYMENTFORWARD_ID>?token=<TOKEN>");
+URL obj = new URL("https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/events/<EVENT_ID>?token=<TOKEN>");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestProperty("Accept", "application/json");
 con.setRequestProperty("Content-Type", "application/json");
@@ -401,34 +350,24 @@ System.out.println(response.toString());
 
 // Response example
 {
-    "paymentforward_id":"XozC3GyOfhEGwD6zK8rIvi0HU6ZwqAuU",
-    "payment_address":"XcyXgQzCnKsWpK2YSjoRYwM1vWB6GvWQ2u",
-    "destination_address":"XvtUXjA3UBnGvsbV7MDs4Duu411CfofDEK",
-    "commission_address":"XtFU7dFv8b7JeW7eG9yYXc28uSYUQqiNCb",
-    "commission_fee_percent":0.1,
-    "commission_fee_duffs":null,
-    "created_date":"2018-04-13T11:01:46.000Z",
-    "callback_url":"https://webhook.site/175c954d-6595-4bf8-a518-990f5e876fa7",
-    "mining_fee_duffs":10000,
-    "processed_txs":
-    [
-        {
-            "input_transaction_hash":"6e3648463d26ee5af215fa3b61e976bf06cc7b1c6d2c034253967be65fc1c889",
-            "received_amount_duffs":5000000,
-            "transaction_hash":"7c89d485e06f295de6fb1d676311340be35148dfc1a54de13b57e785227da78f",
-            "processed_date":"2018-04-13T11:04:19.000Z"
-        }
-    ]
+    "event_id": "YyZMc3zVNrCsgMi9BWv4ckfXj4R4aW76",
+    "event_type": "ADDRESS",
+    "callback_url": "http://addrvlf.requestcatcher.com/test",
+    "address": "yiVCptUPyxLLxt7dndcLrUjYwt3W16hwQ9",
+    "confirmations": 4,
+    "retry": 0,
+    "created_date": "2018-08-10T07:28:00.000Z",
+    "enabled": 1
 }
 ```
 
 ## Get Events
 
-<h3 id="getPaymentForwardsPaginated">GET /paymentforward </h3>
+<h3 id="getEventsPaginated">GET /events </h3>
 
-<a id="opIdGetPaymentForwardsPaginated"></a>
+<a id="opIdGetEventsPaginated"></a>
 
-*Get all Payment Forwards for corresponding token*
+*Get all Events for corresponding token*
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -440,7 +379,8 @@ System.out.println(response.toString());
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|Array [PaymentForwardObject](#schemepaymentforwardobject)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|Array [EventObject](#schemeeventobject)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request|{"error": "error description"}|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
@@ -450,40 +390,58 @@ System.out.println(response.toString());
 > Code samples
 
 ```shell
-curl -X GET https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/paymentforward?token=<TOKEN> \
+curl -X GET https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/events?token=<TOKEN> \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json'
 
 # Response example
 [
     {
-        "paymentforward_id":"bbM4nQ3fnAfI5VhJ9K8wWQQOx0Namr4l",
-        "payment_address":"XnRZrhsm5vWEitEqXAVGG1JTCeGBeJfj2d",
-        "destination_address":"XvtUXjA3UBnGvsbV7MDs4Duu411CfofDEK",
-        "commission_address":"XtFU7dFv8b7JeW7eG9yYXc28uSYUQqiNCb",
-        "commission_fee_percent":null,
-        "commission_fee_duffs":20000,
-        "created_date":"2018-04-12T12:10:56.000Z",
-        "callback_url":"http://blockchainvlf.requestcatcher.com/test",
-        "mining_fee_duffs":10000
+        "event_id": "YyZMc3zVNrCsgMi9BWv4ckfXj4R4aW76",
+        "event_type": "ADDRESS",
+        "callback_url": "http://addrvlf.requestcatcher.com/test",
+        "address": "yiVCptUPyxLLxt7dndcLrUjYwt3W16hwQ9",
+        "confirmations": 4,
+        "retry": 0,
+        "created_date": "2018-08-10T07:28:00.000Z",
+        "enabled": 1
     },
     {
-        "paymentforward_id":"fHKGPLDqWUlce0cQIPzROzexDZ9WwTlj",
-        "payment_address":"XfFckk6ky9WeuNuCqVNxgXuPUobjfeHGGu",
-        "destination_address":"XvtUXjA3UBnGvsbV7MDs4Duu411CfofDEK",
-        "commission_address":"XtFU7dFv8b7JeW7eG9yYXc28uSYUQqiNCb",
-        "commission_fee_percent":0.1,
-        "commission_fee_duffs":null,
-        "created_date":"2018-04-12T12:10:56.000Z",
-        "callback_url":"http://blockchainvlf.requestcatcher.com/test",
-        "mining_fee_duffs":10000
+        "event_id": "ZjWQQkQzv91XqUiskvXv5wlK8bETvpdx",
+        "event_type": "BLOCK",
+        "callback_url": "http://blockvlf.requestcatcher.com/test",
+        "address": "",
+        "confirmations": 0,
+        "retry": 0,
+        "created_date": "2018-08-10T07:28:35.000Z",
+        "enabled": 1
+    },
+    {
+        "event_id": "SEDMCFP7IvevVcnMUDLjpzE07zghzZyV",
+        "event_type": "TRANSACTION",
+        "callback_url": "http://txvlf.requestcatcher.com/test",
+        "address": "",
+        "confirmations": 0,
+        "retry": 0,
+        "created_date": "2018-08-10T07:28:49.000Z",
+        "enabled": 1
+    },
+    {
+        "event_id": "TFTnKD1R0AGk4bkBFJAPkxN4ro1AdrKD",
+        "event_type": "IX_TRANSACTION",
+        "callback_url": "http://itxvlf.requestcatcher.com/test",
+        "address": "",
+        "confirmations": 0,
+        "retry": 0,
+        "created_date": "2018-08-10T07:29:01.000Z",
+        "enabled": 1
     }
 ]
 ```
 
 ```php
 <?php
-$URL = "https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/paymentforward?token=<TOKEN>";
+$URL = "https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/events?token=<TOKEN>";
 
 $aHTTP['http']['method']  = 'GET';
 
@@ -496,26 +454,44 @@ $response = file_get_contents($URL, false, $context);
 // Response example
 [
     {
-        "paymentforward_id":"bbM4nQ3fnAfI5VhJ9K8wWQQOx0Namr4l",
-        "payment_address":"XnRZrhsm5vWEitEqXAVGG1JTCeGBeJfj2d",
-        "destination_address":"XvtUXjA3UBnGvsbV7MDs4Duu411CfofDEK",
-        "commission_address":"XtFU7dFv8b7JeW7eG9yYXc28uSYUQqiNCb",
-        "commission_fee_percent":null,
-        "commission_fee_duffs":20000,
-        "created_date":"2018-04-12T12:10:56.000Z",
-        "callback_url":"http://blockchainvlf.requestcatcher.com/test",
-        "mining_fee_duffs":10000
+        "event_id": "YyZMc3zVNrCsgMi9BWv4ckfXj4R4aW76",
+        "event_type": "ADDRESS",
+        "callback_url": "http://addrvlf.requestcatcher.com/test",
+        "address": "yiVCptUPyxLLxt7dndcLrUjYwt3W16hwQ9",
+        "confirmations": 4,
+        "retry": 0,
+        "created_date": "2018-08-10T07:28:00.000Z",
+        "enabled": 1
     },
     {
-        "paymentforward_id":"fHKGPLDqWUlce0cQIPzROzexDZ9WwTlj",
-        "payment_address":"XfFckk6ky9WeuNuCqVNxgXuPUobjfeHGGu",
-        "destination_address":"XvtUXjA3UBnGvsbV7MDs4Duu411CfofDEK",
-        "commission_address":"XtFU7dFv8b7JeW7eG9yYXc28uSYUQqiNCb",
-        "commission_fee_percent":0.1,
-        "commission_fee_duffs":null,
-        "created_date":"2018-04-12T12:10:56.000Z",
-        "callback_url":"http://blockchainvlf.requestcatcher.com/test",
-        "mining_fee_duffs":10000
+        "event_id": "ZjWQQkQzv91XqUiskvXv5wlK8bETvpdx",
+        "event_type": "BLOCK",
+        "callback_url": "http://blockvlf.requestcatcher.com/test",
+        "address": "",
+        "confirmations": 0,
+        "retry": 0,
+        "created_date": "2018-08-10T07:28:35.000Z",
+        "enabled": 1
+    },
+    {
+        "event_id": "SEDMCFP7IvevVcnMUDLjpzE07zghzZyV",
+        "event_type": "TRANSACTION",
+        "callback_url": "http://txvlf.requestcatcher.com/test",
+        "address": "",
+        "confirmations": 0,
+        "retry": 0,
+        "created_date": "2018-08-10T07:28:49.000Z",
+        "enabled": 1
+    },
+    {
+        "event_id": "TFTnKD1R0AGk4bkBFJAPkxN4ro1AdrKD",
+        "event_type": "IX_TRANSACTION",
+        "callback_url": "http://itxvlf.requestcatcher.com/test",
+        "address": "",
+        "confirmations": 0,
+        "retry": 0,
+        "created_date": "2018-08-10T07:29:01.000Z",
+        "enabled": 1
     }
 ]
 ?>
@@ -528,7 +504,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/paymentforward?token=<TOKEN>',
+  url: 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/events?token=<TOKEN>',
   method: 'get',
   headers: headers,
   success: function(data) {
@@ -539,26 +515,44 @@ $.ajax({
 // Response example
 [
     {
-        "paymentforward_id":"bbM4nQ3fnAfI5VhJ9K8wWQQOx0Namr4l",
-        "payment_address":"XnRZrhsm5vWEitEqXAVGG1JTCeGBeJfj2d",
-        "destination_address":"XvtUXjA3UBnGvsbV7MDs4Duu411CfofDEK",
-        "commission_address":"XtFU7dFv8b7JeW7eG9yYXc28uSYUQqiNCb",
-        "commission_fee_percent":null,
-        "commission_fee_duffs":20000,
-        "created_date":"2018-04-12T12:10:56.000Z",
-        "callback_url":"http://blockchainvlf.requestcatcher.com/test",
-        "mining_fee_duffs":10000
+        "event_id": "YyZMc3zVNrCsgMi9BWv4ckfXj4R4aW76",
+        "event_type": "ADDRESS",
+        "callback_url": "http://addrvlf.requestcatcher.com/test",
+        "address": "yiVCptUPyxLLxt7dndcLrUjYwt3W16hwQ9",
+        "confirmations": 4,
+        "retry": 0,
+        "created_date": "2018-08-10T07:28:00.000Z",
+        "enabled": 1
     },
     {
-        "paymentforward_id":"fHKGPLDqWUlce0cQIPzROzexDZ9WwTlj",
-        "payment_address":"XfFckk6ky9WeuNuCqVNxgXuPUobjfeHGGu",
-        "destination_address":"XvtUXjA3UBnGvsbV7MDs4Duu411CfofDEK",
-        "commission_address":"XtFU7dFv8b7JeW7eG9yYXc28uSYUQqiNCb",
-        "commission_fee_percent":0.1,
-        "commission_fee_duffs":null,
-        "created_date":"2018-04-12T12:10:56.000Z",
-        "callback_url":"http://blockchainvlf.requestcatcher.com/test",
-        "mining_fee_duffs":10000
+        "event_id": "ZjWQQkQzv91XqUiskvXv5wlK8bETvpdx",
+        "event_type": "BLOCK",
+        "callback_url": "http://blockvlf.requestcatcher.com/test",
+        "address": "",
+        "confirmations": 0,
+        "retry": 0,
+        "created_date": "2018-08-10T07:28:35.000Z",
+        "enabled": 1
+    },
+    {
+        "event_id": "SEDMCFP7IvevVcnMUDLjpzE07zghzZyV",
+        "event_type": "TRANSACTION",
+        "callback_url": "http://txvlf.requestcatcher.com/test",
+        "address": "",
+        "confirmations": 0,
+        "retry": 0,
+        "created_date": "2018-08-10T07:28:49.000Z",
+        "enabled": 1
+    },
+    {
+        "event_id": "TFTnKD1R0AGk4bkBFJAPkxN4ro1AdrKD",
+        "event_type": "IX_TRANSACTION",
+        "callback_url": "http://itxvlf.requestcatcher.com/test",
+        "address": "",
+        "confirmations": 0,
+        "retry": 0,
+        "created_date": "2018-08-10T07:29:01.000Z",
+        "enabled": 1
     }
 ]
 ```
@@ -572,7 +566,7 @@ headers = {
   'Accept':'application/json'
 }
 
-result = RestClient.get 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/paymentforward',
+result = RestClient.get 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/events',
          params: {'token': <TOKEN>}, headers: headers
 
 p JSON.parse(result)
@@ -580,26 +574,44 @@ p JSON.parse(result)
 # Response example
 [
     {
-        "paymentforward_id":"bbM4nQ3fnAfI5VhJ9K8wWQQOx0Namr4l",
-        "payment_address":"XnRZrhsm5vWEitEqXAVGG1JTCeGBeJfj2d",
-        "destination_address":"XvtUXjA3UBnGvsbV7MDs4Duu411CfofDEK",
-        "commission_address":"XtFU7dFv8b7JeW7eG9yYXc28uSYUQqiNCb",
-        "commission_fee_percent":null,
-        "commission_fee_duffs":20000,
-        "created_date":"2018-04-12T12:10:56.000Z",
-        "callback_url":"http://blockchainvlf.requestcatcher.com/test",
-        "mining_fee_duffs":10000
+        "event_id": "YyZMc3zVNrCsgMi9BWv4ckfXj4R4aW76",
+        "event_type": "ADDRESS",
+        "callback_url": "http://addrvlf.requestcatcher.com/test",
+        "address": "yiVCptUPyxLLxt7dndcLrUjYwt3W16hwQ9",
+        "confirmations": 4,
+        "retry": 0,
+        "created_date": "2018-08-10T07:28:00.000Z",
+        "enabled": 1
     },
     {
-        "paymentforward_id":"fHKGPLDqWUlce0cQIPzROzexDZ9WwTlj",
-        "payment_address":"XfFckk6ky9WeuNuCqVNxgXuPUobjfeHGGu",
-        "destination_address":"XvtUXjA3UBnGvsbV7MDs4Duu411CfofDEK",
-        "commission_address":"XtFU7dFv8b7JeW7eG9yYXc28uSYUQqiNCb",
-        "commission_fee_percent":0.1,
-        "commission_fee_duffs":null,
-        "created_date":"2018-04-12T12:10:56.000Z",
-        "callback_url":"http://blockchainvlf.requestcatcher.com/test",
-        "mining_fee_duffs":10000
+        "event_id": "ZjWQQkQzv91XqUiskvXv5wlK8bETvpdx",
+        "event_type": "BLOCK",
+        "callback_url": "http://blockvlf.requestcatcher.com/test",
+        "address": "",
+        "confirmations": 0,
+        "retry": 0,
+        "created_date": "2018-08-10T07:28:35.000Z",
+        "enabled": 1
+    },
+    {
+        "event_id": "SEDMCFP7IvevVcnMUDLjpzE07zghzZyV",
+        "event_type": "TRANSACTION",
+        "callback_url": "http://txvlf.requestcatcher.com/test",
+        "address": "",
+        "confirmations": 0,
+        "retry": 0,
+        "created_date": "2018-08-10T07:28:49.000Z",
+        "enabled": 1
+    },
+    {
+        "event_id": "TFTnKD1R0AGk4bkBFJAPkxN4ro1AdrKD",
+        "event_type": "IX_TRANSACTION",
+        "callback_url": "http://itxvlf.requestcatcher.com/test",
+        "address": "",
+        "confirmations": 0,
+        "retry": 0,
+        "created_date": "2018-08-10T07:29:01.000Z",
+        "enabled": 1
     }
 ]
 ```
@@ -612,7 +624,7 @@ headers = {
   'Accept':'application/json',
 }
 
-r = requests.get('https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/paymentforward',
+r = requests.get('https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/events',
                   params={'token': <TOKEN>}, headers = headers)
 
 print r.json()
@@ -620,32 +632,50 @@ print r.json()
 # Response example
 [
     {
-        "paymentforward_id":"bbM4nQ3fnAfI5VhJ9K8wWQQOx0Namr4l",
-        "payment_address":"XnRZrhsm5vWEitEqXAVGG1JTCeGBeJfj2d",
-        "destination_address":"XvtUXjA3UBnGvsbV7MDs4Duu411CfofDEK",
-        "commission_address":"XtFU7dFv8b7JeW7eG9yYXc28uSYUQqiNCb",
-        "commission_fee_percent":null,
-        "commission_fee_duffs":20000,
-        "created_date":"2018-04-12T12:10:56.000Z",
-        "callback_url":"http://blockchainvlf.requestcatcher.com/test",
-        "mining_fee_duffs":10000
+        "event_id": "YyZMc3zVNrCsgMi9BWv4ckfXj4R4aW76",
+        "event_type": "ADDRESS",
+        "callback_url": "http://addrvlf.requestcatcher.com/test",
+        "address": "yiVCptUPyxLLxt7dndcLrUjYwt3W16hwQ9",
+        "confirmations": 4,
+        "retry": 0,
+        "created_date": "2018-08-10T07:28:00.000Z",
+        "enabled": 1
     },
     {
-        "paymentforward_id":"fHKGPLDqWUlce0cQIPzROzexDZ9WwTlj",
-        "payment_address":"XfFckk6ky9WeuNuCqVNxgXuPUobjfeHGGu",
-        "destination_address":"XvtUXjA3UBnGvsbV7MDs4Duu411CfofDEK",
-        "commission_address":"XtFU7dFv8b7JeW7eG9yYXc28uSYUQqiNCb",
-        "commission_fee_percent":0.1,
-        "commission_fee_duffs":null,
-        "created_date":"2018-04-12T12:10:56.000Z",
-        "callback_url":"http://blockchainvlf.requestcatcher.com/test",
-        "mining_fee_duffs":10000
+        "event_id": "ZjWQQkQzv91XqUiskvXv5wlK8bETvpdx",
+        "event_type": "BLOCK",
+        "callback_url": "http://blockvlf.requestcatcher.com/test",
+        "address": "",
+        "confirmations": 0,
+        "retry": 0,
+        "created_date": "2018-08-10T07:28:35.000Z",
+        "enabled": 1
+    },
+    {
+        "event_id": "SEDMCFP7IvevVcnMUDLjpzE07zghzZyV",
+        "event_type": "TRANSACTION",
+        "callback_url": "http://txvlf.requestcatcher.com/test",
+        "address": "",
+        "confirmations": 0,
+        "retry": 0,
+        "created_date": "2018-08-10T07:28:49.000Z",
+        "enabled": 1
+    },
+    {
+        "event_id": "TFTnKD1R0AGk4bkBFJAPkxN4ro1AdrKD",
+        "event_type": "IX_TRANSACTION",
+        "callback_url": "http://itxvlf.requestcatcher.com/test",
+        "address": "",
+        "confirmations": 0,
+        "retry": 0,
+        "created_date": "2018-08-10T07:29:01.000Z",
+        "enabled": 1
     }
 ]
 ```
 
 ```java
-URL obj = new URL("https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/paymentforward?token=<TOKEN>");
+URL obj = new URL("https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/events?token=<TOKEN>");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestProperty("Accept", "application/json");
 con.setRequestProperty("Content-Type", "application/json");
@@ -664,41 +694,59 @@ System.out.println(response.toString());
 // Response example
 [
     {
-        "paymentforward_id":"bbM4nQ3fnAfI5VhJ9K8wWQQOx0Namr4l",
-        "payment_address":"XnRZrhsm5vWEitEqXAVGG1JTCeGBeJfj2d",
-        "destination_address":"XvtUXjA3UBnGvsbV7MDs4Duu411CfofDEK",
-        "commission_address":"XtFU7dFv8b7JeW7eG9yYXc28uSYUQqiNCb",
-        "commission_fee_percent":null,
-        "commission_fee_duffs":20000,
-        "created_date":"2018-04-12T12:10:56.000Z",
-        "callback_url":"http://blockchainvlf.requestcatcher.com/test",
-        "mining_fee_duffs":10000
+        "event_id": "YyZMc3zVNrCsgMi9BWv4ckfXj4R4aW76",
+        "event_type": "ADDRESS",
+        "callback_url": "http://addrvlf.requestcatcher.com/test",
+        "address": "yiVCptUPyxLLxt7dndcLrUjYwt3W16hwQ9",
+        "confirmations": 4,
+        "retry": 0,
+        "created_date": "2018-08-10T07:28:00.000Z",
+        "enabled": 1
     },
     {
-        "paymentforward_id":"fHKGPLDqWUlce0cQIPzROzexDZ9WwTlj",
-        "payment_address":"XfFckk6ky9WeuNuCqVNxgXuPUobjfeHGGu",
-        "destination_address":"XvtUXjA3UBnGvsbV7MDs4Duu411CfofDEK",
-        "commission_address":"XtFU7dFv8b7JeW7eG9yYXc28uSYUQqiNCb",
-        "commission_fee_percent":0.1,
-        "commission_fee_duffs":null,
-        "created_date":"2018-04-12T12:10:56.000Z",
-        "callback_url":"http://blockchainvlf.requestcatcher.com/test",
-        "mining_fee_duffs":10000
+        "event_id": "ZjWQQkQzv91XqUiskvXv5wlK8bETvpdx",
+        "event_type": "BLOCK",
+        "callback_url": "http://blockvlf.requestcatcher.com/test",
+        "address": "",
+        "confirmations": 0,
+        "retry": 0,
+        "created_date": "2018-08-10T07:28:35.000Z",
+        "enabled": 1
+    },
+    {
+        "event_id": "SEDMCFP7IvevVcnMUDLjpzE07zghzZyV",
+        "event_type": "TRANSACTION",
+        "callback_url": "http://txvlf.requestcatcher.com/test",
+        "address": "",
+        "confirmations": 0,
+        "retry": 0,
+        "created_date": "2018-08-10T07:28:49.000Z",
+        "enabled": 1
+    },
+    {
+        "event_id": "TFTnKD1R0AGk4bkBFJAPkxN4ro1AdrKD",
+        "event_type": "IX_TRANSACTION",
+        "callback_url": "http://itxvlf.requestcatcher.com/test",
+        "address": "",
+        "confirmations": 0,
+        "retry": 0,
+        "created_date": "2018-08-10T07:29:01.000Z",
+        "enabled": 1
     }
 ]
 ```
 
 ## Delete Event
 
-<h3 id="deletePaymentForward3">DELETE /paymentforward/< paymentforward_id > </h3>
+<h3 id="deleteEvent">DELETE /events/< event_id > </h3>
 
-<a id="opIdDeletePaymentForward"></a>
+<a id="opIdDeleteEvent"></a>
 
-*Delete Payment Forward by id for corresponding token*
+*Delete event_type by id for corresponding token*
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|paymentforward_id|path|String|True|Unique Payment forward ID|
+|event_id|path|String|True|Unique Event ID|
 |token|query|String|True|Token obtained from the ChainRider service|
 
 <h3 id="response">Response</h3>
@@ -706,6 +754,7 @@ System.out.println(response.toString());
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|{}|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request|{"error": "error description"}|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
@@ -715,7 +764,7 @@ System.out.println(response.toString());
 > Code samples
 
 ```shell
-curl -X DELETE https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/paymentforward/<PAYMENTFORWARD_ID>?token=<TOKEN>\
+curl -X DELETE https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/events/<EVENT_ID>?token=<TOKEN>\
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json'
 
@@ -725,7 +774,7 @@ curl -X DELETE https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/paym
 
 ```php
 <?php
-$URL = "https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/paymentforward/<PAYMENTFORWARD_ID>?token=<TOKEN>";
+$URL = "https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/events/<EVENT_ID>?token=<TOKEN>";
 $aHTTP['http']['method']  = 'DELETE';
 $aHTTP['http']['header']  = "Content-Type: application/json\r\nAccept: application/json\r\n";
 $context = stream_context_create($aHTTP);
@@ -743,7 +792,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/paymentforward/<PAYMENTFORWARD_ID>?token=<TOKEN>',
+  url: 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/events/<EVENT_ID>?token=<TOKEN>',
   method: 'DELETE',
   headers: headers,
   success: function(data) {
@@ -763,7 +812,7 @@ headers = {
   'Authorization' => 'Bearer <token>'
 }
 
-result = RestClient.delete 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/paymentforward/<PAYMENTFORWARD_ID>',
+result = RestClient.delete 'https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/events/<EVENT_ID>',
          params: {'token': <TOKEN>}, headers: headers
 
 p JSON.parse(result)
@@ -780,7 +829,7 @@ headers = {
   'Accept':'application/json'
 }
 
-r = requests.delete('https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/paymentforward/<PAYMENTFORWARD_ID>',
+r = requests.delete('https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/events/<EVENT_ID>',
                   params={'token': <TOKEN>}, headers = headers)
 
 print r.json()
@@ -790,7 +839,7 @@ print r.json()
 ```
 
 ```java
-URL obj = new URL("https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/paymentforward/<PAYMENTFORWARD_ID>?token=<TOKEN>");
+URL obj = new URL("https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/events/<EVENT_ID>?token=<TOKEN>");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestProperty("Accept", "application/json");
 con.setRequestProperty("Content-Type", "application/json");
