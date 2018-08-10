@@ -1280,7 +1280,7 @@
 |---|---|---|
 |event_id|String|Event unique id|
 |event_type|String|Type of the event - ENUM {'ADDRESS', 'BLOCK', 'TRANSACTION', 'IX_TRANSACTION'}. Please refer to [Event Types](#eventtypesheader) for more details.|
-|callback_url|String|The URL to which the notification will be posted once the event is triggered. The notification payload is delivered in JSON format by using method POST. The response status code must be set to 200 in order to acknowledge the notification delivery.|
+|callback_url|String|The URL to which the notification will be posted once the event is triggered. The notification payload is delivered in JSON format by using method POST. The response status code must be set to 200 in order to acknowledge the notification delivery. Each notification delivered to callback URL includes X-Eventid and X-Eventtype headers in request header, which provide info about the event which generated the notification.|
 |address|String|This parameter is present for `ADDRESS` event types. For other event types it's set to empty string. It represents an address for which you want to be notified on balance change.|
 |confirmations|Integer|This parameter is present for `ADDRESS` event types. For other types it's set to 0. In case it's larger than 0, you will receive notifications for detected transactions involving specified address each time until detected transaction receives specified number of confirmations.|
 |retry|Integer|How many retry cycles have been attempted. When it reaches 112 the event is disabled|
