@@ -681,6 +681,7 @@ System.out.println(response.toString());
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |block|query|String|True|Block hash|
+|pageNum|query|Integer|False|Zero based index for fetching corresponding page of results. If ommited only first page is returned. Number of transactions per page is 10|
 |token|query|String|True|Token obtained from the ChainRider service|
 
 <h3 id="response">Response</h3>
@@ -1612,6 +1613,7 @@ System.out.println(response.toString());
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |address|query|String|True|Address string|
+|pageNum|query|Integer|False|Zero based index for fetching corresponding page of results. If ommited only first page is returned. Number of transactions per page is 10|
 |token|query|String|True|Token obtained from the ChainRider service|
 
 <h3 id="response">Response</h3>
