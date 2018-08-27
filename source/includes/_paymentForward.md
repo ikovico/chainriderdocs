@@ -6,6 +6,11 @@ In order to create a payment forward partially populated PaymentForward object i
 
 Once created, payment forward rule will continue to forward payments in a predefined way set during payment forward creation until you explicitly delete it by calling the API for payment forward delete.
 
+*Important*
+
+Upon each payment forward processing, you will receive notification on a specified callback URL with method `POST` in `JSON` format. In order to successfully confirm that you have received a notification, you need to respond with status code `200` to this `POST` request.
+On failed notification delivery, each delivery is attempted 6 times with exponential back-off: 1s, 2s, 4s, 8s, 16s, 32s. In case notification delivery fails anyway, the payment forward will be automatically deleted.
+
 ## Create Payment Forward
 
 <h3 id="postCreatePaymentForward">POST /paymentforward </h3>
