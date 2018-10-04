@@ -2,16 +2,17 @@
 title: ChainRider API Documentation
 
 language_tabs: # must be one of https://git.io/vQNgJ
+  - python
+  - javascript
   - shell
   - php
-  - javascript
-  - ruby
-  - python
   - java
+  - ruby
 
 toc_footers:
-  - <a class="action-btn" href='https://chainrider.io/'>Log in</a>
-  - <a class="link" href='https://github.com/lord/slate'>This documentation is powered by <em>Slate</em></a>
+ - <a class="action-btn" target="_blank" href='https://chainrider.io/login'>Login to ChainRider</a>
+  - <a class="action-btn" target="_blank" href='https://chainrider.io/register'>Register</a>
+  - <a class="link" target="_blank" href='https://github.com/lord/slate'>Documentation powered by <em>Slate</em></a>
 
 includes:
   - introduction

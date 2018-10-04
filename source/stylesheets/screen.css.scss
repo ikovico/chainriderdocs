@@ -100,8 +100,8 @@ html, body {
       line-height: 12px;
       color: rgb(152,152,152);
       font-weight: 500;
-// font-family: "Roboto-Regular";
-// text-align: center;
+      // font-family: "Roboto-Regular";
+      // text-align: center;
     }
 
     &:after {
@@ -215,12 +215,18 @@ html, body {
 
   .action-btn {
     display: block;
-    padding: 10px 20px;
-    background: #0E67AE;
+    padding: 10px 10px;
+    background: #0059b3;
     color: #fff!important;
     text-align: center;
     margin-bottom: 1em;
     border-radius: 5px;
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  .action-btn:hover {
+    background: forestgreen;
   }
 
 
@@ -362,7 +368,17 @@ html, body {
 // PAGE LAYOUT AND CODE SAMPLE BACKGROUND
 ////////////////////////////////////////////////////////////////////////////////
 
+
 .page-wrapper {
+
+  a:visited {
+    color: blue;
+  }
+
+  a:hover {
+    color: green;
+  }
+
   margin-left: calc(230px + 2rem);
   margin-right: 2rem;
   position: relative;
@@ -389,6 +405,7 @@ html, body {
     top: 0;
     bottom: 0;
   }
+
 
   .lang-selector {
     position: fixed;
@@ -444,8 +461,8 @@ html, body {
       // background-color: $lang-select-active-bg;
       border:none;
       background-color: #fff;
-      color: #0E67AE;
-      border-bottom: 2px solid #0E67AE!important;
+      color: forestgreen;
+      border-bottom: 2px solid green !important;
     }
   }
 
@@ -586,8 +603,8 @@ html, body {
     tr:nth-child(odd)>td {
       //CHANGED
       // background-color: lighten($main-bg,4.2%);
-    //  background-color: #F5F5F5;
-    // background-image: linear-gradient(to bottom, rgba(#cceeff, 0.5), rgba(#cceeff, 0));
+      //  background-color: #F5F5F5;
+      // background-image: linear-gradient(to bottom, rgba(#cceeff, 0.5), rgba(#cceeff, 0));
 
     }
 
@@ -622,6 +639,7 @@ html, body {
     border-radius: 3px;
     @extend %break-words;
     @extend %code-font;
+    font-size: 14px;
   }
 
   pre>code {
@@ -662,6 +680,10 @@ html, body {
 
   aside.success:before {
     @extend %icon-ok-sign;
+  }
+
+  a.visited {
+    color: blue;
   }
 
   .search-highlight {
@@ -718,10 +740,13 @@ html, body {
       h3 {
         display: inline-block;
         padding: 0.4rem 1rem;
-        background-color: #a6e22e;
+        background-color: #2373ED;
         border-radius: 20px;
         color: #fff;
-        font-weight: bold;
+      }
+
+      h3:hover {
+        background-color: forestgreen;
       }
 
       table {
@@ -859,6 +884,14 @@ html, body {
             font-size: 16px;
           }
 
+          a:visited {
+            color: blue;
+          }
+
+          a:hover {
+            color: green;
+          }
+
           h3 {
             font-size: 14px;
             padding: 0.3rem 0.6rem;
@@ -885,10 +918,6 @@ html, body {
     }
 
   }
-
-
-
-
 
   #nav-button {
     display: block;
@@ -927,10 +956,10 @@ html, body {
       line-height: 40px;
       height: 40px;
       background-color: #fff;
-      color: #0E67AE;
+      color: dodgerblue;
 
       &.active {
-        background-color: #0E67AE;
+        background-color: dodgerblue;
         color: #fff;
         border-bottom: none;
       }
@@ -951,6 +980,7 @@ html, body {
   }
 
   .page-wrapper {
+
     margin: 0!important;
     margin-top: 1rem!important;
 
@@ -997,7 +1027,7 @@ html, body {
 }
 
 .highlight .c, .highlight .cm, .highlight .c1, .highlight .cs {
-  color: #909090;
+  color: dodgerblue;
 }
 
 .highlight, .highlight .w {
