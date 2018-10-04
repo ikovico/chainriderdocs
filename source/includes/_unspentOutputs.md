@@ -606,7 +606,7 @@ headers = {
 }
 
 r = requests.post('https://api.chainrider.io/v1/<DIGITAL_CURRENCY>/<BLOCKCHAIN>/addrs/utxo',
-                  data=<body_here>, params={}, headers = headers)
+                  json=<body_here>, params={}, headers = headers)
 
 print r.json()
 ```
