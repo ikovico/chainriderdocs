@@ -10,8 +10,8 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - ruby
 
 toc_footers:
-  - <a class="action-btn" target="_blank" href='https://chainrider.io/register'>Sign up</a>
-  - If you have account you can <a class="login-link" target="_blank" href='https://www.chainrider.io/docs/bitcoin/'>log in.</a>
+  - <a class="action-btn" href='https://chainrider.io/register'>Sign up</a>
+  - If you have account you can <a class="login-link" href='https://www.chainrider.io/login'>log in.</a>
 
 includes:
   - introduction
