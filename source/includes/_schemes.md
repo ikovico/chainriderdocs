@@ -1272,6 +1272,47 @@
 }
 ```
 
+<h2 id="tocPaymentForwardCallbackNotification">PaymentForwardCallbackNotificationObject</h2>
+
+<a id="schemepaymentforwardcallbacknotification"></a>
+
+|Name|Type|Description|
+|---|---|---|
+|paymentforward_id|String|Payment forward unique id|
+|payment_address|String|String representing payment address. DASH received to payment address are automatically forwarded to destination address (and optionally to commission address in case one is specified in a predefined way during payment forward creation.) |
+|created_date|String - Datetime in YYYY-MM-DDTHH:MM:SS.MMMZ format|Datetime of the creation of payment forward|
+|received_amount_duffs|Integer|Total amount in duffs which were sent to payment address for given input transaction|
+|destination_address|String|String representing destination address. DASH received at payment address will be forwarded to the destination address.|
+|commission_address|String|String representing commission address. In case a commission address is specified part of the payment will be forwarded to this address each time a payment is received at payment address, based on predefined parameters (commission_fee_percent or commission_fee_duffs). If commission address was omitted when creating payment forward it will be sent as `null`|
+|commission_fee_percent|Float|Percentage of the payment which will be forwarded to commission address each time a payment is received at payment address. Min value 0.001. Max value 0.999. If commission_fee_percent was omitted when creating payment forward it will be sent as `null`|
+|commission_fee_duffs|Integer|Fixed amount in duffs which will be forwarded to commission address each time a payment is received at payment address. If commission_fee_duffs was omitted when creating payment forward it will be sent as `null`|
+|mining_fee_duffs|Integer|Mining fee for the payment forward transaction. Default is 10 000. Maximum is 150 000. Minimum is 10 000. In case of set commission_fee_percent, mining fee is subtracted from commission amount.|
+|input_transaction_hash|String (HEX)|ID of the input transaction - transaction which occurs when funds are sent to payment_address|
+|input_txlock|Boolean|Set to true if input transaction was InstantSend|
+|transaction_hash|String (HEX)|ID of the payment forward transaction - transaction which occurs when funds are forwarded from payment address to destination addresses (destination_address and commission_address if specified)|
+
+<a id="divider"></a>
+
+> Example
+
+```json
+{
+    "paymentforward_id": "JXmruyGExTacIWlihkSoNVBlf7LdV236",
+    "payment_address": "yWc2DT3gHthcDdaZxNbcgX2V6PzmAa4YoY",
+    "created_date": "2019-02-01T11:04:12.000Z",
+    "received_amount_duffs": 100000000,
+    "destination_address": "yM2g1wcCWTynfza8A8fNKqyYpJ4M2KJiHD",
+    "commission_address": "ybR1zg6yPMohpv8Q2EfV9gdBm5TYDSC1v9",
+    "commission_fee_percent": null,
+    "commission_fee_duffs": 100000,
+    "mining_fee_duffs": 20000,
+    "input_transaction_hash": "c5c2577aa6d411fe411795b15ff72bd57a0d35ef6d9bbd978408d1c31425a6cf",
+    "input_txlock": true,
+    "transaction_hash": "ce904e4f93aa43f1d4d483c2a8fcf5b4863d67027e9e95f9006c0da95c8602b2"
+}
+```
+
+
 <h2 id="tocEventObject">EventObject</h2>
 
 <a id="schemeeventobject"></a>

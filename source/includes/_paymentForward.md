@@ -6,11 +6,6 @@ In order to create a payment forward partially populated PaymentForward object i
 
 Once created, payment forward rule will continue to forward payments in a predefined way set during payment forward creation until you explicitly delete it by calling the API for payment forward delete.
 
-*Important*
-
-Upon each payment forward processing, you will receive notification on a specified callback URL with method `POST` in `JSON` format. In order to successfully confirm that you have received a notification, you need to respond with status code `200` to this `POST` request.
-On failed notification delivery, each delivery is attempted 6 times with exponential back-off: 1s, 2s, 4s, 8s, 16s, 32s. In case notification delivery fails anyway, the payment forward will be automatically deleted.
-
 ## Create Payment Forward
 
 <h3 id="postCreatePaymentForward">POST /paymentforward </h3>
@@ -26,7 +21,7 @@ On failed notification delivery, each delivery is attempted 6 times with exponen
 |commission_fee_percent|body|Float|False|Commission fee as normalized percentage. Minimum is 0.001. Maximum is 0.999. In case commission_address is set, commission_fee_percent specifies amount which will be forwarded to commission_address as percentage of the total received payment. The rest of the funds will be forwarded to destination_address. Mining fee is subtracted from previously calculated commission amount.|
 |commission_fee_duffs|body|Integer|False|Commission fee in duffs. In case commission_address is set, commission_fee_duffs specifies fixed amount of the total received payment which will be forwarded to commission_address. The rest of the funds will be forwarded to destination_address.|
 |mining_fee_duffs|body|String|False|Mining fee for forwarding transaction. Default fee is 10 000 duffs. Min 10 000 duffs. Max 150 000 duffs.|
-|callback_url|body|String|False|URL to which the notification will be posted upon each successful payment forward.|
+|callback_url|body|String|False|Upon each payment forward processing, you will receive notification on a specified callback URL with method `POST` in `JSON` format. In order to successfully confirm that you have received a notification, you need to respond with status code `200` to this `POST` request. On failed notification delivery, each delivery is attempted 5 times with exponential back-off: 1s, 2s, 4s, 8s, 16s. The notification comprises [PaymentForwardCallbackNotificationObject](#schemepaymentforwardcallbacknotification) which is posted in the body of the notification.|
 |token|body|String|True|Token obtained from the ChainRider service|
 
 <h3 id="response">Response</h3>
