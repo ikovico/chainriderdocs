@@ -12,7 +12,7 @@ The set of APIs below provides insight into the network status and general infor
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|q|query|String|True|Please use `geInfo` as value|
+|q|query|String|True|Please use `getInfo` as value|
 |token|query|String|True|Token obtained from the ChainRider service|
 
 
